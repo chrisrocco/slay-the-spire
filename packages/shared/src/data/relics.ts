@@ -1,5 +1,3 @@
-// TODO: Filled in by Plan 07 — relic definitions from rulebook
-
 export interface RelicCard {
   id: string;
   name: string;
@@ -7,7 +5,641 @@ export interface RelicCard {
   category: 'common' | 'uncommon' | 'rare' | 'boss' | 'special';
 }
 
-export const relics: readonly RelicCard[] = [];
+export const relics: readonly RelicCard[] = [
+  // ===== STARTER / SPECIAL RELICS =====
+  {
+    id: 'burning_blood',
+    name: 'Burning Blood',
+    text: 'At the end of combat, heal 6 HP.',
+    category: 'special',
+  },
+  {
+    id: 'ring_of_the_snake',
+    name: 'Ring of the Snake',
+    text: 'At the start of combat, draw 2 additional cards.',
+    category: 'special',
+  },
+  {
+    id: 'cracked_core',
+    name: 'Cracked Core',
+    text: 'At the start of combat, Channel 1 Lightning.',
+    category: 'special',
+  },
+  {
+    id: 'pure_water',
+    name: 'Pure Water',
+    text: 'At the start of combat, add a Miracle to your hand.',
+    category: 'special',
+  },
+
+  // ===== COMMON RELICS =====
+  {
+    id: 'anchor',
+    name: 'Anchor',
+    text: 'Start of combat: Gain 10 Block.',
+    category: 'common',
+  },
+  {
+    id: 'ancient_tea_set',
+    name: 'Ancient Tea Set',
+    text: 'Whenever you enter a rest site, start the next combat with 2 extra Energy.',
+    category: 'common',
+  },
+  {
+    id: 'art_of_war',
+    name: 'Art of War',
+    text: 'If you do not play any Attacks during your turn, gain 1 extra Energy next turn.',
+    category: 'common',
+  },
+  {
+    id: 'bag_of_marbles',
+    name: 'Bag of Marbles',
+    text: 'Start of combat: Apply 1 Vulnerable to ALL enemies.',
+    category: 'common',
+  },
+  {
+    id: 'bag_of_preparation',
+    name: 'Bag of Preparation',
+    text: 'Start of combat: Draw 2 additional cards.',
+    category: 'common',
+  },
+  {
+    id: 'blood_vial',
+    name: 'Blood Vial',
+    text: 'Start of combat: Heal 2 HP.',
+    category: 'common',
+  },
+  {
+    id: 'bronze_scales',
+    name: 'Bronze Scales',
+    text: 'Whenever you take damage, deal 3 damage back to the attacker.',
+    category: 'common',
+  },
+  {
+    id: 'centennial_puzzle',
+    name: 'Centennial Puzzle',
+    text: 'The first time you lose HP each combat, draw 3 cards.',
+    category: 'common',
+  },
+  {
+    id: 'ceramic_fish',
+    name: 'Ceramic Fish',
+    text: 'Whenever you add a card to your deck, gain 1 gold.',
+    category: 'common',
+  },
+  {
+    id: 'dream_catcher',
+    name: 'Dream Catcher',
+    text: 'Whenever you Rest, you may add a card to your deck.',
+    category: 'common',
+  },
+  {
+    id: 'happy_flower',
+    name: 'Happy Flower',
+    text: 'Every 3 turns, gain 1 Energy.',
+    category: 'common',
+  },
+  {
+    id: 'juzu_bracelet',
+    name: 'Juzu Bracelet',
+    text: 'Regular enemy combats are no longer encountered in ? rooms.',
+    category: 'common',
+  },
+  {
+    id: 'lantern',
+    name: 'Lantern',
+    text: 'Start of combat: Gain 1 Energy.',
+    category: 'common',
+  },
+  {
+    id: 'meal_ticket',
+    name: 'Meal Ticket',
+    text: 'Whenever you enter a shop, heal 3 HP.',
+    category: 'common',
+  },
+  {
+    id: 'nunchaku',
+    name: 'Nunchaku',
+    text: 'Every time you play 10 Attacks, gain 1 Energy.',
+    category: 'common',
+  },
+  {
+    id: 'oddly_smooth_stone',
+    name: 'Oddly Smooth Stone',
+    text: 'Start of combat: Gain 1 Dexterity.',
+    category: 'common',
+  },
+  {
+    id: 'omamori',
+    name: 'Omamori',
+    text: 'Negate the next 2 Curses you would obtain.',
+    category: 'common',
+  },
+  {
+    id: 'orichalcum',
+    name: 'Orichalcum',
+    text: 'If you end your turn with no Block, gain 6 Block.',
+    category: 'common',
+  },
+  {
+    id: 'pen_nib',
+    name: 'Pen Nib',
+    text: 'Every 10th Attack you play deals double damage.',
+    category: 'common',
+  },
+  {
+    id: 'potion_belt',
+    name: 'Potion Belt',
+    text: 'Your potion limit is increased by 2.',
+    category: 'common',
+  },
+  {
+    id: 'preserved_insect',
+    name: 'Preserved Insect',
+    text: 'Elites start with 25% less HP.',
+    category: 'common',
+  },
+  {
+    id: 'regal_pillow',
+    name: 'Regal Pillow',
+    text: 'Heal 3 additional HP when you Rest.',
+    category: 'common',
+  },
+  {
+    id: 'smiling_mask',
+    name: 'Smiling Mask',
+    text: 'Card Remove costs 0 gold at the Merchant.',
+    category: 'common',
+  },
+  {
+    id: 'strawberry',
+    name: 'Strawberry',
+    text: 'Gain 1 Max HP.',
+    category: 'common',
+  },
+  {
+    id: 'the_boot',
+    name: 'The Boot',
+    text: 'Whenever you deal 4 or less unblocked damage, increase it to 5.',
+    category: 'common',
+  },
+  {
+    id: 'tiny_chest',
+    name: 'Tiny Chest',
+    text: 'Every 4th ? room is a Treasure room.',
+    category: 'common',
+  },
+  {
+    id: 'toy_ornithopter',
+    name: 'Toy Ornithopter',
+    text: 'Whenever you use a Potion, heal 5 HP.',
+    category: 'common',
+  },
+  {
+    id: 'vajra',
+    name: 'Vajra',
+    text: 'Start of combat: Gain 1 Strength.',
+    category: 'common',
+  },
+  {
+    id: 'war_paint',
+    name: 'War Paint',
+    text: 'Upon pickup, Upgrade 2 random Skills.',
+    category: 'common',
+  },
+  {
+    id: 'whetstone',
+    name: 'Whetstone',
+    text: 'Upon pickup, Upgrade 2 random Attacks.',
+    category: 'common',
+  },
+
+  // ===== UNCOMMON RELICS =====
+  {
+    id: 'blue_candle',
+    name: 'Blue Candle',
+    text: 'Curse cards can now be played. Playing a Curse exhausts it and costs 1 HP.',
+    category: 'uncommon',
+  },
+  {
+    id: 'bottled_flame',
+    name: 'Bottled Flame',
+    text: 'Upon pickup, choose an Attack. Start each combat with that card in your hand.',
+    category: 'uncommon',
+  },
+  {
+    id: 'bottled_lightning',
+    name: 'Bottled Lightning',
+    text: 'Upon pickup, choose a Skill. Start each combat with that card in your hand.',
+    category: 'uncommon',
+  },
+  {
+    id: 'bottled_tornado',
+    name: 'Bottled Tornado',
+    text: 'Upon pickup, choose a Power. Start each combat with that card in your hand.',
+    category: 'uncommon',
+  },
+  {
+    id: 'darkstone_periapt',
+    name: 'Darkstone Periapt',
+    text: 'Whenever you obtain a Curse, gain 1 Max HP.',
+    category: 'uncommon',
+  },
+  {
+    id: 'eternal_feather',
+    name: 'Eternal Feather',
+    text: 'Whenever you enter a rest site, heal 3 HP for every 5 cards in your deck.',
+    category: 'uncommon',
+  },
+  {
+    id: 'frozen_egg',
+    name: 'Frozen Egg',
+    text: 'Whenever you add a Power card to your deck, it is Upgraded.',
+    category: 'uncommon',
+  },
+  {
+    id: 'gamblers_brew',
+    name: "Gambler's Brew",
+    text: 'Once per room: Discard any number of cards, then draw that many.',
+    category: 'uncommon',
+  },
+  {
+    id: 'golden_idol',
+    name: 'Golden Idol',
+    text: 'Gain 1 additional gold from all sources.',
+    category: 'uncommon',
+  },
+  {
+    id: 'horn_cleat',
+    name: 'Horn Cleat',
+    text: 'Start of turn 2 of each combat, gain 14 Block.',
+    category: 'uncommon',
+  },
+  {
+    id: 'ink_bottle',
+    name: 'Ink Bottle',
+    text: 'Every 10 cards you play, draw 1 card.',
+    category: 'uncommon',
+  },
+  {
+    id: 'kunai',
+    name: 'Kunai',
+    text: 'Every time you play 3 Attacks in a single turn, gain 1 Dexterity.',
+    category: 'uncommon',
+  },
+  {
+    id: 'letter_opener',
+    name: 'Letter Opener',
+    text: 'Every time you play 3 Skills in a single turn, deal 5 damage to ALL enemies.',
+    category: 'uncommon',
+  },
+  {
+    id: 'matryoshka',
+    name: 'Matryoshka',
+    text: 'The next 2 non-boss chests contain 2 relics.',
+    category: 'uncommon',
+  },
+  {
+    id: 'meat_on_the_bone',
+    name: 'Meat on the Bone',
+    text: 'If your HP is at or below 50% at the end of combat, heal 3 HP.',
+    category: 'uncommon',
+  },
+  {
+    id: 'mercury_hourglass',
+    name: 'Mercury Hourglass',
+    text: 'Start of turn: Deal 3 damage to ALL enemies.',
+    category: 'uncommon',
+  },
+  {
+    id: 'molten_egg',
+    name: 'Molten Egg',
+    text: 'Whenever you add an Attack card to your deck, it is Upgraded.',
+    category: 'uncommon',
+  },
+  {
+    id: 'mummified_hand',
+    name: 'Mummified Hand',
+    text: 'Whenever you play a Power, a random card in your hand costs 0 this turn.',
+    category: 'uncommon',
+  },
+  {
+    id: 'ornamental_fan',
+    name: 'Ornamental Fan',
+    text: 'Every time you play 3 Attacks in a single turn, gain 4 Block.',
+    category: 'uncommon',
+  },
+  {
+    id: 'pantograph',
+    name: 'Pantograph',
+    text: 'At the start of Boss combat, heal 25 HP.',
+    category: 'uncommon',
+  },
+  {
+    id: 'paper_krane',
+    name: 'Paper Krane',
+    text: 'Enemies with Weak deal 2 less damage instead of 1.',
+    category: 'uncommon',
+  },
+  {
+    id: 'question_card',
+    name: 'Question Card',
+    text: 'Card rewards have 1 additional card to choose from.',
+    category: 'uncommon',
+  },
+  {
+    id: 'shuriken',
+    name: 'Shuriken',
+    text: 'Every time you play 3 Attacks in a single turn, gain 1 Strength.',
+    category: 'uncommon',
+  },
+  {
+    id: 'singing_bowl',
+    name: 'Singing Bowl',
+    text: 'When adding a card to your deck, you may gain 2 Max HP instead.',
+    category: 'uncommon',
+  },
+  {
+    id: 'strike_dummy',
+    name: 'Strike Dummy',
+    text: 'Cards containing "Strike" deal 3 additional damage.',
+    category: 'uncommon',
+  },
+  {
+    id: 'sundial',
+    name: 'Sundial',
+    text: 'Every 3 times you shuffle your draw pile, gain 2 gold.',
+    category: 'uncommon',
+  },
+  {
+    id: 'the_courier',
+    name: 'The Courier',
+    text: 'The Merchant restocks after you buy a card. Card Remove costs 1 less gold.',
+    category: 'uncommon',
+  },
+  {
+    id: 'toxic_egg',
+    name: 'Toxic Egg',
+    text: 'Whenever you add a Skill card to your deck, it is Upgraded.',
+    category: 'uncommon',
+  },
+
+  // ===== RARE RELICS =====
+  {
+    id: 'bird_faced_urn',
+    name: 'Bird-Faced Urn',
+    text: 'Whenever you play a Power, heal 2 HP.',
+    category: 'rare',
+  },
+  {
+    id: 'calipers',
+    name: 'Calipers',
+    text: 'At the start of your turn, you lose 15 Block rather than all of your Block.',
+    category: 'rare',
+  },
+  {
+    id: 'dead_branch',
+    name: 'Dead Branch',
+    text: 'Whenever you Exhaust a card, add a random card to your hand.',
+    category: 'rare',
+  },
+  {
+    id: 'du_vu_doll',
+    name: 'Du-Vu Doll',
+    text: 'For each Curse in your deck, start each combat with 1 additional Strength.',
+    category: 'rare',
+  },
+  {
+    id: 'fossilized_helix',
+    name: 'Fossilized Helix',
+    text: 'Prevent the first time you would lose HP each combat.',
+    category: 'rare',
+  },
+  {
+    id: 'gambling_chip',
+    name: 'Gambling Chip',
+    text: 'Once per room: Discard any number of cards, then draw that many.',
+    category: 'rare',
+  },
+  {
+    id: 'ginger',
+    name: 'Ginger',
+    text: 'You can no longer become Weakened.',
+    category: 'rare',
+  },
+  {
+    id: 'girya',
+    name: 'Girya',
+    text: 'Whenever you rest, you may gain 1 Strength instead. Can be used up to 3 times.',
+    category: 'rare',
+  },
+  {
+    id: 'ice_cream',
+    name: 'Ice Cream',
+    text: 'Energy is now conserved between turns.',
+    category: 'rare',
+  },
+  {
+    id: 'incense_burner',
+    name: 'Incense Burner',
+    text: 'Every 6 turns, gain 1 Intangible.',
+    category: 'rare',
+  },
+  {
+    id: 'lizard_tail',
+    name: 'Lizard Tail',
+    text: 'When you would die, heal to 50% HP instead. Works once.',
+    category: 'rare',
+  },
+  {
+    id: 'mango',
+    name: 'Mango',
+    text: 'Gain 1 Max HP.',
+    category: 'rare',
+  },
+  {
+    id: 'old_coin',
+    name: 'Old Coin',
+    text: 'Gain 3 gold.',
+    category: 'rare',
+  },
+  {
+    id: 'peace_pipe',
+    name: 'Peace Pipe',
+    text: 'You can now Remove cards at Rest Sites.',
+    category: 'rare',
+  },
+  {
+    id: 'pear',
+    name: 'Pear',
+    text: 'Gain 2 Max HP.',
+    category: 'rare',
+  },
+  {
+    id: 'shovel',
+    name: 'Shovel',
+    text: 'You can now Dig for relics at Rest Sites.',
+    category: 'rare',
+  },
+  {
+    id: 'stone_calendar',
+    name: 'Stone Calendar',
+    text: 'At the end of turn 7, deal 52 damage to ALL enemies.',
+    category: 'rare',
+  },
+  {
+    id: 'thread_and_needle',
+    name: 'Thread and Needle',
+    text: 'Start of combat: Gain 4 Plated Armor.',
+    category: 'rare',
+  },
+  {
+    id: 'torii',
+    name: 'Torii',
+    text: 'Whenever you receive 5 or less unblocked damage, reduce it to 1.',
+    category: 'rare',
+  },
+  {
+    id: 'turnip',
+    name: 'Turnip',
+    text: 'You can no longer become Vulnerable.',
+    category: 'rare',
+  },
+  {
+    id: 'unceasing_top',
+    name: 'Unceasing Top',
+    text: 'Whenever your hand is empty, draw a card.',
+    category: 'rare',
+  },
+  {
+    id: 'wing_boots',
+    name: 'Wing Boots',
+    text: 'You may ignore paths when choosing where to go.',
+    category: 'rare',
+  },
+
+  // ===== BOSS RELICS =====
+  {
+    id: 'astrolabe',
+    name: 'Astrolabe',
+    text: 'Upon pickup, Transform and Upgrade 3 cards.',
+    category: 'boss',
+  },
+  {
+    id: 'black_blood',
+    name: 'Black Blood',
+    text: 'Replaces Burning Blood. At the end of combat, heal 12 HP.',
+    category: 'boss',
+  },
+  {
+    id: 'black_star',
+    name: 'Black Star',
+    text: 'Elites give an additional relic as a reward.',
+    category: 'boss',
+  },
+  {
+    id: 'busted_crown',
+    name: 'Busted Crown',
+    text: 'Gain 1 Energy at the start of each turn. Card Rewards have 2 fewer cards.',
+    category: 'boss',
+  },
+  {
+    id: 'calling_bell',
+    name: 'Calling Bell',
+    text: 'Upon pickup, gain 3 relics and 1 Curse.',
+    category: 'boss',
+  },
+  {
+    id: 'coffee_dripper',
+    name: 'Coffee Dripper',
+    text: 'Gain 1 Energy at the start of each turn. You can no longer Rest at Rest Sites.',
+    category: 'boss',
+  },
+  {
+    id: 'cursed_key',
+    name: 'Cursed Key',
+    text: 'Gain 1 Energy at the start of each turn. Whenever you open a chest, gain a Curse.',
+    category: 'boss',
+  },
+  {
+    id: 'ectoplasm',
+    name: 'Ectoplasm',
+    text: 'Gain 1 Energy at the start of each turn. You can no longer gain gold.',
+    category: 'boss',
+  },
+  {
+    id: 'empty_cage',
+    name: 'Empty Cage',
+    text: 'Upon pickup, Remove 2 cards.',
+    category: 'boss',
+  },
+  {
+    id: 'fusion_hammer',
+    name: 'Fusion Hammer',
+    text: 'Gain 1 Energy at the start of each turn. You can no longer Smith at Rest Sites.',
+    category: 'boss',
+  },
+  {
+    id: 'holy_water',
+    name: 'Holy Water',
+    text: 'Replaces Pure Water. At the start of combat, add 3 Miracles to your hand.',
+    category: 'boss',
+  },
+  {
+    id: 'hovering_kite',
+    name: 'Hovering Kite',
+    text: 'The first card you discard each turn gives you 1 Energy.',
+    category: 'boss',
+  },
+  {
+    id: 'inserter',
+    name: 'Inserter',
+    text: 'Replaces Cracked Core. Every 2 turns, gain 1 Orb slot.',
+    category: 'boss',
+  },
+  {
+    id: 'mark_of_pain',
+    name: 'Mark of Pain',
+    text: 'Gain 1 Energy at the start of each turn. Start each combat with 2 Wounds in your draw pile.',
+    category: 'boss',
+  },
+  {
+    id: 'pandoras_box',
+    name: "Pandora's Box",
+    text: 'Upon pickup, Transform all Strikes and Defends.',
+    category: 'boss',
+  },
+  {
+    id: 'philosophers_stone',
+    name: "Philosopher's Stone",
+    text: 'Gain 1 Energy at the start of each turn. ALL enemies start with 1 Strength.',
+    category: 'boss',
+  },
+  {
+    id: 'ring_of_the_serpent',
+    name: 'Ring of the Serpent',
+    text: 'Replaces Ring of the Snake. At the start of combat, draw 1 additional card.',
+    category: 'boss',
+  },
+  {
+    id: 'runic_dome',
+    name: 'Runic Dome',
+    text: 'Gain 1 Energy at the start of each turn. You can no longer see enemy intents.',
+    category: 'boss',
+  },
+  {
+    id: 'sacred_bark',
+    name: 'Sacred Bark',
+    text: 'Potion effects are doubled.',
+    category: 'boss',
+  },
+  {
+    id: 'slavers_collar',
+    name: "Slaver's Collar",
+    text: 'During Boss and Elite combats, gain 1 Energy at the start of each turn.',
+    category: 'boss',
+  },
+];
 
 export const relicMap: Record<string, RelicCard> = Object.fromEntries(
   relics.map(r => [r.id, r])

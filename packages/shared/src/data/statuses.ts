@@ -1,8 +1,38 @@
-import type { StatusCard } from '../schemas/cards.js';
+import type { StatusCard, DazeCard } from '../schemas/cards.js';
 
-// TODO: Filled in by Plan 07 — status cards (Wound, Slimed) from rulebook
-export const statuses: readonly StatusCard[] = [];
+export const statuses = [
+  {
+    id: 'wound',
+    name: 'Wound',
+    type: 'Status' as const,
+    variant: 'wound' as const,
+    cost: 'unplayable' as const,
+    text: 'Unplayable.',
+  },
+  {
+    id: 'slimed',
+    name: 'Slimed',
+    type: 'Status' as const,
+    variant: 'slimed' as const,
+    cost: 'unplayable' as const,
+    text: 'Exhaust.',
+  },
+] as const satisfies readonly StatusCard[];
 
-export const statusMap: Record<string, StatusCard> = Object.fromEntries(
+export const statusMap = Object.fromEntries(
   statuses.map(s => [s.id, s])
-);
+) as Record<string, StatusCard>;
+
+export const dazes = [
+  {
+    id: 'daze',
+    name: 'Daze',
+    type: 'Daze' as const,
+    cost: 'unplayable' as const,
+    text: 'Unplayable. Ethereal. Put on top of draw pile.',
+  },
+] as const satisfies readonly DazeCard[];
+
+export const dazeMap = Object.fromEntries(
+  dazes.map(d => [d.id, d])
+) as Record<string, DazeCard>;
