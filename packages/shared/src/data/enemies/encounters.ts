@@ -1,8 +1,378 @@
 import type { EnemyCard } from '../../schemas/enemies.js';
 
-// TODO: Filled in by Plan 06 — encounter enemies from rulebook
-export const encounterEnemies: readonly EnemyCard[] = [];
+export const encounterEnemies = [
+  // ===== FIRST ENCOUNTERS =====
+  {
+    id: 'cultist_1st',
+    name: 'Cultist',
+    act: 1 as const,
+    category: 'first_encounter' as const,
+    hp: 10,
+    pattern: {
+      kind: 'cube' as const,
+      description: 'Cube action pattern',
+      slots: [
+        { text: 'Deal 1 damage.', repeating: true },
+        { text: 'Deal 2 damage.', repeating: true },
+        { text: 'Deal 3 damage. Gain 1 Strength.', repeating: true },
+      ],
+    },
+    specialAbilities: [],
+    summons: [],
+    rewards: {
+      gold: 2,
+      cardReward: true,
+      potionReward: false,
+      relicReward: false,
+    },
+  },
+  {
+    id: 'jaw_worm_1st',
+    name: 'Jaw Worm',
+    act: 1 as const,
+    category: 'first_encounter' as const,
+    hp: 10,
+    pattern: {
+      kind: 'cube' as const,
+      description: 'Cube action pattern',
+      slots: [
+        { text: 'Deal 3 damage.', repeating: true },
+        { text: 'Gain 3 Block.', repeating: true },
+        { text: 'Deal 2 damage. Gain 1 Strength.', repeating: true },
+      ],
+    },
+    specialAbilities: [],
+    summons: [],
+    rewards: {
+      gold: 2,
+      cardReward: true,
+      potionReward: false,
+      relicReward: false,
+    },
+  },
+  {
+    id: 'louse_1st',
+    name: 'Louse',
+    act: 1 as const,
+    category: 'first_encounter' as const,
+    hp: 10,
+    pattern: {
+      kind: 'die' as const,
+      description: 'Die action pattern',
+      actions: {
+        '1-3': 'Deal 2 damage.',
+        '4-6': 'Deal 3 damage.',
+      },
+    },
+    specialAbilities: [],
+    summons: [],
+    rewards: {
+      gold: 2,
+      cardReward: true,
+      potionReward: false,
+      relicReward: false,
+    },
+  },
+  {
+    id: 'slime_1st',
+    name: 'Acid Slime',
+    act: 1 as const,
+    category: 'first_encounter' as const,
+    hp: 8,
+    pattern: {
+      kind: 'die' as const,
+      description: 'Die action pattern',
+      actions: {
+        '1-3': 'Deal 2 damage.',
+        '4-6': 'Deal 1 damage. Apply 1 Weak.',
+      },
+    },
+    specialAbilities: [],
+    summons: [],
+    rewards: {
+      gold: 2,
+      cardReward: true,
+      potionReward: false,
+      relicReward: false,
+    },
+  },
 
-export const encounterEnemyMap: Record<string, EnemyCard> = Object.fromEntries(
+  // ===== REGULAR ENCOUNTERS =====
+  {
+    id: 'jaw_worm',
+    name: 'Jaw Worm',
+    act: 1 as const,
+    category: 'encounter' as const,
+    hp: 12,
+    pattern: {
+      kind: 'cube' as const,
+      description: 'Cube action pattern',
+      slots: [
+        { text: 'Deal 4 damage.', repeating: true },
+        { text: 'Deal 3 damage. Gain 2 Block.', repeating: true },
+        { text: 'Deal 2 damage. Gain 1 Strength.', repeating: false },
+      ],
+    },
+    specialAbilities: [],
+    summons: [],
+    rewards: {
+      gold: 3,
+      cardReward: true,
+      potionReward: false,
+      relicReward: false,
+    },
+  },
+  {
+    id: 'cultist',
+    name: 'Cultist',
+    act: 1 as const,
+    category: 'encounter' as const,
+    hp: 12,
+    pattern: {
+      kind: 'cube' as const,
+      description: 'Cube action pattern',
+      slots: [
+        { text: 'Deal 2 damage.', repeating: true },
+        { text: 'Deal 3 damage.', repeating: true },
+        { text: 'Deal 4 damage. Gain 1 Strength.', repeating: true },
+      ],
+    },
+    specialAbilities: [],
+    summons: [],
+    rewards: {
+      gold: 3,
+      cardReward: true,
+      potionReward: false,
+      relicReward: false,
+    },
+  },
+  {
+    id: 'red_louse',
+    name: 'Red Louse',
+    act: 1 as const,
+    category: 'encounter' as const,
+    hp: 10,
+    pattern: {
+      kind: 'die' as const,
+      description: 'Die action pattern',
+      actions: {
+        '1-3': 'Deal 3 damage.',
+        '4-6': 'Deal 4 damage.',
+      },
+    },
+    specialAbilities: ['Curl Up: Start of combat: Gain 3 Block.'],
+    summons: [],
+    rewards: {
+      gold: 3,
+      cardReward: true,
+      potionReward: false,
+      relicReward: false,
+    },
+  },
+  {
+    id: 'green_louse',
+    name: 'Green Louse',
+    act: 1 as const,
+    category: 'encounter' as const,
+    hp: 10,
+    pattern: {
+      kind: 'die' as const,
+      description: 'Die action pattern',
+      actions: {
+        '1-3': 'Deal 2 damage. Apply 1 Weak.',
+        '4-6': 'Deal 3 damage. Apply 1 Weak.',
+      },
+    },
+    specialAbilities: ['Curl Up: Start of combat: Gain 3 Block.'],
+    summons: [],
+    rewards: {
+      gold: 3,
+      cardReward: true,
+      potionReward: false,
+      relicReward: false,
+    },
+  },
+  {
+    id: 'acid_slime_m',
+    name: 'Acid Slime (M)',
+    act: 1 as const,
+    category: 'encounter' as const,
+    hp: 10,
+    pattern: {
+      kind: 'die' as const,
+      description: 'Die action pattern',
+      actions: {
+        '1-3': 'Deal 3 damage.',
+        '4-5': 'Deal 2 damage. Apply 1 Weak.',
+        '6': 'Put a Slimed Status card in the player\'s discard pile.',
+      },
+    },
+    specialAbilities: [],
+    summons: [],
+    rewards: {
+      gold: 2,
+      cardReward: true,
+      potionReward: false,
+      relicReward: false,
+    },
+  },
+  {
+    id: 'spike_slime_m',
+    name: 'Spike Slime (M)',
+    act: 1 as const,
+    category: 'encounter' as const,
+    hp: 10,
+    pattern: {
+      kind: 'die' as const,
+      description: 'Die action pattern',
+      actions: {
+        '1-3': 'Deal 3 damage.',
+        '4-6': 'Put a Slimed Status card in the player\'s discard pile.',
+      },
+    },
+    specialAbilities: [],
+    summons: [],
+    rewards: {
+      gold: 2,
+      cardReward: true,
+      potionReward: false,
+      relicReward: false,
+    },
+  },
+  {
+    id: 'fungi_beast',
+    name: 'Fungi Beast',
+    act: 1 as const,
+    category: 'encounter' as const,
+    hp: 12,
+    pattern: {
+      kind: 'cube' as const,
+      description: 'Cube action pattern',
+      slots: [
+        { text: 'Deal 4 damage.', repeating: true },
+        { text: 'Gain 2 Strength.', repeating: false },
+      ],
+    },
+    specialAbilities: ['Spore Cloud: On death, all players put 2 Status cards in their discard pile.'],
+    summons: [],
+    rewards: {
+      gold: 3,
+      cardReward: true,
+      potionReward: false,
+      relicReward: false,
+    },
+  },
+  {
+    id: 'blue_slaver',
+    name: 'Blue Slaver',
+    act: 1 as const,
+    category: 'encounter' as const,
+    hp: 12,
+    pattern: {
+      kind: 'cube' as const,
+      description: 'Cube action pattern',
+      slots: [
+        { text: 'Deal 4 damage.', repeating: true },
+        { text: 'Deal 3 damage. Apply 1 Weak.', repeating: true },
+      ],
+    },
+    specialAbilities: [],
+    summons: [],
+    rewards: {
+      gold: 3,
+      cardReward: true,
+      potionReward: false,
+      relicReward: false,
+    },
+  },
+  {
+    id: 'red_slaver',
+    name: 'Red Slaver',
+    act: 1 as const,
+    category: 'encounter' as const,
+    hp: 12,
+    pattern: {
+      kind: 'cube' as const,
+      description: 'Cube action pattern',
+      slots: [
+        { text: 'Deal 4 damage.', repeating: true },
+        { text: 'Deal 3 damage. Apply 1 Vulnerable.', repeating: true },
+      ],
+    },
+    specialAbilities: [],
+    summons: [],
+    rewards: {
+      gold: 3,
+      cardReward: true,
+      potionReward: false,
+      relicReward: false,
+    },
+  },
+  {
+    id: 'looter',
+    name: 'Looter',
+    act: 1 as const,
+    category: 'encounter' as const,
+    hp: 11,
+    pattern: {
+      kind: 'cube' as const,
+      description: 'Cube action pattern',
+      slots: [
+        { text: 'Deal 3 damage. Steal 1 gold.', repeating: true },
+        { text: 'Deal 3 damage. Steal 1 gold.', repeating: true },
+        { text: 'Gain 4 Block. Escape next turn.', repeating: false },
+      ],
+    },
+    specialAbilities: [],
+    summons: [],
+    rewards: {
+      gold: 4,
+      cardReward: true,
+      potionReward: false,
+      relicReward: false,
+    },
+  },
+  {
+    id: 'mad_gremlin',
+    name: 'Mad Gremlin',
+    act: 1 as const,
+    category: 'encounter' as const,
+    hp: 8,
+    pattern: {
+      kind: 'single' as const,
+      description: 'Deal 3 damage.',
+    },
+    specialAbilities: [],
+    summons: [],
+    rewards: {
+      gold: 2,
+      cardReward: true,
+      potionReward: false,
+      relicReward: false,
+    },
+  },
+  {
+    id: 'sneaky_gremlin',
+    name: 'Sneaky Gremlin',
+    act: 1 as const,
+    category: 'encounter' as const,
+    hp: 6,
+    pattern: {
+      kind: 'single' as const,
+      description: 'Deal 4 damage.',
+    },
+    specialAbilities: [],
+    summons: [],
+    rewards: {
+      gold: 2,
+      cardReward: true,
+      potionReward: false,
+      relicReward: false,
+    },
+  },
+] as const satisfies readonly EnemyCard[];
+
+// O(1) lookup map — used by game engine in Phase 2
+export const encounterEnemyMap = Object.fromEntries(
   encounterEnemies.map(e => [e.id, e])
-);
+) as Record<string, EnemyCard>;
