@@ -12,7 +12,7 @@ Six phases build from the ground up: structured game data first, then pure game 
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation** - Monorepo scaffold, shared types, and all Act 1 game data extracted into structured form
+- [x] **Phase 1: Foundation** - Monorepo scaffold, shared types, and all Act 1 game data extracted into structured form
 - [ ] **Phase 2: Game Engine** - Pure TypeScript combat logic, enemy AI, status effects, character mechanics — fully tested without networking
 - [ ] **Phase 3: Session Management** - Lobby, WebSocket server, reconnection, serialized action queue — all multiplayer infrastructure
 - [ ] **Phase 4: Core Client UI** - SolidJS store, WebSocket client, and the combat-facing UI components needed to play a fight
@@ -34,13 +34,13 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 7 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Monorepo scaffold, TypeScript config, Zod v4 schemas, and stub data files
-- [ ] 01-02-PLAN.md — Ironclad player card data extraction (85 cards × 2 sides)
-- [ ] 01-03-PLAN.md — Silent player card data extraction (87 cards × 2 sides)
-- [ ] 01-04-PLAN.md — Defect player card data extraction (85 cards × 2 sides)
-- [ ] 01-05-PLAN.md — Watcher player card data extraction (85 cards × 2 sides)
-- [ ] 01-06-PLAN.md — Act 1 enemy data (encounters, elites, bosses, summons)
-- [ ] 01-07-PLAN.md — Event, curse/status/daze, relic, potion data + schema tests + full build verification
+- [x] 01-01-PLAN.md — Monorepo scaffold, TypeScript config, Zod v4 schemas, and stub data files
+- [x] 01-02-PLAN.md — Ironclad player card data extraction (85 cards × 2 sides)
+- [x] 01-03-PLAN.md — Silent player card data extraction (87 cards × 2 sides)
+- [x] 01-04-PLAN.md — Defect player card data extraction (85 cards × 2 sides)
+- [x] 01-05-PLAN.md — Watcher player card data extraction (85 cards × 2 sides)
+- [x] 01-06-PLAN.md — Act 1 enemy data (encounters, elites, bosses, summons)
+- [x] 01-07-PLAN.md — Event, curse/status/daze, relic, potion data + schema tests + full build verification
 
 ### Phase 2: Game Engine
 **Goal**: The complete board game combat rules are implemented as pure, tested TypeScript functions
@@ -108,7 +108,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/7 | In progress | - |
+| 1. Foundation | 7/7 | Complete | 2026-03-01 |
 | 2. Game Engine | 0/TBD | Not started | - |
 | 3. Session Management | 0/TBD | Not started | - |
 | 4. Core Client UI | 0/TBD | Not started | - |
