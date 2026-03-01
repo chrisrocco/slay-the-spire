@@ -31,7 +31,16 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. All Act 1 event cards, curse/status/daze card pools, and relic/potion definitions are in structured data
   4. TypeScript builds without errors; pnpm workspace runs client and server dev processes simultaneously
   5. Shared Zod schemas define the WebSocket message protocol and GameState types importable by both client and server
-**Plans**: TBD
+**Plans**: 7 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Monorepo scaffold, TypeScript config, Zod v4 schemas, and stub data files
+- [ ] 01-02-PLAN.md — Ironclad player card data extraction (85 cards × 2 sides)
+- [ ] 01-03-PLAN.md — Silent player card data extraction (87 cards × 2 sides)
+- [ ] 01-04-PLAN.md — Defect player card data extraction (85 cards × 2 sides)
+- [ ] 01-05-PLAN.md — Watcher player card data extraction (85 cards × 2 sides)
+- [ ] 01-06-PLAN.md — Act 1 enemy data (encounters, elites, bosses, summons)
+- [ ] 01-07-PLAN.md — Event, curse/status/daze, relic, potion data + schema tests + full build verification
 
 ### Phase 2: Game Engine
 **Goal**: The complete board game combat rules are implemented as pure, tested TypeScript functions
@@ -99,7 +108,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/TBD | Not started | - |
+| 1. Foundation | 0/7 | In progress | - |
 | 2. Game Engine | 0/TBD | Not started | - |
 | 3. Session Management | 0/TBD | Not started | - |
 | 4. Core Client UI | 0/TBD | Not started | - |
