@@ -167,13 +167,93 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| — | — | Pending |
+| CARD-01 | Phase 1 | Pending |
+| CARD-02 | Phase 1 | Pending |
+| CARD-03 | Phase 1 | Pending |
+| CARD-04 | Phase 1 | Pending |
+| CARD-05 | Phase 1 | Pending |
+| CMBT-01 | Phase 2 | Pending |
+| CMBT-02 | Phase 2 | Pending |
+| CMBT-03 | Phase 2 | Pending |
+| CMBT-04 | Phase 2 | Pending |
+| CMBT-05 | Phase 2 | Pending |
+| CMBT-06 | Phase 2 | Pending |
+| CMBT-07 | Phase 2 | Pending |
+| CMBT-08 | Phase 2 | Pending |
+| CMBT-09 | Phase 2 | Pending |
+| CMBT-10 | Phase 2 | Pending |
+| CMBT-11 | Phase 2 | Pending |
+| CMBT-12 | Phase 2 | Pending |
+| CMBT-13 | Phase 2 | Pending |
+| CMBT-14 | Phase 2 | Pending |
+| MECH-01 | Phase 2 | Pending |
+| MECH-02 | Phase 2 | Pending |
+| MECH-03 | Phase 2 | Pending |
+| MECH-04 | Phase 2 | Pending |
+| MECH-05 | Phase 2 | Pending |
+| MECH-06 | Phase 2 | Pending |
+| MECH-07 | Phase 2 | Pending |
+| MECH-08 | Phase 2 | Pending |
+| MECH-09 | Phase 2 | Pending |
+| MECH-10 | Phase 2 | Pending |
+| MECH-11 | Phase 2 | Pending |
+| CHAR-01 | Phase 2 | Pending |
+| CHAR-02 | Phase 2 | Pending |
+| CHAR-03 | Phase 2 | Pending |
+| CHAR-04 | Phase 2 | Pending |
+| LBBY-01 | Phase 3 | Pending |
+| LBBY-02 | Phase 3 | Pending |
+| LBBY-03 | Phase 3 | Pending |
+| LBBY-04 | Phase 3 | Pending |
+| LBBY-05 | Phase 3 | Pending |
+| LBBY-06 | Phase 3 | Pending |
+| SETUP-01 | Phase 3 | Pending |
+| SETUP-02 | Phase 3 | Pending |
+| SETUP-03 | Phase 3 | Pending |
+| SETUP-04 | Phase 3 | Pending |
+| SETUP-05 | Phase 3 | Pending |
+| SETUP-06 | Phase 3 | Pending |
+| UI-01 | Phase 4 | Pending |
+| UI-02 | Phase 4 | Pending |
+| UI-04 | Phase 4 | Pending |
+| UI-05 | Phase 4 | Pending |
+| UI-06 | Phase 4 | Pending |
+| UI-09 | Phase 4 | Pending |
+| UI-10 | Phase 4 | Pending |
+| UI-11 | Phase 4 | Pending |
+| UI-13 | Phase 4 | Pending |
+| MAP-01 | Phase 5 | Pending |
+| MAP-02 | Phase 5 | Pending |
+| MAP-03 | Phase 5 | Pending |
+| ROOM-01 | Phase 5 | Pending |
+| ROOM-02 | Phase 5 | Pending |
+| ROOM-03 | Phase 5 | Pending |
+| ROOM-04 | Phase 5 | Pending |
+| ROOM-05 | Phase 5 | Pending |
+| ROOM-06 | Phase 5 | Pending |
+| ROOM-07 | Phase 5 | Pending |
+| RWRD-01 | Phase 5 | Pending |
+| RWRD-02 | Phase 5 | Pending |
+| RWRD-03 | Phase 5 | Pending |
+| RWRD-04 | Phase 5 | Pending |
+| RWRD-05 | Phase 5 | Pending |
+| RWRD-06 | Phase 5 | Pending |
+| ITEM-01 | Phase 5 | Pending |
+| ITEM-02 | Phase 5 | Pending |
+| ITEM-03 | Phase 5 | Pending |
+| ITEM-04 | Phase 5 | Pending |
+| UI-03 | Phase 6 | Pending |
+| UI-07 | Phase 6 | Pending |
+| UI-08 | Phase 6 | Pending |
+| UI-12 | Phase 6 | Pending |
 
 **Coverage:**
-- v1 requirements: 60 total
-- Mapped to phases: 0
-- Unmapped: 60 ⚠️
+- v1 requirements: 79 total
+- Mapped to phases: 79
+- Unmapped: 0
+
+Note: Initial count of 60 in this file was incorrect. Actual count is 79 (LBBY: 6, SETUP: 6, CMBT: 14, MECH: 11, CHAR: 4, CARD: 5, MAP: 3, ROOM: 7, RWRD: 6, ITEM: 4, UI: 13).
 
 ---
 *Requirements defined: 2026-03-01*
-*Last updated: 2026-03-01 after initial definition*
+*Last updated: 2026-03-01 — traceability populated after roadmap creation*
