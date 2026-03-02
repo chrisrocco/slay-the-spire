@@ -8,6 +8,7 @@ export interface EnemyZoneProps {
   enemyCombatStates: Record<string, EnemyCombatInfo>;
   selectedCard: string | null;
   onEnemyClick: (enemyId: string) => void;
+  dieResult: number | null;
 }
 
 export function EnemyZone(props: EnemyZoneProps) {
@@ -29,6 +30,7 @@ export function EnemyZone(props: EnemyZoneProps) {
                 combatState={combatState()}
                 targetable={isTargetable()}
                 onClick={props.onEnemyClick}
+                dieResult={props.dieResult}
               />
             );
           }}

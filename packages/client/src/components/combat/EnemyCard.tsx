@@ -1,5 +1,6 @@
 import { Show } from 'solid-js';
 import { getEnemyOrPlaceholder } from '../../utils/enemyLookup.ts';
+import { getEnemyIntent } from '../../utils/enemyIntent.ts';
 import styles from './EnemyCard.module.css';
 
 export interface EnemyCombatInfo {
@@ -19,6 +20,7 @@ export interface EnemyCardProps {
   combatState?: EnemyCombatInfo | undefined;
   targetable?: boolean | undefined;
   onClick?: ((enemyId: string) => void) | undefined;
+  dieResult?: number | null | undefined;
 }
 
 export function EnemyCardComponent(props: EnemyCardProps) {
@@ -42,6 +44,13 @@ export function EnemyCardComponent(props: EnemyCardProps) {
     }
   }
 
+  // Reactive intent — updates whenever combatState (cubePosition) or dieResult changes
+  const intent = () => getEnemyIntent(
+    props.enemyId,
+    props.combatState?.cubePosition ?? 0,
+    props.dieResult ?? null,
+  );
+
   // Category emoji for portrait placeholder
   const portraitEmoji = () => {
     switch (enemy().category) {
@@ -63,6 +72,13 @@ export function EnemyCardComponent(props: EnemyCardProps) {
     >
       <div class={styles.header}>{enemy().name}</div>
       <div class={styles.portrait}>{portraitEmoji()}</div>
+
+      <Show when={props.combatState && !isDead()}>
+        <div class={styles.intentSection}>
+          <span class={styles.intentIcon}>{intent().icon}</span>
+          <span class={styles.intentText}>{intent().summary}</span>
+        </div>
+      </Show>
 
       <div class={styles.hpSection}>
         <div class={styles.hpBar}>

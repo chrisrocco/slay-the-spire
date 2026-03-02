@@ -81,6 +81,7 @@ export function CombatView(props: CombatViewProps) {
               enemyCombatStates={enemyCombatStates()}
               selectedCard={selectedCard()}
               onEnemyClick={handleEnemyClick}
+              dieResult={g().dieResult}
             />
           </div>
 
