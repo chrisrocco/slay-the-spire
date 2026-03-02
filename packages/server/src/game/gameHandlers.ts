@@ -4,6 +4,21 @@ import type { ServerMessage } from '@slay-online/shared';
 import { processAction } from './engine/index.js';
 import type { Action } from './engine/index.js';
 import { ActionQueue } from './actionQueue.js';
+import {
+  handleSelectNode as gameFlowSelectNode,
+  handleEventChoice as gameFlowEventChoice,
+  handleCampfireChoice as gameFlowCampfireChoice,
+  handleMerchantBuy as gameFlowMerchantBuy,
+  handleMerchantRemoveCard as gameFlowMerchantRemoveCard,
+  handleMerchantLeave as gameFlowMerchantLeave,
+} from './gameFlow.js';
+import {
+  handleRewardPickCard as rewardPickCard,
+  handleRewardPickPotion as rewardPickPotion,
+  handleRewardPickRelic as rewardPickRelic,
+  handleRewardSkip as rewardSkip,
+} from './rewardHandler.js';
+import { passPotion, discardPotion } from './potionManagement.js';
 
 // Each room gets its own action queue
 const roomQueues = new Map<string, ActionQueue>();
@@ -132,6 +147,202 @@ export function handleChat(room: Room, playerId: string, text: string): void {
   for (const ws of room.connections.values()) {
     sendMsg(ws, msg);
   }
+}
+
+/**
+ * Handle SELECT_NODE message.
+ * Routes through action queue for serialized processing.
+ */
+export function handleSelectNode(room: Room, playerId: string, nodeId: string): void {
+  if (!room.gameState) return;
+
+  const queue = getQueue(room.code);
+  queue.enqueue(() => {
+    if (!room.gameState) return;
+    gameFlowSelectNode(room, playerId, nodeId);
+    broadcastState(room);
+  });
+}
+
+/**
+ * Handle EVENT_CHOICE message.
+ * Routes through action queue for serialized processing.
+ */
+export function handleEventChoice(room: Room, playerId: string, choiceIndex: number): void {
+  if (!room.gameState) return;
+
+  const queue = getQueue(room.code);
+  queue.enqueue(() => {
+    if (!room.gameState) return;
+    gameFlowEventChoice(room, playerId, choiceIndex);
+    broadcastState(room);
+  });
+}
+
+/**
+ * Handle CAMPFIRE_CHOICE message.
+ * Routes through action queue for serialized processing.
+ */
+export function handleCampfireChoice(
+  room: Room,
+  playerId: string,
+  choice: string,
+  cardId?: string,
+): void {
+  if (!room.gameState) return;
+
+  const queue = getQueue(room.code);
+  queue.enqueue(() => {
+    if (!room.gameState) return;
+    gameFlowCampfireChoice(room, playerId, choice, cardId);
+    broadcastState(room);
+  });
+}
+
+/**
+ * Handle MERCHANT_BUY message.
+ * Routes through action queue for serialized processing.
+ */
+export function handleMerchantBuy(
+  room: Room,
+  playerId: string,
+  itemType: string,
+  itemId: string,
+): void {
+  if (!room.gameState) return;
+
+  const queue = getQueue(room.code);
+  queue.enqueue(() => {
+    if (!room.gameState) return;
+    gameFlowMerchantBuy(room, playerId, itemType, itemId);
+    broadcastState(room);
+  });
+}
+
+/**
+ * Handle MERCHANT_REMOVE_CARD message.
+ * Routes through action queue for serialized processing.
+ */
+export function handleMerchantRemoveCard(room: Room, playerId: string, cardId: string): void {
+  if (!room.gameState) return;
+
+  const queue = getQueue(room.code);
+  queue.enqueue(() => {
+    if (!room.gameState) return;
+    gameFlowMerchantRemoveCard(room, playerId, cardId);
+    broadcastState(room);
+  });
+}
+
+/**
+ * Handle MERCHANT_LEAVE message.
+ * Routes through action queue for serialized processing.
+ */
+export function handleMerchantLeave(room: Room): void {
+  if (!room.gameState) return;
+
+  const queue = getQueue(room.code);
+  queue.enqueue(() => {
+    if (!room.gameState) return;
+    gameFlowMerchantLeave(room);
+    broadcastState(room);
+  });
+}
+
+/**
+ * Handle REWARD_PICK_CARD message.
+ * Routes through action queue for serialized processing.
+ */
+export function handleRewardPickCard(room: Room, playerId: string, cardId: string): void {
+  if (!room.gameState) return;
+
+  const queue = getQueue(room.code);
+  queue.enqueue(() => {
+    if (!room.gameState) return;
+    room.gameState = rewardPickCard(room.gameState, playerId, cardId);
+    broadcastState(room);
+  });
+}
+
+/**
+ * Handle REWARD_PICK_POTION message.
+ * Routes through action queue for serialized processing.
+ */
+export function handleRewardPickPotion(room: Room, playerId: string): void {
+  if (!room.gameState) return;
+
+  const queue = getQueue(room.code);
+  queue.enqueue(() => {
+    if (!room.gameState) return;
+    room.gameState = rewardPickPotion(room.gameState, playerId);
+    broadcastState(room);
+  });
+}
+
+/**
+ * Handle REWARD_PICK_RELIC message.
+ * Routes through action queue for serialized processing.
+ */
+export function handleRewardPickRelic(room: Room, playerId: string): void {
+  if (!room.gameState) return;
+
+  const queue = getQueue(room.code);
+  queue.enqueue(() => {
+    if (!room.gameState) return;
+    room.gameState = rewardPickRelic(room.gameState, playerId);
+    broadcastState(room);
+  });
+}
+
+/**
+ * Handle REWARD_SKIP message.
+ * Routes through action queue for serialized processing.
+ */
+export function handleRewardSkip(room: Room, playerId: string): void {
+  if (!room.gameState) return;
+
+  const queue = getQueue(room.code);
+  queue.enqueue(() => {
+    if (!room.gameState) return;
+    room.gameState = rewardSkip(room.gameState, playerId);
+    broadcastState(room);
+  });
+}
+
+/**
+ * Handle PASS_POTION message.
+ * Routes through action queue for serialized processing.
+ * Only valid outside combat (during MAP phase).
+ */
+export function handlePassPotion(
+  room: Room,
+  playerId: string,
+  potionId: string,
+  targetPlayerId: string,
+): void {
+  if (!room.gameState) return;
+
+  const queue = getQueue(room.code);
+  queue.enqueue(() => {
+    if (!room.gameState) return;
+    room.gameState = passPotion(room.gameState, playerId, potionId, targetPlayerId);
+    broadcastState(room);
+  });
+}
+
+/**
+ * Handle DISCARD_POTION message.
+ * Routes through action queue for serialized processing.
+ */
+export function handleDiscardPotion(room: Room, playerId: string, potionId: string): void {
+  if (!room.gameState) return;
+
+  const queue = getQueue(room.code);
+  queue.enqueue(() => {
+    if (!room.gameState) return;
+    room.gameState = discardPotion(room.gameState, playerId, potionId);
+    broadcastState(room);
+  });
 }
 
 /**

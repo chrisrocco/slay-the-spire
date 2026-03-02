@@ -1,6 +1,5 @@
 import type { Room } from '../rooms/Room.js';
 import type { CombatGameState, CombatPlayerState } from '../game/state/combatState.js';
-import { initCombat } from '../game/engine/index.js';
 import { generateMap } from './mapGenerator.js';
 import {
   ironcladCards,
@@ -149,7 +148,7 @@ export function initializeGame(
     };
   });
 
-  // 3. Generate map
+  // 3. Generate map and include it in GameState
   const map = generateMap(rng);
   room.map = map;
 
@@ -166,11 +165,7 @@ export function initializeGame(
     room.neowBlessings.set(player.id, eventPool[i]!.id);
   }
 
-  // 6. Build initial combat state and set up first encounter
-  // Pick encounter enemies for the first fight (1 per player from encounter pool)
-  const encounters = encounterEnemies as unknown as EnemyCard[];
-  const firstEncounterEnemies = shuffle([...encounters], rng).slice(0, playerCount);
-
+  // 6. Build initial MAP state — combat starts when host selects the first node
   const initialState: CombatGameState = {
     roomCode: room.code,
     phase: 'PLAYER_ACTIONS',
@@ -180,19 +175,12 @@ export function initializeGame(
     activeEnemies: [],
     combatLog: [],
     enemyCombatStates: {},
-    gamePhase: 'COMBAT',
+    gamePhase: 'MAP',
     currentFloor: 0,
+    map,
   };
 
-  // Use initCombat to properly set up the first encounter
-  const gameState = initCombat(
-    initialState,
-    firstEncounterEnemies,
-    playerCount,
-    rng,
-  );
+  room.gameState = initialState;
 
-  room.gameState = gameState;
-
-  return gameState;
+  return initialState;
 }

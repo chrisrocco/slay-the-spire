@@ -10,6 +10,9 @@ import { ActionQueue } from '../actionQueue.js';
 import { Room } from '../../rooms/Room.js';
 import { selectCharacter, startGame } from '../../lobby/lobbyHandlers.js';
 import { initializeGame } from '../../lobby/gameInit.js';
+import { initCombat } from '../engine/index.js';
+import { encounterEnemies } from '@slay-online/shared';
+import type { EnemyCard } from '@slay-online/shared';
 import type { WebSocket } from 'ws';
 import type { CombatGameState } from '../state/combatState.js';
 
@@ -39,7 +42,14 @@ function createGameRoom(): { room: Room; hostWs: WebSocket; guestWs: WebSocket }
   selectCharacter(room, 'host-id', 'ironclad');
   selectCharacter(room, 'guest-id', 'silent');
   startGame(room, 'host-id');
-  initializeGame(room, createSeededRng());
+  const mapState = initializeGame(room, createSeededRng());
+  const playerCount = mapState.players.length;
+
+  // initializeGame now starts at MAP phase; manually start combat for handler tests
+  const encounters = encounterEnemies as unknown as EnemyCard[];
+  const rng = createSeededRng();
+  const firstEncounterEnemies = [...encounters].slice(0, playerCount);
+  room.gameState = initCombat(mapState, firstEncounterEnemies, playerCount, rng);
 
   const hostWs = createMockWs();
   const guestWs = createMockWs();

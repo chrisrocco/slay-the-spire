@@ -12,6 +12,18 @@ import {
   handleChat,
   broadcastState,
   broadcastLobby,
+  handleSelectNode,
+  handleEventChoice,
+  handleCampfireChoice,
+  handleMerchantBuy,
+  handleMerchantRemoveCard,
+  handleMerchantLeave,
+  handleRewardPickCard,
+  handleRewardPickPotion,
+  handleRewardPickRelic,
+  handleRewardSkip,
+  handlePassPotion,
+  handleDiscardPotion,
 } from './game/gameHandlers.js';
 import type { Room } from './rooms/Room.js';
 
@@ -223,6 +235,114 @@ function handleRoomMessage(
       }
       // Stub — potion use will be fully implemented in Phase 5
       sendError(ws, 'NOT_IMPLEMENTED', 'Potion use not yet implemented');
+      break;
+    }
+
+    case 'SELECT_NODE': {
+      if (!room.gameState) {
+        sendError(ws, 'NO_GAME', 'Game has not started');
+        break;
+      }
+      handleSelectNode(room, playerId, msg.nodeId as string);
+      break;
+    }
+
+    case 'EVENT_CHOICE': {
+      if (!room.gameState) {
+        sendError(ws, 'NO_GAME', 'Game has not started');
+        break;
+      }
+      handleEventChoice(room, playerId, msg.choiceIndex as number);
+      break;
+    }
+
+    case 'CAMPFIRE_CHOICE': {
+      if (!room.gameState) {
+        sendError(ws, 'NO_GAME', 'Game has not started');
+        break;
+      }
+      handleCampfireChoice(room, playerId, msg.choice as string, msg.cardId as string | undefined);
+      break;
+    }
+
+    case 'MERCHANT_BUY': {
+      if (!room.gameState) {
+        sendError(ws, 'NO_GAME', 'Game has not started');
+        break;
+      }
+      handleMerchantBuy(room, playerId, msg.itemType as string, msg.itemId as string);
+      break;
+    }
+
+    case 'MERCHANT_REMOVE_CARD': {
+      if (!room.gameState) {
+        sendError(ws, 'NO_GAME', 'Game has not started');
+        break;
+      }
+      handleMerchantRemoveCard(room, playerId, msg.cardId as string);
+      break;
+    }
+
+    case 'MERCHANT_LEAVE': {
+      if (!room.gameState) {
+        sendError(ws, 'NO_GAME', 'Game has not started');
+        break;
+      }
+      handleMerchantLeave(room);
+      break;
+    }
+
+    case 'REWARD_PICK_CARD': {
+      if (!room.gameState) {
+        sendError(ws, 'NO_GAME', 'Game has not started');
+        break;
+      }
+      handleRewardPickCard(room, playerId, msg.cardId as string);
+      break;
+    }
+
+    case 'REWARD_PICK_POTION': {
+      if (!room.gameState) {
+        sendError(ws, 'NO_GAME', 'Game has not started');
+        break;
+      }
+      handleRewardPickPotion(room, playerId);
+      break;
+    }
+
+    case 'REWARD_PICK_RELIC': {
+      if (!room.gameState) {
+        sendError(ws, 'NO_GAME', 'Game has not started');
+        break;
+      }
+      handleRewardPickRelic(room, playerId);
+      break;
+    }
+
+    case 'REWARD_SKIP': {
+      if (!room.gameState) {
+        sendError(ws, 'NO_GAME', 'Game has not started');
+        break;
+      }
+      handleRewardSkip(room, playerId);
+      break;
+    }
+
+    case 'PASS_POTION': {
+      if (!room.gameState) {
+        sendError(ws, 'NO_GAME', 'Game has not started');
+        break;
+      }
+      handlePassPotion(room, playerId, msg.potionId as string, msg.targetPlayerId as string);
+      break;
+    }
+
+    case 'DISCARD_POTION': {
+      if (!room.gameState) {
+        sendError(ws, 'NO_GAME', 'Game has not started');
+        break;
+      }
+      handleDiscardPotion(room, playerId, msg.potionId as string);
       break;
     }
 

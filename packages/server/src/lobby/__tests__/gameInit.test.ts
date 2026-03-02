@@ -115,22 +115,21 @@ describe('initializeGame', () => {
     const room = createReadyRoom(['ironclad', 'silent', 'defect', 'watcher']);
     const state = initializeGame(room, createSeededRng());
 
-    // Ironclad: 10 cards (5 Strike, 4 Defend, 1 Bash)
+    // Ironclad: 10 cards (5 Strike, 4 Defend, 1 Bash) — all in drawPile at MAP phase (no hand drawn)
     const icPlayer = state.players.find((p) => p.character === 'ironclad')!;
-    // Total deck = drawPile + hand (5 drawn by initCombat)
-    expect(icPlayer.drawPile.length + icPlayer.hand.length).toBe(10);
+    expect(icPlayer.drawPile.length).toBe(10);
 
     // Silent: 12 cards
     const siPlayer = state.players.find((p) => p.character === 'silent')!;
-    expect(siPlayer.drawPile.length + siPlayer.hand.length).toBe(12);
+    expect(siPlayer.drawPile.length).toBe(12);
 
     // Defect: 10 cards
     const dePlayer = state.players.find((p) => p.character === 'defect')!;
-    expect(dePlayer.drawPile.length + dePlayer.hand.length).toBe(10);
+    expect(dePlayer.drawPile.length).toBe(10);
 
     // Watcher: 10 cards
     const waPlayer = state.players.find((p) => p.character === 'watcher')!;
-    expect(waPlayer.drawPile.length + waPlayer.hand.length).toBe(10);
+    expect(waPlayer.drawPile.length).toBe(10);
   });
 
   it('each player gets correct starting HP for their character', () => {
@@ -170,26 +169,34 @@ describe('initializeGame', () => {
     }
   });
 
-  it('game state has PLAYER_ACTIONS phase after init', () => {
+  it('game state has MAP gamePhase after init (no auto-combat)', () => {
     const room = createReadyRoom(['ironclad', 'silent']);
     const state = initializeGame(room, createSeededRng());
 
-    expect(state.phase).toBe('PLAYER_ACTIONS');
+    expect(state.gamePhase).toBe('MAP');
   });
 
-  it('enemy combat states are populated (first encounter)', () => {
+  it('no active enemies at MAP phase (combat not started)', () => {
     const room = createReadyRoom(['ironclad', 'silent']);
     const state = initializeGame(room, createSeededRng());
 
-    expect(state.activeEnemies.length).toBeGreaterThan(0);
-    expect(Object.keys(state.enemyCombatStates).length).toBeGreaterThan(0);
+    expect(state.activeEnemies.length).toBe(0);
+    expect(Object.keys(state.enemyCombatStates).length).toBe(0);
   });
 
-  it('players have drawn initial hand (5 cards)', () => {
+  it('players have no hand at MAP phase (combat not started)', () => {
     const room = createReadyRoom(['ironclad']);
     const state = initializeGame(room, createSeededRng());
 
-    expect(state.players[0]!.hand).toHaveLength(5);
+    expect(state.players[0]!.hand).toHaveLength(0);
+  });
+
+  it('map data is included in game state', () => {
+    const room = createReadyRoom(['ironclad', 'silent']);
+    const state = initializeGame(room, createSeededRng());
+
+    expect(state.map).toBeDefined();
+    expect(state.map!.nodes.length).toBeGreaterThan(0);
   });
 
   it('map is generated and stored on room', () => {
@@ -227,10 +234,10 @@ describe('initializeGame', () => {
     expect(room.neowBlessings.has('player-1')).toBe(true);
   });
 
-  it('round 1 after initCombat (starts at 0, incremented)', () => {
+  it('round starts at 0 in MAP phase (combat not yet started)', () => {
     const room = createReadyRoom(['ironclad']);
     const state = initializeGame(room, createSeededRng());
 
-    expect(state.round).toBe(1);
+    expect(state.round).toBe(0);
   });
 });
