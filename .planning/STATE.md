@@ -2,8 +2,8 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: in_progress
-last_updated: "2026-03-02T04:10:00Z"
+status: unknown
+last_updated: "2026-03-02T04:14:13.058Z"
 progress:
   total_phases: 5
   completed_phases: 4
@@ -23,11 +23,11 @@ See: .planning/PROJECT.md (updated 2026-03-01)
 ## Current Position
 
 Phase: 5 of 6 (Game Flow) - IN PROGRESS
-Plan: 5 of 7 in current phase - COMPLETE
+Plan: 6 of 7 in current phase - COMPLETE
 Status: In Progress
-Last activity: 2026-03-02 — Completed 05-05 (server routing, potion management, reward handler)
+Last activity: 2026-03-02 — Completed 05-06 (Map UI and non-combat room views)
 
-Progress: [█████░░░░░] 43% (Phase 5: 5/7 plans done)
+Progress: [███████░░░] 57% (Phase 5: 6/7 plans done)
 
 ## Performance Metrics
 
@@ -47,7 +47,7 @@ Progress: [█████░░░░░] 43% (Phase 5: 5/7 plans done)
 | 5 | 5 so far | ~30min | ~6min |
 
 **Recent Trend:**
-- Last plan: 05-05 (~8min, server routing + potion management + reward handler, clean execution)
+- Last plan: 05-06 (~12min, Map UI + non-combat room views, clean execution)
 - Trend: consistent
 
 *Updated after each plan completion*
@@ -83,6 +83,7 @@ Recent decisions affecting current work:
 - [Phase 05-04]: generateRewards uses single rng function for deterministic testing; Singing Bowl uses max_hp sentinel cardId
 - [Phase 05-04]: Potion reward checks all players capacity — offered if any player can hold it
 - [Phase 05-04]: Relic rarity weighted draw: 50% common / 33% uncommon / 17% rare, falls back to all tiers if tier exhausted
+- [Phase 05-game-flow]: AppPhase 'combat' renamed to 'game' since game encompasses MAP/EVENT/CAMPFIRE/TREASURE/MERCHANT/COMBAT/REWARDS phases
 
 ### Pending Todos
 
@@ -97,5 +98,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Phase 5, Plan 04 complete (combat rewards generation and selection with TDD).
+Stopped at: Completed 05-06-PLAN.md (Map UI and Non-combat Room Views).
 Resume file: None

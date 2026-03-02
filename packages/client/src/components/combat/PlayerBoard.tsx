@@ -6,6 +6,7 @@ import { HandZone } from './HandZone.tsx';
 import { PlayerStats } from './PlayerStats.tsx';
 import { EndTurnButton } from './EndTurnButton.tsx';
 import { CardTooltip } from './CardTooltip.tsx';
+import { PotionSlots } from './PotionSlots.tsx';
 import styles from './PlayerBoard.module.css';
 
 export interface PlayerBoardProps {
@@ -46,6 +47,9 @@ export function PlayerBoard(props: PlayerBoardProps) {
           <div class={styles.topRow}>
             <div class={styles.statsArea}>
               <PlayerStats player={p()} />
+            </div>
+            <div class={styles.potionArea}>
+              <PotionSlots state={props.state} send={props.send} />
             </div>
             <div class={styles.endTurnArea}>
               <EndTurnButton

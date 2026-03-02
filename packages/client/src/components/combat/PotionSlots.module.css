@@ -1,0 +1,152 @@
+.potionSlots {
+  display: flex;
+  gap: var(--spacing-xs, 4px);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.emptySlot {
+  width: 36px;
+  height: 36px;
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-md, 8px);
+  background: transparent;
+  flex-shrink: 0;
+}
+
+.potionSlotWrapper {
+  position: relative;
+}
+
+.potionSlot {
+  width: 36px;
+  height: 36px;
+  border: 2px solid rgba(148, 103, 189, 0.6);
+  border-radius: var(--radius-md, 8px);
+  background: linear-gradient(135deg, #2a1a3a, #4a2a5a);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  overflow: hidden;
+  transition: all var(--transition-fast, 150ms ease);
+  flex-shrink: 0;
+}
+
+.potionSlot:hover {
+  border-color: rgba(148, 103, 189, 1);
+  box-shadow: 0 0 8px rgba(148, 103, 189, 0.4);
+  transform: scale(1.1);
+}
+
+.potionSlot.expanded {
+  border-color: var(--color-selected, #ffd700);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+.potionIcon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.potionName {
+  font-size: 0.3rem;
+  color: var(--text-secondary, #a0a0a0);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  text-align: center;
+  display: none; /* hidden by default, shown on hover */
+}
+
+/* Action Menu */
+.actionMenu {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-card, #2a2a3e);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-md, 8px);
+  padding: var(--spacing-sm, 8px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs, 4px);
+  min-width: 140px;
+  z-index: 100;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+}
+
+.potionTooltip {
+  padding: var(--spacing-xs, 4px) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: var(--spacing-xs, 4px);
+}
+
+.tooltipName {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-primary, #e0e0e0);
+}
+
+.tooltipText {
+  font-size: 0.7rem;
+  color: var(--text-secondary, #a0a0a0);
+  line-height: 1.3;
+}
+
+.passSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs, 4px);
+}
+
+.passLabel {
+  font-size: 0.7rem;
+  color: var(--text-muted, #666);
+  font-style: italic;
+}
+
+.actionButton {
+  padding: 4px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-sm, 4px);
+  background: var(--bg-medium, #16213e);
+  color: var(--text-primary, #e0e0e0);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all var(--transition-fast, 150ms ease);
+  text-align: left;
+}
+
+.actionButton:hover {
+  background: var(--bg-light, #0f3460);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.discardButton {
+  border-color: rgba(244, 67, 54, 0.4);
+  color: var(--color-error, #f44336);
+}
+
+.discardButton:hover {
+  background: rgba(244, 67, 54, 0.1);
+  border-color: var(--color-error, #f44336);
+}
+
+.closeButton {
+  padding: 2px 6px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted, #666);
+  font-size: 0.7rem;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.closeButton:hover {
+  color: var(--text-secondary, #a0a0a0);
+}

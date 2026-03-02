@@ -17,6 +17,13 @@
   flex: 1;
 }
 
+.potionArea {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs, 4px);
+  flex-shrink: 0;
+}
+
 .endTurnArea {
   flex-shrink: 0;
 }
