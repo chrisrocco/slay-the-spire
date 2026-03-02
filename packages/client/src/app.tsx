@@ -10,6 +10,8 @@ export function App() {
   const serverUrl = import.meta.env.DEV ? 'ws://localhost:8080' : `ws://${window.location.host}`;
   const connection = createGameConnection(serverUrl);
 
+  console.log(serverUrl)
+
   onMount(() => {
     connection.onMessage((msg) => handleServerMessage(store, msg));
     connection.connect();
