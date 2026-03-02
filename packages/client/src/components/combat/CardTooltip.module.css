@@ -1,0 +1,94 @@
+.tooltip {
+  position: fixed;
+  z-index: 100;
+  width: var(--card-tooltip-width, 240px);
+  border-radius: var(--radius-lg, 12px);
+  background: var(--bg-card, #2a2a3e);
+  border: 2px solid var(--char-color, #666);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  pointer-events: none;
+  animation: fadeIn 150ms ease;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.header {
+  background: var(--char-color, #666);
+  color: white;
+  padding: 8px 12px;
+  font-family: var(--font-heading, 'Georgia', serif);
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.cost {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-energy, #f9a825);
+  color: #1a1a2e;
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+}
+
+.artPlaceholder {
+  height: 80px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4));
+}
+
+.text {
+  padding: 12px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-primary, #e0e0e0);
+  flex: 1;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.type {
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--text-secondary, #a0a0a0);
+}
+
+.rarity {
+  font-size: 0.65rem;
+  color: var(--text-muted, #666);
+  text-transform: capitalize;
+}
+
+.keywords {
+  display: flex;
+  gap: 4px;
+  padding: 4px 12px;
+}
+
+.keyword {
+  font-size: 0.65rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary, #a0a0a0);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
