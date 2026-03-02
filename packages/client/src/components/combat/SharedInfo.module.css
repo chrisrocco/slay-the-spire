@@ -1,0 +1,70 @@
+.sharedInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xl, 24px);
+  padding: var(--spacing-sm, 8px) var(--spacing-lg, 16px);
+  background: rgba(0, 0, 0, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  flex-wrap: wrap;
+}
+
+.dieResult {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background: var(--bg-card, #2a2a3e);
+  border: 2px solid var(--text-accent, #d4a574);
+  border-radius: var(--radius-md, 8px);
+  font-family: var(--font-heading, 'Georgia', serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-accent, #d4a574);
+  transition: all var(--transition-normal, 200ms ease);
+}
+
+.dieLabel {
+  font-size: 0.65rem;
+  color: var(--text-muted, #666);
+  text-align: center;
+  margin-top: 2px;
+}
+
+.turnPhase {
+  font-family: var(--font-heading, 'Georgia', serif);
+  font-size: 1rem;
+  color: var(--text-primary, #e0e0e0);
+  font-weight: 700;
+}
+
+.round {
+  font-size: 0.8rem;
+  color: var(--text-secondary, #a0a0a0);
+}
+
+.playerStatuses {
+  display: flex;
+  gap: var(--spacing-md, 12px);
+  align-items: center;
+}
+
+.playerStatus {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs, 4px);
+  font-size: 0.8rem;
+  color: var(--text-secondary, #a0a0a0);
+}
+
+.checkmark {
+  color: var(--color-success, #4caf50);
+  font-size: 1rem;
+}
+
+.waiting {
+  color: var(--text-muted, #666);
+  font-size: 0.9rem;
+}

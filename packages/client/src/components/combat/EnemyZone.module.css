@@ -1,0 +1,17 @@
+.enemyZone {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--spacing-md, 12px);
+  padding: var(--spacing-lg, 16px);
+  flex-wrap: wrap;
+  min-height: 180px;
+}
+
+.empty {
+  color: var(--text-muted, #666);
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

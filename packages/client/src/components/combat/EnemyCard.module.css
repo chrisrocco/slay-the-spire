@@ -1,0 +1,134 @@
+.enemyCard {
+  width: 160px;
+  background: var(--bg-card, #2a2a3e);
+  border: 2px solid #555;
+  border-radius: var(--radius-md, 8px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal, 200ms ease);
+}
+
+.boss {
+  width: 200px;
+  border-color: #b71c1c;
+  border-width: 3px;
+}
+
+.header {
+  padding: 6px 8px;
+  background: #3a3a4e;
+  color: white;
+  font-family: var(--font-heading, 'Georgia', serif);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.boss .header {
+  background: #5c1010;
+}
+
+.portrait {
+  height: 60px;
+  background: linear-gradient(135deg, rgba(50, 50, 70, 0.5), rgba(30, 30, 50, 0.8));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.hpSection {
+  padding: 4px 8px;
+}
+
+.hpBar {
+  width: 100%;
+  height: 12px;
+  background: var(--color-hp-bg, #4a1a1a);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.hpFill {
+  height: 100%;
+  background: var(--color-hp, #c62828);
+  border-radius: 6px;
+  transition: width var(--transition-normal, 200ms ease);
+}
+
+.hpText {
+  font-size: 0.7rem;
+  color: var(--text-secondary, #a0a0a0);
+  text-align: center;
+  margin-top: 2px;
+}
+
+.statusRow {
+  display: flex;
+  gap: 4px;
+  padding: 4px 8px;
+  flex-wrap: wrap;
+  min-height: 24px;
+}
+
+.blockBadge {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 0.7rem;
+  color: var(--color-block, #546e7a);
+  font-weight: 700;
+  background: rgba(84, 110, 122, 0.2);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.token {
+  font-size: 0.6rem;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-weight: 700;
+}
+
+.vulnerable {
+  background: rgba(230, 81, 0, 0.3);
+  color: var(--color-vulnerable, #e65100);
+}
+
+.weak {
+  background: rgba(85, 139, 47, 0.3);
+  color: var(--color-weak, #558b2f);
+}
+
+.strength {
+  background: rgba(183, 28, 28, 0.3);
+  color: var(--color-strength, #b71c1c);
+}
+
+.poison {
+  background: rgba(123, 31, 162, 0.3);
+  color: var(--color-poison, #7b1fa2);
+}
+
+.dead {
+  opacity: 0.3;
+  filter: grayscale(80%);
+}
+
+.dead .header::after {
+  content: ' (Dead)';
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+.targetable {
+  cursor: pointer;
+  border-color: var(--color-selected, #ffd700);
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
+}
+
+.targetable:hover {
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+  transform: scale(1.02);
+}
