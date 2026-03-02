@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-03-01)
 
 **Core value:** Faithful implementation of the board game rules — players can play a complete Act 1 session online with the same experience as sitting at a table together.
-**Current focus:** Phase 1 - Foundation (COMPLETE)
+**Current focus:** Phase 2 - Game Engine (IN PROGRESS)
 
 ## Current Position
 
-Phase: 1 of 6 (Foundation) - COMPLETE
-Plan: 7 of 7 in current phase (all complete)
-Status: Phase Complete
-Last activity: 2026-03-01 — Completed Phase 1 (all 7 plans)
+Phase: 2 of 6 (Game Engine) - IN PROGRESS
+Plan: 2 of 9 in current phase
+Status: Executing
+Last activity: 2026-03-01 — Completed plans 02-01 and 02-02
 
-Progress: [██████████] 100% (Phase 1)
+Progress: [██░░░░░░░░] 22% (Phase 2)
 
 ## Performance Metrics
 
@@ -63,5 +63,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-03-01
-Stopped at: Phase 1 complete. Ready for Phase 2.
+Stopped at: Completed 02-01 and 02-02. Executing Wave 2 next.
 Resume file: None

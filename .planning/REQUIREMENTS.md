@@ -27,12 +27,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Combat - Player Turn
 
-- [ ] **CMBT-01**: At start of turn, each player's energy resets to 3 and block resets to 0
+- [x] **CMBT-01**: At start of turn, each player's energy resets to 3 and block resets to 0
 - [ ] **CMBT-02**: Each player draws 5 cards at start of turn
-- [ ] **CMBT-03**: Die is rolled once per round with result visible to all players
+- [x] **CMBT-03**: Die is rolled once per round with result visible to all players
 - [ ] **CMBT-04**: Start-of-turn abilities trigger in player-chosen order (start of turn, start of combat, die relics)
 - [ ] **CMBT-05**: Players can simultaneously play cards, use potions, and activate abilities
-- [ ] **CMBT-06**: Card play resolves: pay energy, choose targets, resolve effects top-to-bottom, cleanup
+- [x] **CMBT-06**: Card play resolves: pay energy, choose targets, resolve effects top-to-bottom, cleanup
 - [ ] **CMBT-07**: Each player individually signals "End Turn" when done
 - [ ] **CMBT-08**: End-of-turn abilities trigger after all players signal ready
 - [ ] **CMBT-09**: Players discard remaining hand at end of turn
@@ -43,7 +43,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **CMBT-11**: Enemies act top row to bottom, left to right, bosses last
 - [ ] **CMBT-12**: Single action, die action, and cube action enemy patterns resolve correctly
 - [ ] **CMBT-13**: Cube actions track position and cycle correctly (gray actions not repeated)
-- [ ] **CMBT-14**: Dead enemies flip over and lose tokens; dead player ends game immediately (unless Last Stand)
+- [x] **CMBT-14**: Dead enemies flip over and lose tokens; dead player ends game immediately (unless Last Stand)
 
 ### Combat - Mechanics
 
@@ -172,12 +172,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CARD-03 | Phase 1 | Pending |
 | CARD-04 | Phase 1 | Pending |
 | CARD-05 | Phase 1 | Pending |
-| CMBT-01 | Phase 2 | Pending |
+| CMBT-01 | Phase 2 | Complete |
 | CMBT-02 | Phase 2 | Pending |
-| CMBT-03 | Phase 2 | Pending |
+| CMBT-03 | Phase 2 | Complete |
 | CMBT-04 | Phase 2 | Pending |
 | CMBT-05 | Phase 2 | Pending |
-| CMBT-06 | Phase 2 | Pending |
+| CMBT-06 | Phase 2 | Complete |
 | CMBT-07 | Phase 2 | Pending |
 | CMBT-08 | Phase 2 | Pending |
 | CMBT-09 | Phase 2 | Pending |
@@ -185,7 +185,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CMBT-11 | Phase 2 | Pending |
 | CMBT-12 | Phase 2 | Pending |
 | CMBT-13 | Phase 2 | Pending |
-| CMBT-14 | Phase 2 | Pending |
+| CMBT-14 | Phase 2 | Complete |
 | MECH-01 | Phase 2 | Pending |
 | MECH-02 | Phase 2 | Pending |
 | MECH-03 | Phase 2 | Pending |
