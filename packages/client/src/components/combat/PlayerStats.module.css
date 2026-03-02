@@ -1,0 +1,101 @@
+.statsBar {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg, 16px);
+  padding: var(--spacing-sm, 8px) var(--spacing-lg, 16px);
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: var(--radius-md, 8px);
+  flex-wrap: wrap;
+}
+
+.playerName {
+  font-family: var(--font-heading, 'Georgia', serif);
+  font-size: 1rem;
+  color: var(--text-accent, #d4a574);
+  font-weight: 700;
+}
+
+.characterBadge {
+  font-size: 0.7rem;
+  color: var(--text-secondary, #a0a0a0);
+  text-transform: capitalize;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs, 4px);
+  font-size: 0.85rem;
+}
+
+.statLabel {
+  font-size: 0.7rem;
+  color: var(--text-secondary, #a0a0a0);
+  text-transform: uppercase;
+}
+
+.hpContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm, 8px);
+}
+
+.hpBar {
+  width: 120px;
+  height: 14px;
+  background: var(--color-hp-bg, #4a1a1a);
+  border-radius: 7px;
+  overflow: hidden;
+  position: relative;
+}
+
+.hpFill {
+  height: 100%;
+  background: var(--color-hp, #c62828);
+  border-radius: 7px;
+  transition: width var(--transition-normal, 200ms ease);
+}
+
+.hpText {
+  color: var(--color-hp, #c62828);
+  font-weight: 700;
+  font-size: 0.85rem;
+  min-width: 60px;
+}
+
+.energyContainer {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.energyOrb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--color-energy, #f9a825);
+  transition: background var(--transition-normal, 200ms ease);
+}
+
+.energyFilled {
+  background: var(--color-energy, #f9a825);
+}
+
+.energyEmpty {
+  background: var(--color-energy-empty, #4a3a10);
+}
+
+.blockValue {
+  color: var(--color-block, #546e7a);
+  font-weight: 700;
+}
+
+.pileCount {
+  font-size: 0.75rem;
+  color: var(--text-muted, #666);
+}
+
+.pileSeparator {
+  color: var(--text-muted, #666);
+  margin: 0 2px;
+}

@@ -1,0 +1,48 @@
+.endTurnButton {
+  padding: var(--spacing-sm, 8px) var(--spacing-xl, 24px);
+  border: 2px solid #8b1a1a;
+  border-radius: var(--radius-md, 8px);
+  background: linear-gradient(135deg, #5c1010, #8b1a1a);
+  color: white;
+  font-family: var(--font-heading, 'Georgia', serif);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-normal, 200ms ease);
+  min-width: 140px;
+  text-align: center;
+}
+
+.endTurnButton:hover:not(.disabled) {
+  background: linear-gradient(135deg, #8b1a1a, #b71c1c);
+  transform: scale(1.05);
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: default;
+  pointer-events: none;
+}
+
+.ended {
+  background: linear-gradient(135deg, #1b5e20, #2e7d32);
+  border-color: #2e7d32;
+}
+
+.waiting {
+  animation: pulse 1.5s ease-in-out infinite;
+  background: linear-gradient(135deg, #4a3a10, #665a20);
+  border-color: #665a20;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.phaseLabel {
+  font-size: 0.7rem;
+  color: var(--text-secondary, #a0a0a0);
+  margin-top: 2px;
+  text-align: center;
+}

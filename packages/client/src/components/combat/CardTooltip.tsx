@@ -12,7 +12,7 @@ const CHARACTER_COLORS: Record<string, string> = {
 
 export interface CardTooltipProps {
   cardId: string | null;
-  anchorRect?: { x: number; y: number; width: number; height: number };
+  anchorRect?: { x: number; y: number; width: number; height: number } | undefined;
 }
 
 export function CardTooltip(props: CardTooltipProps) {

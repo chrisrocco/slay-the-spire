@@ -1,0 +1,39 @@
+.playerBoard {
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-sm, 8px) var(--spacing-lg, 16px);
+  gap: var(--spacing-lg, 16px);
+}
+
+.statsArea {
+  flex: 1;
+}
+
+.endTurnArea {
+  flex-shrink: 0;
+}
+
+.handArea {
+  position: relative;
+}
+
+.waitingMessage {
+  text-align: center;
+  padding: var(--spacing-sm, 8px);
+  color: var(--color-warning, #ff9800);
+  font-size: 0.85rem;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}

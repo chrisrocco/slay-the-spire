@@ -1,0 +1,24 @@
+.handZone {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 4px;
+  padding: var(--spacing-sm, 8px) var(--spacing-lg, 16px);
+  min-height: 190px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+/* Overlap cards when hand is large */
+.handZone > *:not(:first-child) {
+  margin-left: -8px;
+}
+
+.empty {
+  color: var(--text-muted, #666);
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 170px;
+}
