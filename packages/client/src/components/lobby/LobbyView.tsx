@@ -14,8 +14,8 @@ export function LobbyView(props: LobbyViewProps) {
   const [nickname, setNickname] = createSignal('');
   const [joinCode, setJoinCode] = createSignal('');
 
-  const inRoom = () => props.state.roomCode != null;
   const lobby = () => props.state.lobby;
+  const inRoom = () => props.state.roomCode != null || lobby() != null;
   const myPlayer = () => lobby()?.players.find(p => p.id === props.state.playerId);
   const isHost = () => myPlayer()?.isHost ?? false;
   const myCharacter = () => myPlayer()?.character ?? null;
@@ -108,7 +108,7 @@ export function LobbyView(props: LobbyViewProps) {
       <Show when={inRoom() && lobby()}>
         <div class={styles.roomInfo}>
           <div class={styles.roomLabel}>Room Code</div>
-          <div class={styles.roomCode}>{props.state.roomCode}</div>
+          <div class={styles.roomCode}>{props.state.roomCode ?? lobby()?.roomCode}</div>
         </div>
 
         <div class={styles.players}>
