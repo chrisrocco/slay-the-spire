@@ -120,12 +120,17 @@ describe('collectTriggers - relic triggers', () => {
   });
 
   it('Lizard Tail heals to 50% HP on ON_DEATH (one-time use, skips if used)', () => {
+    // Player at 0 HP (dying) — Lizard Tail should fire and bring them to 50% maxHp
     const state = buildTestGameState({
-      players: [buildTestPlayer({ relics: ['lizard_tail'] })],
+      players: [buildTestPlayer({ relics: ['lizard_tail'], hp: 0, maxHp: 80 })],
     });
     const triggers = collectTriggers(state, 'ON_DEATH');
     expect(triggers).toHaveLength(1);
     expect(triggers[0]!.sourceId).toBe('lizard_tail');
+    // Effects should heal 40 HP (50% of 80)
+    expect(triggers[0]!.effects).toEqual([
+      { kind: 'HealHp', amount: 40, target: 'self' },
+    ]);
   });
 
   it('Player with no relics produces no triggers', () => {

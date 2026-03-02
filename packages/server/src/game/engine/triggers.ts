@@ -1,6 +1,7 @@
 import type { CombatGameState } from '../state/combatState.js';
 import type { CardEffect, EffectContext } from './effects/types.js';
 import { resolveCardEffects } from './effects/resolve.js';
+import { RELIC_TRIGGERS } from './relicEffects.js';
 
 export type TriggerPhase =
   | 'START_OF_TURN'
@@ -20,15 +21,43 @@ export type Trigger = {
 
 /**
  * Collect all triggers that match the given phase.
- * For Phase 2, this returns an empty array — actual relic/power trigger
- * registration will be implemented in Phase 5.
+ * Iterates all players, checks their relics against the RELIC_TRIGGERS registry.
+ * Returns triggers in player order, and within each player in relic order.
  */
 export function collectTriggers(
-  _state: CombatGameState,
-  _phase: TriggerPhase,
+  state: CombatGameState,
+  phase: TriggerPhase,
 ): Trigger[] {
-  // Infrastructure ready — Phase 5 will register relic/power triggers
-  return [];
+  const triggers: Trigger[] = [];
+
+  for (const player of state.players) {
+    for (const relicId of player.relics) {
+      const def = RELIC_TRIGGERS[relicId];
+      if (!def) continue;
+      if (def.trigger !== phase) continue;
+
+      // Evaluate condition (if any)
+      if (def.condition && !def.condition(state, player.id)) continue;
+
+      // Resolve effects (may be a static array or a function)
+      const effects: CardEffect[] =
+        typeof def.effects === 'function'
+          ? def.effects(state, player.id)
+          : def.effects;
+
+      if (effects.length === 0) continue;
+
+      triggers.push({
+        phase,
+        playerId: player.id,
+        source: 'relic',
+        sourceId: relicId,
+        effects,
+      });
+    }
+  }
+
+  return triggers;
 }
 
 /**
