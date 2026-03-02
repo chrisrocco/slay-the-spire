@@ -1,0 +1,224 @@
+.lobby {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: var(--spacing-xl);
+  padding: var(--spacing-xl);
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--text-accent);
+}
+
+/* Pre-room: create or join */
+.joinSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.inputGroup {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.input {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--bg-light);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--text-accent);
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+}
+
+.btn {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: 2px solid var(--text-accent);
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--text-accent);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn:hover:not(:disabled) {
+  background: rgba(212, 165, 116, 0.15);
+  box-shadow: 0 0 8px rgba(212, 165, 116, 0.3);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btnPrimary {
+  composes: btn;
+  background: var(--text-accent);
+  color: var(--bg-dark);
+}
+
+.btnPrimary:hover:not(:disabled) {
+  background: #e0b888;
+  box-shadow: 0 0 12px rgba(212, 165, 116, 0.5);
+}
+
+.divider {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* In-room lobby */
+.roomInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.roomCode {
+  font-family: var(--font-mono);
+  font-size: 1.8rem;
+  color: var(--color-gold);
+  letter-spacing: 0.15em;
+}
+
+.roomLabel {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* Player list */
+.players {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  min-width: 300px;
+}
+
+.playerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--bg-light);
+}
+
+.playerName {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.hostBadge {
+  font-size: 0.75rem;
+  color: var(--color-gold);
+  margin-left: var(--spacing-sm);
+}
+
+.playerCharacter {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* Character selection */
+.characterSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.sectionLabel {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.characters {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.charBtn {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: 2px solid var(--bg-light);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-transform: capitalize;
+}
+
+.charBtn:hover:not(:disabled) {
+  border-color: var(--text-accent);
+}
+
+.charBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.charBtnSelected {
+  composes: charBtn;
+  border-color: var(--color-selected);
+  background: rgba(255, 215, 0, 0.1);
+  color: var(--color-selected);
+}
+
+.charBtnIronclad { border-color: var(--color-ironclad); }
+.charBtnSilent { border-color: var(--color-silent); }
+.charBtnDefect { border-color: var(--color-defect); }
+.charBtnWatcher { border-color: var(--color-watcher); }
+
+/* Optional rules */
+.rules {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.ruleToggle {
+  padding: var(--spacing-xs) var(--spacing-md);
+  border: 1px solid var(--bg-light);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.ruleToggle:hover {
+  border-color: var(--text-accent);
+}
+
+.ruleToggleActive {
+  composes: ruleToggle;
+  border-color: var(--color-success);
+  color: var(--color-success);
+  background: rgba(76, 175, 80, 0.1);
+}

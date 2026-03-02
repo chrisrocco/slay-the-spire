@@ -9,6 +9,7 @@ import { TreasureView } from './components/rooms/TreasureView.tsx';
 import { MerchantView } from './components/rooms/MerchantView.tsx';
 import { RewardView } from './components/rewards/RewardView.tsx';
 import { BossRelicView } from './components/rewards/BossRelicView.tsx';
+import { LobbyView } from './components/lobby/LobbyView.tsx';
 import themeStyles from './styles/variables.module.css';
 import styles from './app.module.css';
 
@@ -64,11 +65,7 @@ export function App() {
       </Show>
 
       <Show when={store.state.phase === 'lobby'}>
-        <div class={styles.lobby}>
-          <div class={styles.lobbyTitle}>Lobby</div>
-          <div>Room: {store.state.roomCode ?? 'Waiting for room...'}</div>
-          <div>Lobby UI — Phase 3</div>
-        </div>
+        <LobbyView state={store.state} send={connection.send} />
       </Show>
 
       {/* Game views - routed by gamePhase */}
