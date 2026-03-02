@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: unknown
-last_updated: "2026-03-02T03:58:00Z"
+status: in_progress
+last_updated: "2026-03-02T04:10:00Z"
 progress:
   total_phases: 5
   completed_phases: 4
   total_plans: 33
-  completed_plans: 29
+  completed_plans: 32
 ---
 
 # Project State
@@ -23,18 +23,18 @@ See: .planning/PROJECT.md (updated 2026-03-01)
 ## Current Position
 
 Phase: 5 of 6 (Game Flow) - IN PROGRESS
-Plan: 3 of 7 in current phase - COMPLETE
+Plan: 4 of 7 in current phase - COMPLETE
 Status: In Progress
-Last activity: 2026-03-02 — Completed 05-03 (game flow state machine and 7 room handlers)
+Last activity: 2026-03-02 — Completed 05-04 (combat rewards generation and selection)
 
-Progress: [███░░░░░░░] 33% (Phase 5: 3/7 plans done)
+Progress: [████░░░░░░] 40% (Phase 5: 4/7 plans done)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 28
+- Total plans completed: 31
 - Average duration: ~5min
-- Total execution time: ~141min
+- Total execution time: ~155min
 
 **By Phase:**
 
@@ -44,10 +44,10 @@ Progress: [███░░░░░░░] 33% (Phase 5: 3/7 plans done)
 | 2 | 9 | ~45min | ~5min |
 | 3 | 5 | ~25min | ~5min |
 | 4 | 5 | ~34min | ~7min |
-| 5 | 3 so far | ~17min | ~5.7min |
+| 5 | 4 so far | ~22min | ~5.5min |
 
 **Recent Trend:**
-- Last plan: 05-03 (~6min, TDD with game flow and 7 room handlers, clean execution)
+- Last plan: 05-04 (~4min, TDD reward generation and selection, clean execution)
 - Trend: consistent
 
 *Updated after each plan completion*
@@ -60,8 +60,8 @@ Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
 
 - [Init]: Authoritative server pattern — all game logic server-side, clients send intents only
-- [Init]: Raw `ws` over Socket.IO/Colyseus — no framework overhead needed for 1-4 players
-- [Init]: pnpm workspaces with `packages/shared` for Zod schemas and GameState types
+- [Init]: Raw ws over Socket.IO/Colyseus — no framework overhead needed for 1-4 players
+- [Init]: pnpm workspaces with packages/shared for Zod schemas and GameState types
 - [Init]: Full-state broadcast (no delta patching) — game state under 200KB per session
 - [Phase 1]: Card counts are unique designs, not physical duplicates (74 Ironclad, 68 Silent, 73 Defect, 67 Watcher)
 - [Phase 1]: Board game card text sourced exclusively from reference sheet images, not video game wikis
@@ -80,6 +80,9 @@ Recent decisions affecting current work:
 - [Phase 05-03]: Preserved Insect applied after initCombat (reduces hp only, not maxHp) to make reduced health visible
 - [Phase 05-03]: Event effects parsed via regex on text strings, keeping data layer decoupled from logic
 - [Phase 05-03]: Treasure is instant — resolves and transitions to MAP in single enterTreasure call (no player interaction)
+- [Phase 05-04]: generateRewards uses single rng function for deterministic testing; Singing Bowl uses max_hp sentinel cardId
+- [Phase 05-04]: Potion reward checks all players capacity — offered if any player can hold it
+- [Phase 05-04]: Relic rarity weighted draw: 50% common / 33% uncommon / 17% rare, falls back to all tiers if tier exhausted
 
 ### Pending Todos
 
@@ -94,5 +97,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Phase 5, Plan 03 complete (game flow state machine and 7 room handlers with TDD).
+Stopped at: Phase 5, Plan 04 complete (combat rewards generation and selection with TDD).
 Resume file: None

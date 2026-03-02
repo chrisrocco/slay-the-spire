@@ -77,7 +77,7 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Map & Rooms
 
 - [x] **MAP-01**: Visual Act 1 map with node types displayed (encounter, elite, boss, event, campfire, treasure, merchant)
-- [ ] **MAP-02**: Players choose path collectively after completing a room
+- [x] **MAP-02**: Players choose path collectively after completing a room
 - [x] **MAP-03**: Boot meeple tracks current position on map
 
 ### Room Types
@@ -92,17 +92,17 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Rewards
 
-- [ ] **RWRD-01**: Card reward: reveal 3, pick 1 or skip, Golden Ticket reveals rare
-- [ ] **RWRD-02**: Upgraded card reward variant
-- [ ] **RWRD-03**: Potion reward with 3-potion limit enforcement
-- [ ] **RWRD-04**: Relic and Boss Relic rewards with reveal rules
-- [ ] **RWRD-05**: Gold rewards tracked per player
+- [x] **RWRD-01**: Card reward: reveal 3, pick 1 or skip, Golden Ticket reveals rare
+- [x] **RWRD-02**: Upgraded card reward variant
+- [x] **RWRD-03**: Potion reward with 3-potion limit enforcement
+- [x] **RWRD-04**: Relic and Boss Relic rewards with reveal rules
+- [x] **RWRD-05**: Gold rewards tracked per player
 - [x] **RWRD-06**: Players can view all combat rewards before making final choices
 
 ### Items
 
 - [x] **ITEM-01**: Relics with triggered abilities (start of turn, die result, end of combat, etc.)
-- [ ] **ITEM-02**: Boss relics with selection rules (1 per player + 1, or 3 for solo)
+- [x] **ITEM-02**: Boss relics with selection rules (1 per player + 1, or 3 for solo)
 - [x] **ITEM-03**: Potions: single-use, 3 max, tradeable outside combat
 - [x] **ITEM-04**: Potion management: skip, pass to teammate, discard/use to make room
 
@@ -223,7 +223,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | UI-11 | Phase 4 | Pending |
 | UI-13 | Phase 4 | Pending |
 | MAP-01 | Phase 5 | Complete |
-| MAP-02 | Phase 5 | Pending |
+| MAP-02 | Phase 5 | Complete |
 | MAP-03 | Phase 5 | Complete |
 | ROOM-01 | Phase 5 | Complete |
 | ROOM-02 | Phase 5 | Complete |
@@ -232,14 +232,14 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ROOM-05 | Phase 5 | Complete |
 | ROOM-06 | Phase 5 | Complete |
 | ROOM-07 | Phase 5 | Complete |
-| RWRD-01 | Phase 5 | Pending |
-| RWRD-02 | Phase 5 | Pending |
-| RWRD-03 | Phase 5 | Pending |
-| RWRD-04 | Phase 5 | Pending |
-| RWRD-05 | Phase 5 | Pending |
+| RWRD-01 | Phase 5 | Complete |
+| RWRD-02 | Phase 5 | Complete |
+| RWRD-03 | Phase 5 | Complete |
+| RWRD-04 | Phase 5 | Complete |
+| RWRD-05 | Phase 5 | Complete |
 | RWRD-06 | Phase 5 | Complete |
 | ITEM-01 | Phase 5 | Complete |
-| ITEM-02 | Phase 5 | Pending |
+| ITEM-02 | Phase 5 | Complete |
 | ITEM-03 | Phase 5 | Complete |
 | ITEM-04 | Phase 5 | Complete |
 | UI-03 | Phase 6 | Pending |

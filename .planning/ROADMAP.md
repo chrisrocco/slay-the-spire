@@ -130,5 +130,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 2. Game Engine | 9/9 | Complete | 2026-03-01 |
 | 3. Session Management | 0/TBD | Complete    | 2026-03-02 |
 | 4. Core Client UI | 5/5 | Complete | 2026-03-02 |
-| 5. Game Flow | 3/7 | In Progress|  |
+| 5. Game Flow | 5/7 | In Progress|  |
 | 6. Polish | 0/TBD | Not started | - |
