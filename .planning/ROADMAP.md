@@ -106,7 +106,18 @@ Plans:
   3. After combat, each player can view all available rewards before making final choices: card picks, potions (with 3-limit enforcement), relics, and gold
   4. Relics and potions with triggered abilities fire at the correct moment (start of turn, die result, end of combat, on death)
   5. Potion management works: players can skip, pass to a teammate outside combat, and discard/use to make room for a new one
-**Plans**: TBD
+**Plans**: 9 plans
+
+Plans:
+- [x] 05-01-PLAN.md — Game flow state schema, map generation, room type routing
+- [x] 05-02-PLAN.md — Map UI, node selection, floor grouping
+- [x] 05-03-PLAN.md — Room type handlers (event, campfire, treasure, merchant)
+- [x] 05-04-PLAN.md — Reward generation and reward phase logic
+- [x] 05-05-PLAN.md — Relic and potion triggered effects
+- [x] 05-06-PLAN.md — Room type UI views (event, campfire, treasure, merchant)
+- [x] 05-07-PLAN.md — Reward UI, boss relic selection, potion management UI
+- [x] 05-08-PLAN.md — Gap closure: combat-end rewards, USE_POTION, boss reward path
+- [ ] 05-09-PLAN.md — Gap closure: fix WebSocket connection deadlock (app stuck on loading screen)
 
 ### Phase 6: Polish
 **Goal**: The game looks and feels like the board game, with character-specific visual regions and smooth interactions
@@ -130,5 +141,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 2. Game Engine | 9/9 | Complete | 2026-03-01 |
 | 3. Session Management | 0/TBD | Complete    | 2026-03-02 |
 | 4. Core Client UI | 5/5 | Complete | 2026-03-02 |
-| 5. Game Flow | 8/8 | Complete   | 2026-03-02 |
+| 5. Game Flow | 8/9 | In Progress | - |
 | 6. Polish | 0/TBD | Not started | - |
