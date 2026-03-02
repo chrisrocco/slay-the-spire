@@ -52,7 +52,18 @@ Plans:
   3. All four character-specific mechanics work correctly: Ironclad exhaust synergies, Silent Shivs and Poison, Defect Orb channel/evoke, Watcher Stances and Miracles
   4. Enemy AI resolves single, die, and cube action patterns in correct row order (top to bottom, bosses last)
   5. Triggered abilities (start of turn, end of turn, on death, die relics) fire in correct phase order without loops
-**Plans**: TBD
+**Plans**: 9 plans
+
+Plans:
+- [ ] 02-01-PLAN.md — Combat state schemas, vitest config, test helpers
+- [ ] 02-02-PLAN.md — CardEffect type system and effect registry scaffold
+- [ ] 02-03-PLAN.md — Damage formula, status effects (Vulnerable, Weak, Strength, Block, multi-hit)
+- [ ] 02-04-PLAN.md — Deck management (draw, discard, shuffle, exhaust, ethereal, retain, scry)
+- [ ] 02-05-PLAN.md — Player turn lifecycle (start, play card, end turn, triggers, poison)
+- [ ] 02-06-PLAN.md — Enemy turn resolution (action ordering, single/die/cube patterns, death checking)
+- [ ] 02-07-PLAN.md — Effect handlers implementation and full Act 1 card effect registry
+- [ ] 02-08-PLAN.md — Character mechanics (Ironclad, Silent, Defect, Watcher)
+- [ ] 02-09-PLAN.md — Combat integration: processAction API and full turn simulation tests
 
 ### Phase 3: Session Management
 **Goal**: Players can create and join game rooms, and the server maintains authoritative game state across connections and reconnections
@@ -109,7 +120,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 7/7 | Complete | 2026-03-01 |
-| 2. Game Engine | 0/TBD | Not started | - |
+| 2. Game Engine | 0/9 | Not started | - |
 | 3. Session Management | 0/TBD | Not started | - |
 | 4. Core Client UI | 0/TBD | Not started | - |
 | 5. Game Flow | 0/TBD | Not started | - |
