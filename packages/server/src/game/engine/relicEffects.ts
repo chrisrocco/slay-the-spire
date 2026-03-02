@@ -199,3 +199,27 @@ export const RELIC_TRIGGERS: Record<string, RelicTriggerDef> = {
     oneTime: true,
   },
 };
+
+/**
+ * Potion-based ON_DEATH triggers (potions that auto-fire on death).
+ * Key: potion ID, Value: trigger definition.
+ * These are checked separately from relic triggers in the ON_DEATH flow.
+ */
+export type PotionTriggerDef = {
+  trigger: 'ON_DEATH';
+  effects: CardEffect[] | ((state: CombatGameState, playerId: string) => CardEffect[]);
+};
+
+export const POTION_TRIGGERS: Record<string, PotionTriggerDef> = {
+  fairy_in_a_bottle: {
+    trigger: 'ON_DEATH',
+    effects: (state, playerId) => {
+      const player = state.players.find(p => p.id === playerId);
+      if (!player) return [];
+      // Heal to 30% max HP
+      const healAmount = Math.floor(player.maxHp * 0.3) - player.hp;
+      if (healAmount <= 0) return [];
+      return [{ kind: 'HealHp', amount: healAmount, target: 'self' }];
+    },
+  },
+};

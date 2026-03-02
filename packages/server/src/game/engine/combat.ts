@@ -8,6 +8,9 @@ import { useMiracle } from './characters/watcher.js';
 import { applyWrathEndOfTurn } from './characters/watcher.js';
 import { resolveShivs } from './characters/silent.js';
 import { evokeOrb, applyOrbEndOfTurn } from './characters/defect.js';
+import { POTION_EFFECTS } from './potionEffects.js';
+import { resolveCardEffects } from './effects/resolve.js';
+import type { CardEffect, EffectContext } from './effects/types.js';
 
 // ===== Action Types =====
 
@@ -97,6 +100,131 @@ export function initCombat(
   newState = startPlayerTurn(newState, rng);
 
   return newState;
+}
+
+// ===== Potion Handler =====
+
+/**
+ * Check if a player has a given relic.
+ */
+function hasRelic(state: CombatGameState, playerId: string, relicId: string): boolean {
+  const player = state.players.find(p => p.id === playerId);
+  return player?.relics.includes(relicId) ?? false;
+}
+
+/**
+ * Scale potion effect amounts by a multiplier (for Sacred Bark).
+ * Only numeric effect amounts are scaled.
+ */
+function scalePotionEffects(effects: CardEffect[], multiplier: number): CardEffect[] {
+  return effects.map(effect => {
+    switch (effect.kind) {
+      case 'DealDamage':
+        return { ...effect, amount: effect.amount * multiplier };
+      case 'GainBlock':
+        return { ...effect, amount: effect.amount * multiplier };
+      case 'ApplyStatus':
+        return { ...effect, amount: effect.amount * multiplier };
+      case 'GainEnergy':
+        return { ...effect, amount: effect.amount * multiplier };
+      case 'DrawCards':
+        return { ...effect, count: effect.count * multiplier };
+      case 'HealHp':
+        return { ...effect, amount: effect.amount * multiplier };
+      default:
+        return effect;
+    }
+  });
+}
+
+/**
+ * Use a potion: validate, resolve effects, remove from potion slot,
+ * and apply relic interactions (Toy Ornithopter, Sacred Bark).
+ */
+function usePotion(
+  state: CombatGameState,
+  playerId: string,
+  potionId: string,
+  targetId?: string,
+): CombatGameState {
+  const player = state.players.find(p => p.id === playerId);
+  if (!player) return state;
+
+  // Validate player has the potion
+  if (!player.potions.includes(potionId)) {
+    return {
+      ...state,
+      combatLog: [
+        ...state.combatLog,
+        `[Failed] ${playerId} does not have potion ${potionId}`,
+      ],
+    };
+  }
+
+  // Look up potion in registry
+  const def = POTION_EFFECTS[potionId];
+  if (!def) {
+    return {
+      ...state,
+      combatLog: [
+        ...state.combatLog,
+        `[Unimplemented] Potion ${potionId} has no effect definition`,
+      ],
+    };
+  }
+
+  // Resolve base effects
+  let effects: CardEffect[] =
+    typeof def.effects === 'function'
+      ? def.effects(state, playerId, targetId)
+      : def.effects;
+
+  // Apply Sacred Bark doubling
+  if (hasRelic(state, playerId, 'sacred_bark')) {
+    effects = scalePotionEffects(effects, 2);
+  }
+
+  // Build effect context
+  const context: EffectContext = {
+    playerId,
+    targetId,
+    dieResult: state.dieResult ?? 0,
+    source: 'potion',
+  };
+
+  // Apply effects
+  let result = resolveCardEffects(state, effects, context);
+
+  // Remove potion from player's potion slot
+  result = {
+    ...result,
+    players: result.players.map(p =>
+      p.id === playerId
+        ? { ...p, potions: p.potions.filter(pid => pid !== potionId) }
+        : p,
+    ),
+  };
+
+  // Apply Toy Ornithopter: heal 5 HP when any potion is used
+  if (hasRelic(result, playerId, 'toy_ornithopter')) {
+    const healContext: EffectContext = {
+      playerId,
+      dieResult: result.dieResult ?? 0,
+      source: 'relic',
+    };
+    result = resolveCardEffects(result, [{ kind: 'HealHp', amount: 5, target: 'self' }], healContext);
+  }
+
+  // Add combat log entry
+  result = {
+    ...result,
+    combatLog: [...result.combatLog, `${playerId} used potion ${potionId}`],
+  };
+
+  // Check deaths after damage potions
+  result = checkDeaths(result);
+
+  return result;
 }
 
 // ===== Combat Reducer =====
@@ -246,11 +374,7 @@ export function combatReducer(
     }
 
     case 'USE_POTION': {
-      // Stub for Phase 5
-      return {
-        ...state,
-        combatLog: [...state.combatLog, `[Stub] ${action.playerId} used potion ${action.potionId}`],
-      };
+      return usePotion(state, action.playerId, action.potionId, action.targetId);
     }
   }
 }

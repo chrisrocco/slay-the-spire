@@ -274,7 +274,8 @@ describe('combatReducer', () => {
     expect(afterP2.round).toBe(2);
   });
 
-  it('USE_POTION returns stub log', () => {
+  it('USE_POTION rejects potion player does not have', () => {
+    // Player starts with no potions — trying to use one should fail
     const state = buildTestGameState();
 
     const result = combatReducer(
@@ -285,6 +286,6 @@ describe('combatReducer', () => {
       fixedRng,
     );
 
-    expect(result.combatLog).toContainEqual(expect.stringContaining('[Stub]'));
+    expect(result.combatLog).toContainEqual(expect.stringContaining('[Failed]'));
   });
 });

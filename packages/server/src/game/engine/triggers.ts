@@ -1,7 +1,7 @@
 import type { CombatGameState } from '../state/combatState.js';
 import type { CardEffect, EffectContext } from './effects/types.js';
 import { resolveCardEffects } from './effects/resolve.js';
-import { RELIC_TRIGGERS } from './relicEffects.js';
+import { RELIC_TRIGGERS, POTION_TRIGGERS } from './relicEffects.js';
 
 export type TriggerPhase =
   | 'START_OF_TURN'
@@ -54,6 +54,29 @@ export function collectTriggers(
         sourceId: relicId,
         effects,
       });
+    }
+
+    // For ON_DEATH phase, also check potions (e.g., Fairy in a Bottle)
+    if (phase === 'ON_DEATH') {
+      for (const potionId of player.potions) {
+        const potionDef = POTION_TRIGGERS[potionId];
+        if (!potionDef) continue;
+
+        const effects: CardEffect[] =
+          typeof potionDef.effects === 'function'
+            ? potionDef.effects(state, player.id)
+            : potionDef.effects;
+
+        if (effects.length === 0) continue;
+
+        triggers.push({
+          phase,
+          playerId: player.id,
+          source: 'relic',
+          sourceId: potionId,
+          effects,
+        });
+      }
     }
   }
 
