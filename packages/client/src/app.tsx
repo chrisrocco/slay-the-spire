@@ -1,4 +1,4 @@
-import { onMount, Show } from 'solid-js';
+import { createEffect, onMount, Show } from 'solid-js';
 import { createGameConnection } from './services/websocket.ts';
 import { createAppStore, handleServerMessage } from './stores/gameStore.ts';
 import { CombatView } from './components/combat/CombatView.tsx';
@@ -20,6 +20,19 @@ export function App() {
   onMount(() => {
     connection.onMessage((msg) => handleServerMessage(store, msg));
     connection.connect();
+  });
+
+  createEffect(() => {
+    if (connection.connected()) {
+      if (store.state.phase === 'connecting') {
+        store.setPhase('lobby');
+      }
+    } else {
+      // Revert to connecting only if not currently in a game
+      if (store.state.phase !== 'game') {
+        store.setPhase('connecting');
+      }
+    }
   });
 
   function handleReturnToLobby() {
