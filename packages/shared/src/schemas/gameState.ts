@@ -17,7 +17,7 @@ export const PlayerStateSchema = z.object({
   hp: z.number().int().min(0),
   maxHp: z.number().int().positive(),
   block: z.number().int().min(0).max(20),
-  energy: z.number().int().min(0).max(3),
+  energy: z.number().int().min(0).max(6),
   gold: z.number().int().min(0),
   hand: z.array(z.string()),         // card IDs
   drawPile: z.array(z.string()),
