@@ -25,7 +25,7 @@ See: .planning/PROJECT.md (updated 2026-03-01)
 Phase: 5 of 5 (Game Flow) - COMPLETE
 Plan: 9 of 9 in current phase - COMPLETE
 Status: Complete
-Last activity: 2026-03-01 — Completed 05-09 (Gap closure: WebSocket connection deadlock fix)
+Last activity: 2026-03-02 - Completed quick task 1: Display enemy intents during combat
 
 Progress: [██████████] 100% (Phase 5: 9/9 plans done)
 
@@ -104,6 +104,12 @@ None.
 - [Phase 2]: Board game rule source of truth — exact rule interactions (Vulnerable/Weak per-hit, orb evoke order) must be validated against physical rulebook, not video game
 - [Phase 5]: Event and merchant card text scope for Act 1 not yet enumerated — may affect phase scope
 - [RESOLVED] [Phase 1]: Card data extraction complexity — completed, ~282 unique cards across 4 characters
+
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 1 | Display enemy intents during combat | 2026-03-02 | 49f1ce2 | [1-display-enemy-intents-during-combat](./quick/1-display-enemy-intents-during-combat/) |
 
 ## Session Continuity
 
