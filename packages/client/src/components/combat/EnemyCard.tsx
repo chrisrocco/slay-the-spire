@@ -21,6 +21,7 @@ export interface EnemyCardProps {
   targetable?: boolean | undefined;
   onClick?: ((enemyId: string) => void) | undefined;
   dieResult?: number | null | undefined;
+  hitEnemyId?: string | null | undefined;
 }
 
 export function EnemyCardComponent(props: EnemyCardProps) {
@@ -67,6 +68,7 @@ export function EnemyCardComponent(props: EnemyCardProps) {
         [styles.boss!]: isBoss(),
         [styles.dead!]: isDead(),
         [styles.targetable!]: props.targetable === true && !isDead(),
+        [styles.hit!]: props.hitEnemyId === props.enemyId,
       }}
       onClick={handleClick}
     >

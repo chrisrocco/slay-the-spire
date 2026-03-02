@@ -10,6 +10,8 @@ import { CombatLog } from './CombatLog.tsx';
 import { CombatEnd } from './CombatEnd.tsx';
 import { ChatPanel } from '../chat/ChatPanel.tsx';
 import type { EnemyCombatInfo } from './EnemyCard.tsx';
+import { CombatAnimations } from './CombatAnimations.tsx';
+import type { AnimationEvent } from './CombatAnimations.tsx';
 import styles from './CombatView.module.css';
 
 export interface CombatViewProps {
@@ -20,6 +22,7 @@ export interface CombatViewProps {
 
 export function CombatView(props: CombatViewProps) {
   const [selectedCard, setSelectedCard] = createSignal<string | null>(null);
+  const [animation, setAnimation] = createSignal<AnimationEvent | null>(null);
 
   const game = () => props.state.game;
 
@@ -44,6 +47,8 @@ export function CombatView(props: CombatViewProps) {
     if (card && card.type !== 'Attack') {
       props.send({ type: 'PLAY_CARD', cardId });
       setSelectedCard(null);
+      setAnimation({ type: 'defend' });
+      setTimeout(() => setAnimation(null), 500);
       return;
     }
 
@@ -56,6 +61,8 @@ export function CombatView(props: CombatViewProps) {
     if (card) {
       props.send({ type: 'PLAY_CARD', cardId: card, targetIds: [enemyId] });
       setSelectedCard(null);
+      setAnimation({ type: 'attack', targetEnemyId: enemyId });
+      setTimeout(() => setAnimation(null), 500);
     }
   }
 
@@ -76,13 +83,19 @@ export function CombatView(props: CombatViewProps) {
         <div class={styles.combatView}>
           {/* Top: Enemy Zone */}
           <div class={styles.enemies}>
-            <EnemyZone
-              activeEnemies={g().activeEnemies}
-              enemyCombatStates={enemyCombatStates()}
-              selectedCard={selectedCard()}
-              onEnemyClick={handleEnemyClick}
-              dieResult={g().dieResult}
-            />
+            <div class={styles.animationContainer}>
+              <EnemyZone
+                activeEnemies={g().activeEnemies}
+                enemyCombatStates={enemyCombatStates()}
+                selectedCard={selectedCard()}
+                onEnemyClick={handleEnemyClick}
+                dieResult={g().dieResult}
+                hitEnemyId={animation()?.type === 'attack' ? animation()?.targetEnemyId : null}
+              />
+              <Show when={animation()?.type === 'attack'}>
+                <CombatAnimations animation={animation()} />
+              </Show>
+            </div>
           </div>
 
           {/* Middle: Shared Info */}
@@ -97,11 +110,16 @@ export function CombatView(props: CombatViewProps) {
 
           {/* Center: Player Board */}
           <div class={styles.board}>
-            <PlayerBoard
-              state={props.state}
-              send={props.send}
-              onCardSelected={handleCardSelected}
-            />
+            <div class={styles.animationContainer}>
+              <PlayerBoard
+                state={props.state}
+                send={props.send}
+                onCardSelected={handleCardSelected}
+              />
+              <Show when={animation()?.type === 'defend'}>
+                <CombatAnimations animation={animation()} />
+              </Show>
+            </div>
           </div>
 
           {/* Right: Team Sidebar */}

@@ -37,3 +37,9 @@
   grid-area: chat;
   padding: var(--spacing-sm, 8px);
 }
+
+.animationContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}

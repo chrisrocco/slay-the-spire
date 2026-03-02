@@ -9,6 +9,7 @@ export interface EnemyZoneProps {
   selectedCard: string | null;
   onEnemyClick: (enemyId: string) => void;
   dieResult: number | null;
+  hitEnemyId?: string | null | undefined;
 }
 
 export function EnemyZone(props: EnemyZoneProps) {
@@ -31,6 +32,7 @@ export function EnemyZone(props: EnemyZoneProps) {
                 targetable={isTargetable()}
                 onClick={props.onEnemyClick}
                 dieResult={props.dieResult}
+                hitEnemyId={props.hitEnemyId}
               />
             );
           }}
