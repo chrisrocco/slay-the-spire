@@ -16,7 +16,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 2: Game Engine** - Pure TypeScript combat logic, enemy AI, status effects, character mechanics — fully tested without networking
 - [x] **Phase 3: Session Management** - Lobby, WebSocket server, reconnection, serialized action queue — all multiplayer infrastructure (completed 2026-03-02)
 - [x] **Phase 4: Core Client UI** - SolidJS store, WebSocket client, and the combat-facing UI components needed to play a fight (completed 2026-03-02)
-- [ ] **Phase 5: Game Flow** - Map, all room types, reward phase, merchant, and the full Act 1 loop from Neow's Blessing to boss
+- [x] **Phase 5: Game Flow** - Map, all room types, reward phase, merchant, and the full Act 1 loop from Neow's Blessing to boss (completed 2026-03-02)
 - [ ] **Phase 6: Polish** - Character-specific UI, animations, board game aesthetic, and remaining differentiating features
 
 ## Phase Details
@@ -130,5 +130,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 2. Game Engine | 9/9 | Complete | 2026-03-01 |
 | 3. Session Management | 0/TBD | Complete    | 2026-03-02 |
 | 4. Core Client UI | 5/5 | Complete | 2026-03-02 |
-| 5. Game Flow | 6/7 | In Progress|  |
+| 5. Game Flow | 7/7 | Complete   | 2026-03-02 |
 | 6. Polish | 0/TBD | Not started | - |
