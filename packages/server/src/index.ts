@@ -107,6 +107,7 @@ wss.on('connection', (ws: WebSocket) => {
         room.connections.set(playerId, ws);
         connectionMap.set(ws, { roomCode: room.code, playerId });
         send(ws, { type: 'ROOM_CREATED', roomCode: room.code, playerId, reconnectionToken: token });
+        broadcastLobby(room);
         break;
       }
 
