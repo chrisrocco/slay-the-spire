@@ -148,7 +148,7 @@ export type CardEffect =
 
 export type EffectContext = {
   playerId: string;
-  targetId?: string;
+  targetId?: string | undefined;
   dieResult: number;
   source: 'card' | 'relic' | 'potion' | 'trigger';
 };
