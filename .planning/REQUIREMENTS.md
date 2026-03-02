@@ -28,14 +28,14 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Combat - Player Turn
 
 - [x] **CMBT-01**: At start of turn, each player's energy resets to 3 and block resets to 0
-- [ ] **CMBT-02**: Each player draws 5 cards at start of turn
+- [x] **CMBT-02**: Each player draws 5 cards at start of turn
 - [x] **CMBT-03**: Die is rolled once per round with result visible to all players
 - [ ] **CMBT-04**: Start-of-turn abilities trigger in player-chosen order (start of turn, start of combat, die relics)
 - [ ] **CMBT-05**: Players can simultaneously play cards, use potions, and activate abilities
 - [x] **CMBT-06**: Card play resolves: pay energy, choose targets, resolve effects top-to-bottom, cleanup
 - [ ] **CMBT-07**: Each player individually signals "End Turn" when done
 - [ ] **CMBT-08**: End-of-turn abilities trigger after all players signal ready
-- [ ] **CMBT-09**: Players discard remaining hand at end of turn
+- [x] **CMBT-09**: Players discard remaining hand at end of turn
 
 ### Combat - Enemy Turn
 
@@ -47,17 +47,17 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Combat - Mechanics
 
-- [ ] **MECH-01**: Vulnerable doubles hit damage, max 3 tokens, removed after attack
-- [ ] **MECH-02**: Weak reduces hit damage by 1, max 3 tokens, removed after attack
-- [ ] **MECH-03**: Strength adds +1 damage per hit per token, max 8
+- [x] **MECH-01**: Vulnerable doubles hit damage, max 3 tokens, removed after attack
+- [x] **MECH-02**: Weak reduces hit damage by 1, max 3 tokens, removed after attack
+- [x] **MECH-03**: Strength adds +1 damage per hit per token, max 8
 - [ ] **MECH-04**: Poison deals 1 HP loss per token at end of turn, ignores block, max 30 combined
-- [ ] **MECH-05**: Block prevents damage up to its value, max 20 for players
-- [ ] **MECH-06**: Multi-hit attacks resolve correctly with Vulnerable/Weak interactions
-- [ ] **MECH-07**: Weak vs Vulnerable cancel each other out per rules
-- [ ] **MECH-08**: Exhaust removes card from deck for the combat
-- [ ] **MECH-09**: Ethereal cards exhaust at end of turn if still in hand
-- [ ] **MECH-10**: Retain prevents card from being discarded at end of turn
-- [ ] **MECH-11**: Scry lets player look at top X cards and optionally discard
+- [x] **MECH-05**: Block prevents damage up to its value, max 20 for players
+- [x] **MECH-06**: Multi-hit attacks resolve correctly with Vulnerable/Weak interactions
+- [x] **MECH-07**: Weak vs Vulnerable cancel each other out per rules
+- [x] **MECH-08**: Exhaust removes card from deck for the combat
+- [x] **MECH-09**: Ethereal cards exhaust at end of turn if still in hand
+- [x] **MECH-10**: Retain prevents card from being discarded at end of turn
+- [x] **MECH-11**: Scry lets player look at top X cards and optionally discard
 
 ### Characters
 
@@ -173,30 +173,30 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CARD-04 | Phase 1 | Pending |
 | CARD-05 | Phase 1 | Pending |
 | CMBT-01 | Phase 2 | Complete |
-| CMBT-02 | Phase 2 | Pending |
+| CMBT-02 | Phase 2 | Complete |
 | CMBT-03 | Phase 2 | Complete |
 | CMBT-04 | Phase 2 | Pending |
 | CMBT-05 | Phase 2 | Pending |
 | CMBT-06 | Phase 2 | Complete |
 | CMBT-07 | Phase 2 | Pending |
 | CMBT-08 | Phase 2 | Pending |
-| CMBT-09 | Phase 2 | Pending |
+| CMBT-09 | Phase 2 | Complete |
 | CMBT-10 | Phase 2 | Pending |
 | CMBT-11 | Phase 2 | Pending |
 | CMBT-12 | Phase 2 | Pending |
 | CMBT-13 | Phase 2 | Pending |
 | CMBT-14 | Phase 2 | Complete |
-| MECH-01 | Phase 2 | Pending |
-| MECH-02 | Phase 2 | Pending |
-| MECH-03 | Phase 2 | Pending |
+| MECH-01 | Phase 2 | Complete |
+| MECH-02 | Phase 2 | Complete |
+| MECH-03 | Phase 2 | Complete |
 | MECH-04 | Phase 2 | Pending |
-| MECH-05 | Phase 2 | Pending |
-| MECH-06 | Phase 2 | Pending |
-| MECH-07 | Phase 2 | Pending |
-| MECH-08 | Phase 2 | Pending |
-| MECH-09 | Phase 2 | Pending |
-| MECH-10 | Phase 2 | Pending |
-| MECH-11 | Phase 2 | Pending |
+| MECH-05 | Phase 2 | Complete |
+| MECH-06 | Phase 2 | Complete |
+| MECH-07 | Phase 2 | Complete |
+| MECH-08 | Phase 2 | Complete |
+| MECH-09 | Phase 2 | Complete |
+| MECH-10 | Phase 2 | Complete |
+| MECH-11 | Phase 2 | Complete |
 | CHAR-01 | Phase 2 | Pending |
 | CHAR-02 | Phase 2 | Pending |
 | CHAR-03 | Phase 2 | Pending |
