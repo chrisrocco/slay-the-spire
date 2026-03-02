@@ -11,6 +11,7 @@ export interface EnemyCombatInfo {
   weakTokens: number;
   strengthTokens: number;
   poisonTokens: number;
+  cubePosition: number;  // Needed for cube-pattern intent resolution (default 0)
 }
 
 export interface EnemyCardProps {
