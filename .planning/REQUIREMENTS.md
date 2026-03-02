@@ -76,9 +76,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Map & Rooms
 
-- [ ] **MAP-01**: Visual Act 1 map with node types displayed (encounter, elite, boss, event, campfire, treasure, merchant)
+- [x] **MAP-01**: Visual Act 1 map with node types displayed (encounter, elite, boss, event, campfire, treasure, merchant)
 - [ ] **MAP-02**: Players choose path collectively after completing a room
-- [ ] **MAP-03**: Boot meeple tracks current position on map
+- [x] **MAP-03**: Boot meeple tracks current position on map
 
 ### Room Types
 
@@ -97,7 +97,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **RWRD-03**: Potion reward with 3-potion limit enforcement
 - [ ] **RWRD-04**: Relic and Boss Relic rewards with reveal rules
 - [ ] **RWRD-05**: Gold rewards tracked per player
-- [ ] **RWRD-06**: Players can view all combat rewards before making final choices
+- [x] **RWRD-06**: Players can view all combat rewards before making final choices
 
 ### Items
 
@@ -222,9 +222,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | UI-10 | Phase 4 | Pending |
 | UI-11 | Phase 4 | Pending |
 | UI-13 | Phase 4 | Pending |
-| MAP-01 | Phase 5 | Pending |
+| MAP-01 | Phase 5 | Complete |
 | MAP-02 | Phase 5 | Pending |
-| MAP-03 | Phase 5 | Pending |
+| MAP-03 | Phase 5 | Complete |
 | ROOM-01 | Phase 5 | Pending |
 | ROOM-02 | Phase 5 | Pending |
 | ROOM-03 | Phase 5 | Pending |
@@ -237,7 +237,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | RWRD-03 | Phase 5 | Pending |
 | RWRD-04 | Phase 5 | Pending |
 | RWRD-05 | Phase 5 | Pending |
-| RWRD-06 | Phase 5 | Pending |
+| RWRD-06 | Phase 5 | Complete |
 | ITEM-01 | Phase 5 | Pending |
 | ITEM-02 | Phase 5 | Pending |
 | ITEM-03 | Phase 5 | Pending |
