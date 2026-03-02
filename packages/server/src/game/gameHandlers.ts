@@ -4,14 +4,14 @@ import type { ServerMessage } from '@slay-online/shared';
 import { processAction } from './engine/index.js';
 import type { Action } from './engine/index.js';
 import { ActionQueue } from './actionQueue.js';
+import { handleSelectNode as gameFlowSelectNode } from './gameFlow.js';
 import {
-  handleSelectNode as gameFlowSelectNode,
-  handleEventChoice as gameFlowEventChoice,
-  handleCampfireChoice as gameFlowCampfireChoice,
-  handleMerchantBuy as gameFlowMerchantBuy,
-  handleMerchantRemoveCard as gameFlowMerchantRemoveCard,
-  handleMerchantLeave as gameFlowMerchantLeave,
-} from './gameFlow.js';
+  resolveEventChoice as roomHandlerEventChoice,
+  resolveCampfireChoice as roomHandlerCampfireChoice,
+  handleMerchantBuy as roomHandlerMerchantBuy,
+  handleMerchantRemoveCard as roomHandlerMerchantRemoveCard,
+  handleMerchantLeave as roomHandlerMerchantLeave,
+} from './roomHandlers/index.js';
 import {
   handleRewardPickCard as rewardPickCard,
   handleRewardPickPotion as rewardPickPotion,
@@ -174,7 +174,7 @@ export function handleEventChoice(room: Room, playerId: string, choiceIndex: num
   const queue = getQueue(room.code);
   queue.enqueue(() => {
     if (!room.gameState) return;
-    gameFlowEventChoice(room, playerId, choiceIndex);
+    roomHandlerEventChoice(room, playerId, choiceIndex, Math.random);
     broadcastState(room);
   });
 }
@@ -194,7 +194,7 @@ export function handleCampfireChoice(
   const queue = getQueue(room.code);
   queue.enqueue(() => {
     if (!room.gameState) return;
-    gameFlowCampfireChoice(room, playerId, choice, cardId);
+    roomHandlerCampfireChoice(room, playerId, choice as 'rest' | 'smith' | 'dig' | 'lift' | 'toke', cardId, Math.random);
     broadcastState(room);
   });
 }
@@ -214,7 +214,7 @@ export function handleMerchantBuy(
   const queue = getQueue(room.code);
   queue.enqueue(() => {
     if (!room.gameState) return;
-    gameFlowMerchantBuy(room, playerId, itemType, itemId);
+    roomHandlerMerchantBuy(room, playerId, itemType as 'card' | 'relic' | 'potion', itemId);
     broadcastState(room);
   });
 }
@@ -229,7 +229,7 @@ export function handleMerchantRemoveCard(room: Room, playerId: string, cardId: s
   const queue = getQueue(room.code);
   queue.enqueue(() => {
     if (!room.gameState) return;
-    gameFlowMerchantRemoveCard(room, playerId, cardId);
+    roomHandlerMerchantRemoveCard(room, playerId, cardId);
     broadcastState(room);
   });
 }
@@ -244,7 +244,7 @@ export function handleMerchantLeave(room: Room): void {
   const queue = getQueue(room.code);
   queue.enqueue(() => {
     if (!room.gameState) return;
-    gameFlowMerchantLeave(room);
+    roomHandlerMerchantLeave(room);
     broadcastState(room);
   });
 }
