@@ -30,19 +30,19 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **CMBT-01**: At start of turn, each player's energy resets to 3 and block resets to 0
 - [x] **CMBT-02**: Each player draws 5 cards at start of turn
 - [x] **CMBT-03**: Die is rolled once per round with result visible to all players
-- [ ] **CMBT-04**: Start-of-turn abilities trigger in player-chosen order (start of turn, start of combat, die relics)
-- [ ] **CMBT-05**: Players can simultaneously play cards, use potions, and activate abilities
+- [x] **CMBT-04**: Start-of-turn abilities trigger in player-chosen order (start of turn, start of combat, die relics)
+- [x] **CMBT-05**: Players can simultaneously play cards, use potions, and activate abilities
 - [x] **CMBT-06**: Card play resolves: pay energy, choose targets, resolve effects top-to-bottom, cleanup
-- [ ] **CMBT-07**: Each player individually signals "End Turn" when done
-- [ ] **CMBT-08**: End-of-turn abilities trigger after all players signal ready
+- [x] **CMBT-07**: Each player individually signals "End Turn" when done
+- [x] **CMBT-08**: End-of-turn abilities trigger after all players signal ready
 - [x] **CMBT-09**: Players discard remaining hand at end of turn
 
 ### Combat - Enemy Turn
 
-- [ ] **CMBT-10**: Enemies lose all block at start of enemy turn
-- [ ] **CMBT-11**: Enemies act top row to bottom, left to right, bosses last
-- [ ] **CMBT-12**: Single action, die action, and cube action enemy patterns resolve correctly
-- [ ] **CMBT-13**: Cube actions track position and cycle correctly (gray actions not repeated)
+- [x] **CMBT-10**: Enemies lose all block at start of enemy turn
+- [x] **CMBT-11**: Enemies act top row to bottom, left to right, bosses last
+- [x] **CMBT-12**: Single action, die action, and cube action enemy patterns resolve correctly
+- [x] **CMBT-13**: Cube actions track position and cycle correctly (gray actions not repeated)
 - [x] **CMBT-14**: Dead enemies flip over and lose tokens; dead player ends game immediately (unless Last Stand)
 
 ### Combat - Mechanics
@@ -50,7 +50,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **MECH-01**: Vulnerable doubles hit damage, max 3 tokens, removed after attack
 - [x] **MECH-02**: Weak reduces hit damage by 1, max 3 tokens, removed after attack
 - [x] **MECH-03**: Strength adds +1 damage per hit per token, max 8
-- [ ] **MECH-04**: Poison deals 1 HP loss per token at end of turn, ignores block, max 30 combined
+- [x] **MECH-04**: Poison deals 1 HP loss per token at end of turn, ignores block, max 30 combined
 - [x] **MECH-05**: Block prevents damage up to its value, max 20 for players
 - [x] **MECH-06**: Multi-hit attacks resolve correctly with Vulnerable/Weak interactions
 - [x] **MECH-07**: Weak vs Vulnerable cancel each other out per rules
@@ -175,21 +175,21 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CMBT-01 | Phase 2 | Complete |
 | CMBT-02 | Phase 2 | Complete |
 | CMBT-03 | Phase 2 | Complete |
-| CMBT-04 | Phase 2 | Pending |
-| CMBT-05 | Phase 2 | Pending |
+| CMBT-04 | Phase 2 | Complete |
+| CMBT-05 | Phase 2 | Complete |
 | CMBT-06 | Phase 2 | Complete |
-| CMBT-07 | Phase 2 | Pending |
-| CMBT-08 | Phase 2 | Pending |
+| CMBT-07 | Phase 2 | Complete |
+| CMBT-08 | Phase 2 | Complete |
 | CMBT-09 | Phase 2 | Complete |
-| CMBT-10 | Phase 2 | Pending |
-| CMBT-11 | Phase 2 | Pending |
-| CMBT-12 | Phase 2 | Pending |
-| CMBT-13 | Phase 2 | Pending |
+| CMBT-10 | Phase 2 | Complete |
+| CMBT-11 | Phase 2 | Complete |
+| CMBT-12 | Phase 2 | Complete |
+| CMBT-13 | Phase 2 | Complete |
 | CMBT-14 | Phase 2 | Complete |
 | MECH-01 | Phase 2 | Complete |
 | MECH-02 | Phase 2 | Complete |
 | MECH-03 | Phase 2 | Complete |
-| MECH-04 | Phase 2 | Pending |
+| MECH-04 | Phase 2 | Complete |
 | MECH-05 | Phase 2 | Complete |
 | MECH-06 | Phase 2 | Complete |
 | MECH-07 | Phase 2 | Complete |
