@@ -1,0 +1,73 @@
+.theme {
+  /* Background colors - dark fantasy */
+  --bg-dark: #1a1a2e;
+  --bg-medium: #16213e;
+  --bg-light: #0f3460;
+  --bg-card: #2a2a3e;
+  --bg-overlay: rgba(0, 0, 0, 0.8);
+
+  /* Text colors */
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --text-accent: #d4a574;
+  --text-muted: #666;
+
+  /* Character colors */
+  --color-ironclad: #c62828;
+  --color-silent: #2e7d32;
+  --color-defect: #1565c0;
+  --color-watcher: #6a1b9a;
+  --color-colorless: #666;
+
+  /* Game stat colors */
+  --color-hp: #c62828;
+  --color-hp-bg: #4a1a1a;
+  --color-energy: #f9a825;
+  --color-energy-empty: #4a3a10;
+  --color-block: #546e7a;
+  --color-gold: #ffd700;
+
+  /* Status token colors */
+  --color-vulnerable: #e65100;
+  --color-weak: #558b2f;
+  --color-strength: #b71c1c;
+  --color-poison: #7b1fa2;
+
+  /* UI feedback colors */
+  --color-success: #4caf50;
+  --color-error: #f44336;
+  --color-warning: #ff9800;
+  --color-selected: #ffd700;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 200ms ease;
+  --transition-slow: 300ms ease;
+
+  /* Typography */
+  --font-heading: 'Crimson Text', 'Georgia', serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+  --font-mono: 'Fira Code', 'Consolas', monospace;
+
+  /* Sizing */
+  --card-width: 120px;
+  --card-height: 170px;
+  --card-tooltip-width: 240px;
+  --card-tooltip-height: 340px;
+  --sidebar-width: 200px;
+
+  font-family: var(--font-body);
+  color: var(--text-primary);
+}
