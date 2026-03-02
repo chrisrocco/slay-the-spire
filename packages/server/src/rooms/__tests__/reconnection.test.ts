@@ -29,6 +29,8 @@ function createMockGameState(roomCode: string): CombatGameState {
     phase: 'PLAYER_ACTIONS',
     round: 1,
     dieResult: 3,
+    gamePhase: 'COMBAT',
+    currentFloor: 0,
     players: [
       {
         id: 'host-id',

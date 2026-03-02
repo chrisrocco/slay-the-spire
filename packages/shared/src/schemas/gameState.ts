@@ -29,6 +29,121 @@ export const PlayerStateSchema = z.object({
 });
 export type PlayerState = z.infer<typeof PlayerStateSchema>;
 
+// ---------------------------------------------------------------------------
+// Game phase (top-level game loop phase)
+// ---------------------------------------------------------------------------
+
+export const GamePhaseSchema = z.enum([
+  'MAP',
+  'EVENT',
+  'CAMPFIRE',
+  'TREASURE',
+  'MERCHANT',
+  'COMBAT',
+  'REWARDS',
+  'BOSS_REWARD',
+]);
+export type GamePhase = z.infer<typeof GamePhaseSchema>;
+
+// ---------------------------------------------------------------------------
+// Map schemas (mirror mapGenerator.ts interfaces)
+// ---------------------------------------------------------------------------
+
+export const RoomTypeSchema = z.enum([
+  'encounter',
+  'elite',
+  'event',
+  'campfire',
+  'treasure',
+  'merchant',
+  'boss',
+]);
+export type RoomType = z.infer<typeof RoomTypeSchema>;
+
+export const MapNodeSchema = z.object({
+  id: z.string(),
+  floor: z.number(),
+  type: RoomTypeSchema,
+  connections: z.array(z.string()),
+});
+export type MapNode = z.infer<typeof MapNodeSchema>;
+
+export const GameMapSchema = z.object({
+  nodes: z.array(MapNodeSchema),
+  bossNodeId: z.string(),
+  currentNodeId: z.string().nullable(),
+});
+export type GameMap = z.infer<typeof GameMapSchema>;
+
+// ---------------------------------------------------------------------------
+// Reward state schema
+// ---------------------------------------------------------------------------
+
+export const CardRewardSchema = z.object({
+  cardIds: z.array(z.string()),
+  upgraded: z.boolean().default(false),
+});
+export type CardReward = z.infer<typeof CardRewardSchema>;
+
+export const RewardStateSchema = z.object({
+  gold: z.number().int().min(0).default(0),
+  cardRewards: z.array(CardRewardSchema).default([]),    // one per player
+  potionReward: z.string().nullable().default(null),     // potion ID or null
+  relicReward: z.string().nullable().default(null),      // relic ID or null
+  playerChoices: z.record(
+    z.string(),
+    z.object({
+      cardPicked: z.string().nullable().default(null),
+      potionPicked: z.boolean().default(false),
+      relicPicked: z.boolean().default(false),
+      skipped: z.boolean().default(false),
+    }),
+  ).default({}),
+});
+export type RewardState = z.infer<typeof RewardStateSchema>;
+
+// ---------------------------------------------------------------------------
+// Event state schema
+// ---------------------------------------------------------------------------
+
+export const EventStateSchema = z.object({
+  eventId: z.string(),
+  playerChoices: z.record(
+    z.string(),
+    z.number().nullable(),
+  ).default({}),  // playerId -> choice index or null
+});
+export type EventState = z.infer<typeof EventStateSchema>;
+
+// ---------------------------------------------------------------------------
+// Merchant state schema
+// ---------------------------------------------------------------------------
+
+export const MerchantStateSchema = z.object({
+  cardPool: z.array(z.object({ cardId: z.string(), price: z.number() })),
+  relicPool: z.array(z.object({ relicId: z.string(), price: z.number() })),
+  potionPool: z.array(z.object({ potionId: z.string(), price: z.number() })),
+  removeCost: z.number().int().default(50),
+  playersRemoved: z.array(z.string()).default([]),  // playerIds who already removed
+});
+export type MerchantState = z.infer<typeof MerchantStateSchema>;
+
+// ---------------------------------------------------------------------------
+// Campfire state schema
+// ---------------------------------------------------------------------------
+
+export const CampfireChoiceSchema = z.object({
+  playerChoices: z.record(
+    z.string(),
+    z.enum(['rest', 'smith', 'dig', 'lift', 'toke']).nullable(),
+  ).default({}),
+});
+export type CampfireChoice = z.infer<typeof CampfireChoiceSchema>;
+
+// ---------------------------------------------------------------------------
+// GameState (extended with optional game flow fields)
+// ---------------------------------------------------------------------------
+
 export const GameStateSchema = z.object({
   roomCode: z.string(),
   phase: TurnPhaseSchema,
@@ -37,6 +152,14 @@ export const GameStateSchema = z.object({
   players: z.array(PlayerStateSchema),
   activeEnemies: z.array(z.string()), // enemy card IDs on the field
   combatLog: z.array(z.string()),
+  // Game flow fields (optional for backward compatibility)
+  gamePhase: GamePhaseSchema.default('COMBAT'),
+  currentFloor: z.number().int().min(0).default(0),
+  map: GameMapSchema.optional(),
+  eventState: EventStateSchema.optional(),
+  rewardState: RewardStateSchema.optional(),
+  merchantState: MerchantStateSchema.optional(),
+  campfireState: CampfireChoiceSchema.optional(),
 });
 export type GameState = z.infer<typeof GameStateSchema>;
 

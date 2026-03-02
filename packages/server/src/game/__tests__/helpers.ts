@@ -82,5 +82,7 @@ export function buildTestGameState(overrides?: {
     enemyCombatStates: overrides?.enemyCombatStates ?? {
       jaw_worm: defaultEnemy,
     },
+    gamePhase: 'COMBAT',
+    currentFloor: 0,
   };
 }

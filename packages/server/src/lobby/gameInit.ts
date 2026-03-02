@@ -180,6 +180,8 @@ export function initializeGame(
     activeEnemies: [],
     combatLog: [],
     enemyCombatStates: {},
+    gamePhase: 'COMBAT',
+    currentFloor: 0,
   };
 
   // Use initCombat to properly set up the first encounter
