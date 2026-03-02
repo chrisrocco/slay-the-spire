@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-03-02T06:20:48.572Z"
+last_updated: "2026-03-02T07:04:00Z"
 progress:
   total_phases: 5
   completed_phases: 5
@@ -25,7 +25,7 @@ See: .planning/PROJECT.md (updated 2026-03-01)
 Phase: 5 of 5 (Game Flow) - COMPLETE
 Plan: 9 of 9 in current phase - COMPLETE
 Status: Complete
-Last activity: 2026-03-02 - Completed quick task 1: Display enemy intents during combat
+Last activity: 2026-03-02 - Completed quick task 2: Add combat animations for attack and defend
 
 Progress: [██████████] 100% (Phase 5: 9/9 plans done)
 
@@ -94,6 +94,9 @@ Recent decisions affecting current work:
 - [Phase 05-game-flow]: 05-09: Game phase protected from disconnect reversion — brief drops during active gameplay keep game view intact
 - [Quick-1]: getEnemyIntent is a pure function — SolidJS reactivity achieved via arrow functions wrapping prop access
 - [Quick-1]: cubePosition added to EnemyCombatInfo as required field (server always broadcasts it via EnemyCombatStateSchema)
+- [Quick-2]: Animation signal cleared via setTimeout(500ms) — 50ms buffer after 400-450ms CSS animation prevents flicker on DOM removal
+- [Quick-2]: CombatAnimations rendered in two locations with Show gates (enemy zone for attack, board for defend) — each zone gets its own overlay
+- [Quick-2]: hitEnemyId prop threaded through EnemyZone to EnemyCard for direct per-enemy flash targeting without context/store
 
 ### Pending Todos
 
@@ -110,9 +113,10 @@ None.
 | # | Description | Date | Commit | Directory |
 |---|-------------|------|--------|-----------|
 | 1 | Display enemy intents during combat | 2026-03-02 | 49f1ce2 | [1-display-enemy-intents-during-combat](./quick/1-display-enemy-intents-during-combat/) |
+| 2 | Add combat animations for attack and defend | 2026-03-02 | eeacb0b | [2-add-combat-animations-for-attack-and-def](./quick/2-add-combat-animations-for-attack-and-def/) |
 
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Completed quick/1 (Display enemy intents during combat — intent badges on enemy cards with type icon and value summary).
+Stopped at: Completed quick/2 (Add combat animations for attack and defend — slash overlay on enemy zone, shield shimmer on player board, hit flash on targeted enemy).
 Resume file: None
