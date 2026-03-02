@@ -1,0 +1,46 @@
+.combatLog {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-md, 8px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 200px;
+}
+
+.header {
+  padding: var(--spacing-xs, 4px) var(--spacing-sm, 8px);
+  background: rgba(0, 0, 0, 0.3);
+  font-family: var(--font-heading, 'Georgia', serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-accent, #d4a574);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.entries {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-xs, 4px);
+}
+
+.entry {
+  padding: 2px var(--spacing-sm, 8px);
+  font-size: 0.7rem;
+  color: var(--text-secondary, #a0a0a0);
+  line-height: 1.4;
+}
+
+.entry:nth-child(even) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.empty {
+  padding: var(--spacing-sm, 8px);
+  color: var(--text-muted, #666);
+  font-size: 0.7rem;
+  font-style: italic;
+  text-align: center;
+}

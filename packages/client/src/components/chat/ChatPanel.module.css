@@ -1,0 +1,80 @@
+.chatPanel {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-md, 8px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 200px;
+}
+
+.header {
+  padding: var(--spacing-xs, 4px) var(--spacing-sm, 8px);
+  background: rgba(0, 0, 0, 0.3);
+  font-family: var(--font-heading, 'Georgia', serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-accent, #d4a574);
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-xs, 4px);
+  min-height: 60px;
+}
+
+.message {
+  padding: 2px var(--spacing-sm, 8px);
+  font-size: 0.75rem;
+  color: var(--text-primary, #e0e0e0);
+  line-height: 1.4;
+}
+
+.nickname {
+  font-weight: 700;
+  color: var(--text-accent, #d4a574);
+  margin-right: 4px;
+}
+
+.empty {
+  padding: var(--spacing-sm, 8px);
+  color: var(--text-muted, #666);
+  font-size: 0.7rem;
+  font-style: italic;
+  text-align: center;
+}
+
+.inputRow {
+  display: flex;
+  gap: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.input {
+  flex: 1;
+  padding: var(--spacing-xs, 4px) var(--spacing-sm, 8px);
+  background: rgba(0, 0, 0, 0.3);
+  border: none;
+  color: var(--text-primary, #e0e0e0);
+  font-size: 0.75rem;
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--text-muted, #666);
+}
+
+.sendButton {
+  padding: var(--spacing-xs, 4px) var(--spacing-sm, 8px);
+  background: var(--bg-light, #0f3460);
+  border: none;
+  color: var(--text-primary, #e0e0e0);
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: background var(--transition-fast, 150ms ease);
+}
+
+.sendButton:hover {
+  background: var(--bg-medium, #16213e);
+}

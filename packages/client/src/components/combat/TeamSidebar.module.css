@@ -1,0 +1,105 @@
+.sidebar {
+  width: var(--sidebar-width, 200px);
+  background: rgba(0, 0, 0, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm, 8px);
+  padding: var(--spacing-sm, 8px);
+  overflow-y: auto;
+}
+
+.sidebarTitle {
+  font-family: var(--font-heading, 'Georgia', serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-accent, #d4a574);
+  padding-bottom: var(--spacing-xs, 4px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.playerCard {
+  background: var(--bg-card, #2a2a3e);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-sm, 4px);
+  padding: var(--spacing-sm, 8px);
+}
+
+.currentPlayer {
+  border-color: var(--text-accent, #d4a574);
+}
+
+.playerHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs, 4px);
+  margin-bottom: var(--spacing-xs, 4px);
+}
+
+.characterDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.playerName {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-primary, #e0e0e0);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.endedCheck {
+  color: var(--color-success, #4caf50);
+  font-size: 0.8rem;
+}
+
+.miniStats {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.miniStat {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs, 4px);
+  font-size: 0.65rem;
+}
+
+.miniHpBar {
+  flex: 1;
+  height: 6px;
+  background: var(--color-hp-bg, #4a1a1a);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.miniHpFill {
+  height: 100%;
+  background: var(--color-hp, #c62828);
+  border-radius: 3px;
+  transition: width var(--transition-normal, 200ms ease);
+}
+
+.miniHpText {
+  font-size: 0.6rem;
+  color: var(--text-secondary, #a0a0a0);
+  min-width: 36px;
+  text-align: right;
+}
+
+.miniLabel {
+  color: var(--text-muted, #666);
+  font-size: 0.6rem;
+  min-width: 28px;
+}
+
+.miniValue {
+  color: var(--text-secondary, #a0a0a0);
+  font-size: 0.65rem;
+}

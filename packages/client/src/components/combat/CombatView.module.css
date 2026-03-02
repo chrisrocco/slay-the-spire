@@ -1,0 +1,39 @@
+.combatView {
+  display: grid;
+  grid-template-areas:
+    "enemies  enemies  sidebar"
+    "shared   shared   sidebar"
+    "board    board    sidebar"
+    "log      chat     sidebar";
+  grid-template-columns: 1fr 1fr var(--sidebar-width, 200px);
+  grid-template-rows: auto auto 1fr auto;
+  min-height: 100vh;
+  background: var(--bg-dark, #1a1a2e);
+}
+
+.enemies {
+  grid-area: enemies;
+}
+
+.shared {
+  grid-area: shared;
+}
+
+.board {
+  grid-area: board;
+  overflow: hidden;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.logArea {
+  grid-area: log;
+  padding: var(--spacing-sm, 8px);
+}
+
+.chatArea {
+  grid-area: chat;
+  padding: var(--spacing-sm, 8px);
+}

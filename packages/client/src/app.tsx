@@ -1,6 +1,7 @@
 import { onMount, Show } from 'solid-js';
 import { createGameConnection } from './services/websocket.ts';
 import { createAppStore, handleServerMessage } from './stores/gameStore.ts';
+import { CombatView } from './components/combat/CombatView.tsx';
 import themeStyles from './styles/variables.module.css';
 import styles from './app.module.css';
 
@@ -13,6 +14,11 @@ export function App() {
     connection.onMessage((msg) => handleServerMessage(store, msg));
     connection.connect();
   });
+
+  function handleReturnToLobby() {
+    // Simple approach: reload the page to reset everything
+    window.location.reload();
+  }
 
   return (
     <div class={`${themeStyles.theme} ${styles.app}`}>
@@ -44,7 +50,11 @@ export function App() {
       </Show>
 
       <Show when={store.state.phase === 'combat'}>
-        <div>Combat View — loading...</div>
+        <CombatView
+          state={store.state}
+          send={connection.send}
+          onReturnToLobby={handleReturnToLobby}
+        />
       </Show>
     </div>
   );
