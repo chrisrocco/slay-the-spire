@@ -110,10 +110,7 @@ export function handleRewardsComplete(room: Room): void {
   const state = room.gameState;
   const map = state.map;
 
-  // Check if this was the boss room
-  if (map && map.currentNodeId === map.bossNodeId) {
-    room.gameState = { ...state, phase: 'COMBAT_END' as const };
-  } else {
-    room.gameState = { ...state, gamePhase: 'MAP' };
-  }
+  // After boss rewards, return to MAP (Act 1 complete)
+  // For all rooms (boss and non-boss), transition back to MAP phase
+  room.gameState = { ...state, gamePhase: 'MAP' };
 }

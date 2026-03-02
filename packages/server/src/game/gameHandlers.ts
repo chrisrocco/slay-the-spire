@@ -4,7 +4,7 @@ import type { ServerMessage } from '@slay-online/shared';
 import { processAction } from './engine/index.js';
 import type { Action } from './engine/index.js';
 import { ActionQueue } from './actionQueue.js';
-import { handleSelectNode as gameFlowSelectNode } from './gameFlow.js';
+import { handleSelectNode as gameFlowSelectNode, handleRewardsComplete } from './gameFlow.js';
 import {
   resolveEventChoice as roomHandlerEventChoice,
   resolveCampfireChoice as roomHandlerCampfireChoice,
@@ -13,6 +13,9 @@ import {
   handleMerchantLeave as roomHandlerMerchantLeave,
 } from './roomHandlers/index.js';
 import {
+  generateRewards,
+  generateBossRelicChoices,
+  areAllRewardsChosen,
   handleRewardPickCard as rewardPickCard,
   handleRewardPickPotion as rewardPickPotion,
   handleRewardPickRelic as rewardPickRelic,
@@ -36,6 +39,62 @@ function getQueue(roomCode: string): ActionQueue {
 function sendMsg(ws: WebSocket, msg: ServerMessage): void {
   if (ws.readyState === 1) { // WebSocket.OPEN
     ws.send(JSON.stringify(msg));
+  }
+}
+
+/**
+ * Check if combat has ended and transition to REWARDS or BOSS_REWARD phase.
+ * Called after any action that could end combat (play card, end turn, use potion).
+ * Checks the combat TurnPhase (room.gameState.phase), not gamePhase.
+ */
+export function checkCombatEnd(room: Room): void {
+  if (!room.gameState) return;
+  if (room.gameState.phase !== 'COMBAT_END') return;
+
+  const state = room.gameState;
+  const map = state.map;
+  if (!map) return;
+
+  const currentNode = map.nodes.find((n) => n.id === map.currentNodeId);
+  if (!currentNode) return;
+
+  const nodeType = currentNode.type;
+
+  if (nodeType === 'boss') {
+    // Boss combat: generate card/gold rewards AND boss relic choices
+    const rewardState = generateRewards(state, 'boss', Math.random);
+    const bossRelicChoices = generateBossRelicChoices(state, state.players.length, Math.random);
+    rewardState.bossRelicChoices = bossRelicChoices;
+
+    // Add gold to each player immediately
+    const updatedPlayers = state.players.map((p) => ({
+      ...p,
+      gold: p.gold + (rewardState.gold ?? 0),
+    }));
+
+    room.gameState = {
+      ...state,
+      gamePhase: 'BOSS_REWARD',
+      players: updatedPlayers,
+      rewardState,
+    };
+  } else {
+    // Encounter or elite combat
+    const roomType = nodeType === 'elite' ? 'elite' : 'encounter';
+    const rewardState = generateRewards(state, roomType, Math.random);
+
+    // Add gold to each player immediately
+    const updatedPlayers = state.players.map((p) => ({
+      ...p,
+      gold: p.gold + (rewardState.gold ?? 0),
+    }));
+
+    room.gameState = {
+      ...state,
+      gamePhase: 'REWARDS',
+      players: updatedPlayers,
+      rewardState,
+    };
   }
 }
 
@@ -101,6 +160,7 @@ export function handlePlayCard(
     };
 
     room.gameState = processAction(room.gameState, action);
+    checkCombatEnd(room);
     broadcastState(room);
   });
 }
@@ -122,6 +182,7 @@ export function handleEndTurn(room: Room, playerId: string): void {
     };
 
     room.gameState = processAction(room.gameState, action);
+    checkCombatEnd(room);
 
     // Clear any disconnect timer for this player
     const timer = room.disconnectTimers.get(playerId);
@@ -130,6 +191,35 @@ export function handleEndTurn(room: Room, playerId: string): void {
       room.disconnectTimers.delete(playerId);
     }
 
+    broadcastState(room);
+  });
+}
+
+/**
+ * Handle USE_POTION message.
+ * Routes through action queue for serialized processing.
+ */
+export function handleUsePotion(
+  room: Room,
+  playerId: string,
+  potionId: string,
+  targetId?: string,
+): void {
+  if (!room.gameState) return;
+
+  const queue = getQueue(room.code);
+  queue.enqueue(() => {
+    if (!room.gameState) return;
+
+    const action: Action = {
+      type: 'USE_POTION',
+      playerId,
+      potionId,
+      targetId,
+    };
+
+    room.gameState = processAction(room.gameState, action);
+    checkCombatEnd(room);
     broadcastState(room);
   });
 }
@@ -260,6 +350,9 @@ export function handleRewardPickCard(room: Room, playerId: string, cardId: strin
   queue.enqueue(() => {
     if (!room.gameState) return;
     room.gameState = rewardPickCard(room.gameState, playerId, cardId);
+    if (areAllRewardsChosen(room.gameState)) {
+      handleRewardsComplete(room);
+    }
     broadcastState(room);
   });
 }
@@ -275,6 +368,9 @@ export function handleRewardPickPotion(room: Room, playerId: string): void {
   queue.enqueue(() => {
     if (!room.gameState) return;
     room.gameState = rewardPickPotion(room.gameState, playerId);
+    if (areAllRewardsChosen(room.gameState)) {
+      handleRewardsComplete(room);
+    }
     broadcastState(room);
   });
 }
@@ -290,6 +386,9 @@ export function handleRewardPickRelic(room: Room, playerId: string): void {
   queue.enqueue(() => {
     if (!room.gameState) return;
     room.gameState = rewardPickRelic(room.gameState, playerId);
+    if (areAllRewardsChosen(room.gameState)) {
+      handleRewardsComplete(room);
+    }
     broadcastState(room);
   });
 }
@@ -305,6 +404,9 @@ export function handleRewardSkip(room: Room, playerId: string): void {
   queue.enqueue(() => {
     if (!room.gameState) return;
     room.gameState = rewardSkip(room.gameState, playerId);
+    if (areAllRewardsChosen(room.gameState)) {
+      handleRewardsComplete(room);
+    }
     broadcastState(room);
   });
 }

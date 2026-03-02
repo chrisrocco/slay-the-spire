@@ -9,6 +9,7 @@ import { initializeGame } from './lobby/gameInit.js';
 import {
   handlePlayCard,
   handleEndTurn,
+  handleUsePotion,
   handleChat,
   broadcastState,
   broadcastLobby,
@@ -233,8 +234,7 @@ function handleRoomMessage(
         sendError(ws, 'NO_GAME', 'Game has not started');
         break;
       }
-      // Stub — potion use will be fully implemented in Phase 5
-      sendError(ws, 'NOT_IMPLEMENTED', 'Potion use not yet implemented');
+      handleUsePotion(room, playerId, msg.potionId as string, msg.targetId as string | undefined);
       break;
     }
 
