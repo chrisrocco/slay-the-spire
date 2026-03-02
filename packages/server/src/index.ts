@@ -3,6 +3,16 @@ import { randomUUID } from 'node:crypto';
 import { ClientMessageSchema } from '@slay-online/shared';
 import type { ServerMessage } from '@slay-online/shared';
 import { RoomManager } from './rooms/RoomManager.js';
+import { handleReconnect, handleDisconnect } from './rooms/reconnection.js';
+import { selectCharacter, toggleRule, startGame } from './lobby/lobbyHandlers.js';
+import { initializeGame } from './lobby/gameInit.js';
+import {
+  handlePlayCard,
+  handleEndTurn,
+  handleChat,
+  broadcastState,
+  broadcastLobby,
+} from './game/gameHandlers.js';
 import type { Room } from './rooms/Room.js';
 
 const PORT = parseInt(process.env.PORT || '8080', 10);
@@ -49,14 +59,6 @@ function send(ws: WebSocket, msg: ServerMessage): void {
 // Helper to send an error
 function sendError(ws: WebSocket, code: string, message: string): void {
   send(ws, { type: 'ERROR', code, message });
-}
-
-// Broadcast lobby update to all connections in a room
-function broadcastLobby(room: Room): void {
-  const msg: ServerMessage = { type: 'LOBBY_UPDATE', lobby: room.lobby };
-  for (const ws of room.connections.values()) {
-    send(ws, msg);
-  }
 }
 
 // Handle incoming connections
@@ -111,14 +113,19 @@ wss.on('connection', (ws: WebSocket) => {
         break;
       }
 
-      case 'SELECT_CHARACTER':
-      case 'TOGGLE_RULE':
-      case 'START_GAME':
-      case 'PLAY_CARD':
-      case 'END_TURN':
-      case 'USE_POTION':
-      case 'SEND_CHAT': {
-        // These require an active connection mapping
+      case 'RECONNECT': {
+        const result = handleReconnect(roomManager, msg.roomCode, msg.token, ws);
+        if ('error' in result) {
+          sendError(ws, 'RECONNECT_ERROR', result.error);
+          break;
+        }
+        connectionMap.set(ws, { roomCode: msg.roomCode, playerId: result.playerId });
+        send(ws, result.message);
+        break;
+      }
+
+      // All remaining message types require an active room connection
+      default: {
         const info = connectionMap.get(ws);
         if (!info) {
           sendError(ws, 'NOT_IN_ROOM', 'You must create or join a room first');
@@ -129,16 +136,8 @@ wss.on('connection', (ws: WebSocket) => {
           sendError(ws, 'ROOM_NOT_FOUND', 'Room no longer exists');
           break;
         }
-        // Handlers for these will be wired in Plans 02-05
-        // For now, acknowledge receipt
-        handleRoomMessage(ws, room, info.playerId, msg);
-        break;
-      }
 
-      case 'RECONNECT': {
-        // Will be implemented in Plan 04
-        sendError(ws, 'NOT_IMPLEMENTED', 'Reconnection not yet implemented');
-        break;
+        handleRoomMessage(ws, room, info.playerId, msg);
       }
     }
   });
@@ -148,27 +147,96 @@ wss.on('connection', (ws: WebSocket) => {
     if (info) {
       const room = roomManager.getRoom(info.roomCode);
       if (room) {
-        room.connections.delete(info.playerId);
-        room.lastActivity = Date.now();
-        // Disconnect handling will be enhanced in Plan 04
+        handleDisconnect(room, info.playerId, (r, pid) => {
+          // Auto-end turn callback for disconnected player after 30s
+          handleEndTurn(r, pid);
+        });
       }
       connectionMap.delete(ws);
     }
   });
 });
 
-// Stub handler for room-scoped messages — will be filled in by Plans 02-05
+// Route room-scoped messages to appropriate handlers
 function handleRoomMessage(
   ws: WebSocket,
-  _room: Room,
-  _playerId: string,
-  msg: { type: string },
+  room: Room,
+  playerId: string,
+  msg: { type: string; [key: string]: unknown },
 ): void {
-  // Placeholder — Plans 02-05 will implement real handlers
-  sendError(ws, 'NOT_IMPLEMENTED', `${msg.type} handler not yet implemented`);
+  switch (msg.type) {
+    case 'SELECT_CHARACTER': {
+      const result = selectCharacter(room, playerId, msg.character as string);
+      if ('error' in result) {
+        sendError(ws, 'SELECT_ERROR', result.error);
+        break;
+      }
+      broadcastLobby(room);
+      break;
+    }
+
+    case 'TOGGLE_RULE': {
+      const result = toggleRule(room, playerId, msg.rule as 'lastStand' | 'chooseYourRelic');
+      if ('error' in result) {
+        sendError(ws, 'TOGGLE_ERROR', result.error);
+        break;
+      }
+      broadcastLobby(room);
+      break;
+    }
+
+    case 'START_GAME': {
+      const result = startGame(room, playerId);
+      if ('error' in result) {
+        sendError(ws, 'START_ERROR', result.error);
+        break;
+      }
+      // Initialize game
+      const gameState = initializeGame(room);
+      room.gameState = gameState;
+      broadcastState(room);
+      break;
+    }
+
+    case 'PLAY_CARD': {
+      if (!room.gameState) {
+        sendError(ws, 'NO_GAME', 'Game has not started');
+        break;
+      }
+      handlePlayCard(room, playerId, msg.cardId as string, msg.targetIds as string[] | undefined);
+      break;
+    }
+
+    case 'END_TURN': {
+      if (!room.gameState) {
+        sendError(ws, 'NO_GAME', 'Game has not started');
+        break;
+      }
+      handleEndTurn(room, playerId);
+      break;
+    }
+
+    case 'USE_POTION': {
+      if (!room.gameState) {
+        sendError(ws, 'NO_GAME', 'Game has not started');
+        break;
+      }
+      // Stub — potion use will be fully implemented in Phase 5
+      sendError(ws, 'NOT_IMPLEMENTED', 'Potion use not yet implemented');
+      break;
+    }
+
+    case 'SEND_CHAT': {
+      handleChat(room, playerId, msg.text as string);
+      break;
+    }
+
+    default:
+      sendError(ws, 'UNKNOWN_MESSAGE', `Unknown message type: ${msg.type}`);
+  }
 }
 
 console.log(`Slay the Spire Online — server listening on port ${PORT}`);
 
 // Export for testing
-export { roomManager, wss, connectionMap, send, sendError, broadcastLobby };
+export { roomManager, wss, connectionMap, send, sendError };
