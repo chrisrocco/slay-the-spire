@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-03-02T04:41:09.023Z"
+last_updated: "2026-03-02T06:20:48.572Z"
 progress:
   total_phases: 5
   completed_phases: 5
-  total_plans: 34
-  completed_plans: 34
+  total_plans: 35
+  completed_plans: 35
 ---
 
 # Project State
@@ -18,23 +18,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-01)
 
 **Core value:** Faithful implementation of the board game rules — players can play a complete Act 1 session online with the same experience as sitting at a table together.
-**Current focus:** Phase 5 - Game Flow (IN PROGRESS)
+**Current focus:** Phase 5 - Game Flow (COMPLETE — all gap closures done)
 
 ## Current Position
 
 Phase: 5 of 5 (Game Flow) - COMPLETE
-Plan: 8 of 8 in current phase - COMPLETE
+Plan: 9 of 9 in current phase - COMPLETE
 Status: Complete
-Last activity: 2026-03-01 — Completed 05-08 (Gap closure: combat-end rewards, USE_POTION, boss reward path)
+Last activity: 2026-03-01 — Completed 05-09 (Gap closure: WebSocket connection deadlock fix)
 
-Progress: [██████████] 100% (Phase 5: 8/8 plans done)
+Progress: [██████████] 100% (Phase 5: 9/9 plans done)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 34
+- Total plans completed: 35
 - Average duration: ~5min
-- Total execution time: ~171min
+- Total execution time: ~176min
 
 **By Phase:**
 
@@ -44,13 +44,14 @@ Progress: [██████████] 100% (Phase 5: 8/8 plans done)
 | 2 | 9 | ~45min | ~5min |
 | 3 | 5 | ~25min | ~5min |
 | 4 | 5 | ~34min | ~7min |
-| 5 | 8 | ~38min | ~5min |
+| 5 | 9 | ~43min | ~5min |
 
 **Recent Trend:**
-- Last plan: 05-08 (~8min, Gap closure: combat-end rewards, USE_POTION routing, boss reward path)
+- Last plan: 05-09 (~5min, Gap closure: WebSocket connection deadlock — createEffect phase transition wiring)
 - Trend: consistent
 
 *Updated after each plan completion*
+| Phase 05-game-flow P09 | 5 | 1 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -89,6 +90,8 @@ Recent decisions affecting current work:
 - [Phase 05-08]: checkCombatEnd exported from gameHandlers.ts to enable direct testing without mocking processAction
 - [Phase 05-08]: Gold from rewardState added to player totals immediately in checkCombatEnd (not deferred to reward pick)
 - [Phase 05-08]: handleRewardsComplete boss path returns gamePhase MAP for both boss and non-boss rooms — no special VICTORY state needed
+- [Phase 05-game-flow]: 05-09: Client-side createEffect watches connection.connected() signal to drive phase transitions — no server-side WELCOME message needed
+- [Phase 05-game-flow]: 05-09: Game phase protected from disconnect reversion — brief drops during active gameplay keep game view intact
 
 ### Pending Todos
 
@@ -103,5 +106,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-03-01
-Stopped at: Completed 05-08-PLAN.md (Gap closure: combat-end rewards, USE_POTION routing, boss reward path). Phase 5 COMPLETE.
+Stopped at: Completed 05-09-PLAN.md (Gap closure: WebSocket connection deadlock fix — createEffect phase transition). Phase 5 fully COMPLETE with all gap closures.
 Resume file: None
