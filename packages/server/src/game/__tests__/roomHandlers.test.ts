@@ -199,12 +199,15 @@ describe('handleRewardsComplete', () => {
     expect(room.gameState!.gamePhase).toBe('MAP');
   });
 
-  it('transitions REWARDS to COMBAT_END for boss combat', () => {
+  it('transitions BOSS_REWARD to MAP for boss combat (Act 1 complete)', () => {
     const room = buildTestRoom();
-    room.gameState!.gamePhase = 'REWARDS';
+    room.gameState!.gamePhase = 'BOSS_REWARD';
     room.gameState!.map!.currentNodeId = '14-0'; // boss node
     handleRewardsComplete(room);
-    expect(room.gameState!.phase).toBe('COMBAT_END');
+    // Boss rewards complete: return to MAP (Act 1 complete — client renders victory from MAP + boss defeated)
+    expect(room.gameState!.gamePhase).toBe('MAP');
+    // The combat TurnPhase should NOT be set to COMBAT_END
+    expect(room.gameState!.phase).not.toBe('COMBAT_END');
   });
 });
 
