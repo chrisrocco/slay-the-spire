@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: in_progress
-last_updated: "2026-03-02T03:48:00.000Z"
+status: unknown
+last_updated: "2026-03-02T03:50:01.850Z"
 progress:
-  total_phases: 6
+  total_phases: 5
   completed_phases: 4
   total_plans: 33
-  completed_plans: 27
+  completed_plans: 28
 ---
 
 # Project State
@@ -23,18 +23,18 @@ See: .planning/PROJECT.md (updated 2026-03-01)
 ## Current Position
 
 Phase: 5 of 6 (Game Flow) - IN PROGRESS
-Plan: 1 of 7 in current phase - COMPLETE
+Plan: 2 of 7 in current phase - COMPLETE
 Status: In Progress
-Last activity: 2026-03-02 — Completed 05-01 (schema extensions for game flow)
+Last activity: 2026-03-02 — Completed 05-02 (relic trigger system and potion effects)
 
-Progress: [█████░░░░░] 50% (Phase 5: 1/7 plans done)
+Progress: [██░░░░░░░░] 29% (Phase 5: 2/7 plans done)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 27
+- Total plans completed: 28
 - Average duration: ~5min
-- Total execution time: ~135min
+- Total execution time: ~141min
 
 **By Phase:**
 
@@ -44,10 +44,10 @@ Progress: [█████░░░░░] 50% (Phase 5: 1/7 plans done)
 | 2 | 9 | ~45min | ~5min |
 | 3 | 5 | ~25min | ~5min |
 | 4 | 5 | ~34min | ~7min |
-| 5 | 1 so far | ~5min | ~5min |
+| 5 | 2 so far | ~11min | ~5.5min |
 
 **Recent Trend:**
-- Last plan: 05-01 (~5min, schema-only, clean execution)
+- Last plan: 05-02 (~6min, TDD with relic/potion registries, clean execution)
 - Trend: consistent
 
 *Updated after each plan completion*
@@ -74,6 +74,9 @@ Recent decisions affecting current work:
 - [Phase 5-01]: gamePhase defaults to COMBAT so existing combat-only paths continue without explicit assignment
 - [Phase 5-01]: All new GameState fields use .optional()/.default() for full backward compatibility with CombatGameState
 - [Phase 5-01]: REWARD_PICK_POTION and REWARD_PICK_RELIC carry no payload — only one reward item per room type
+- [Phase 05-game-flow]: Lizard Tail and Blood Potion use function-form effects to compute amounts dynamically at trigger-collection time
+- [Phase 05-game-flow]: Sacred Bark applied in usePotion() via scalePotionEffects(), keeping POTION_EFFECTS registry with base values
+- [Phase 05-game-flow]: Fairy in a Bottle handled as POTION_TRIGGERS in relicEffects.ts and collected by collectTriggers() for ON_DEATH phase
 
 ### Pending Todos
 
@@ -88,5 +91,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Phase 5, Plan 01 complete (schema extensions for full game flow).
+Stopped at: Phase 5, Plan 02 complete (relic triggers and potion effects with TDD).
 Resume file: None

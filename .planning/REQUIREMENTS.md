@@ -101,10 +101,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Items
 
-- [ ] **ITEM-01**: Relics with triggered abilities (start of turn, die result, end of combat, etc.)
+- [x] **ITEM-01**: Relics with triggered abilities (start of turn, die result, end of combat, etc.)
 - [ ] **ITEM-02**: Boss relics with selection rules (1 per player + 1, or 3 for solo)
-- [ ] **ITEM-03**: Potions: single-use, 3 max, tradeable outside combat
-- [ ] **ITEM-04**: Potion management: skip, pass to teammate, discard/use to make room
+- [x] **ITEM-03**: Potions: single-use, 3 max, tradeable outside combat
+- [x] **ITEM-04**: Potion management: skip, pass to teammate, discard/use to make room
 
 ### UI & Communication
 
@@ -238,10 +238,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | RWRD-04 | Phase 5 | Pending |
 | RWRD-05 | Phase 5 | Pending |
 | RWRD-06 | Phase 5 | Complete |
-| ITEM-01 | Phase 5 | Pending |
+| ITEM-01 | Phase 5 | Complete |
 | ITEM-02 | Phase 5 | Pending |
-| ITEM-03 | Phase 5 | Pending |
-| ITEM-04 | Phase 5 | Pending |
+| ITEM-03 | Phase 5 | Complete |
+| ITEM-04 | Phase 5 | Complete |
 | UI-03 | Phase 6 | Pending |
 | UI-07 | Phase 6 | Pending |
 | UI-08 | Phase 6 | Pending |
