@@ -82,13 +82,13 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Room Types
 
-- [ ] **ROOM-01**: Encounter rooms: draw enemy per player, resolve combat, gain rewards from row
-- [ ] **ROOM-02**: Elite rooms: single elite with possible summons, all players gain rewards
-- [ ] **ROOM-03**: Boss room: boss treated as in all rows, all players gain rewards
-- [ ] **ROOM-04**: Event rooms: draw event, each player chooses from bracketed options
-- [ ] **ROOM-05**: Campfire: each player chooses Rest (heal 3 HP) or Smith (upgrade a card)
-- [ ] **ROOM-06**: Treasure: each player gains a relic
-- [ ] **ROOM-07**: Merchant: buy cards/relics/potions, card remove (once per player per merchant)
+- [x] **ROOM-01**: Encounter rooms: draw enemy per player, resolve combat, gain rewards from row
+- [x] **ROOM-02**: Elite rooms: single elite with possible summons, all players gain rewards
+- [x] **ROOM-03**: Boss room: boss treated as in all rows, all players gain rewards
+- [x] **ROOM-04**: Event rooms: draw event, each player chooses from bracketed options
+- [x] **ROOM-05**: Campfire: each player chooses Rest (heal 3 HP) or Smith (upgrade a card)
+- [x] **ROOM-06**: Treasure: each player gains a relic
+- [x] **ROOM-07**: Merchant: buy cards/relics/potions, card remove (once per player per merchant)
 
 ### Rewards
 
@@ -225,13 +225,13 @@ Which phases cover which requirements. Updated during roadmap creation.
 | MAP-01 | Phase 5 | Complete |
 | MAP-02 | Phase 5 | Pending |
 | MAP-03 | Phase 5 | Complete |
-| ROOM-01 | Phase 5 | Pending |
-| ROOM-02 | Phase 5 | Pending |
-| ROOM-03 | Phase 5 | Pending |
-| ROOM-04 | Phase 5 | Pending |
-| ROOM-05 | Phase 5 | Pending |
-| ROOM-06 | Phase 5 | Pending |
-| ROOM-07 | Phase 5 | Pending |
+| ROOM-01 | Phase 5 | Complete |
+| ROOM-02 | Phase 5 | Complete |
+| ROOM-03 | Phase 5 | Complete |
+| ROOM-04 | Phase 5 | Complete |
+| ROOM-05 | Phase 5 | Complete |
+| ROOM-06 | Phase 5 | Complete |
+| ROOM-07 | Phase 5 | Complete |
 | RWRD-01 | Phase 5 | Pending |
 | RWRD-02 | Phase 5 | Pending |
 | RWRD-03 | Phase 5 | Pending |

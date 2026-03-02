@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-03-02T03:50:01.850Z"
+last_updated: "2026-03-02T03:58:00Z"
 progress:
   total_phases: 5
   completed_phases: 4
   total_plans: 33
-  completed_plans: 28
+  completed_plans: 29
 ---
 
 # Project State
@@ -23,11 +23,11 @@ See: .planning/PROJECT.md (updated 2026-03-01)
 ## Current Position
 
 Phase: 5 of 6 (Game Flow) - IN PROGRESS
-Plan: 2 of 7 in current phase - COMPLETE
+Plan: 3 of 7 in current phase - COMPLETE
 Status: In Progress
-Last activity: 2026-03-02 — Completed 05-02 (relic trigger system and potion effects)
+Last activity: 2026-03-02 — Completed 05-03 (game flow state machine and 7 room handlers)
 
-Progress: [██░░░░░░░░] 29% (Phase 5: 2/7 plans done)
+Progress: [███░░░░░░░] 33% (Phase 5: 3/7 plans done)
 
 ## Performance Metrics
 
@@ -44,10 +44,10 @@ Progress: [██░░░░░░░░] 29% (Phase 5: 2/7 plans done)
 | 2 | 9 | ~45min | ~5min |
 | 3 | 5 | ~25min | ~5min |
 | 4 | 5 | ~34min | ~7min |
-| 5 | 2 so far | ~11min | ~5.5min |
+| 5 | 3 so far | ~17min | ~5.7min |
 
 **Recent Trend:**
-- Last plan: 05-02 (~6min, TDD with relic/potion registries, clean execution)
+- Last plan: 05-03 (~6min, TDD with game flow and 7 room handlers, clean execution)
 - Trend: consistent
 
 *Updated after each plan completion*
@@ -77,6 +77,9 @@ Recent decisions affecting current work:
 - [Phase 05-game-flow]: Lizard Tail and Blood Potion use function-form effects to compute amounts dynamically at trigger-collection time
 - [Phase 05-game-flow]: Sacred Bark applied in usePotion() via scalePotionEffects(), keeping POTION_EFFECTS registry with base values
 - [Phase 05-game-flow]: Fairy in a Bottle handled as POTION_TRIGGERS in relicEffects.ts and collected by collectTriggers() for ON_DEATH phase
+- [Phase 05-03]: Preserved Insect applied after initCombat (reduces hp only, not maxHp) to make reduced health visible
+- [Phase 05-03]: Event effects parsed via regex on text strings, keeping data layer decoupled from logic
+- [Phase 05-03]: Treasure is instant — resolves and transitions to MAP in single enterTreasure call (no player interaction)
 
 ### Pending Todos
 
@@ -91,5 +94,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Phase 5, Plan 02 complete (relic triggers and potion effects with TDD).
+Stopped at: Phase 5, Plan 03 complete (game flow state machine and 7 room handlers with TDD).
 Resume file: None
