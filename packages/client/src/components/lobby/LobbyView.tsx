@@ -65,24 +65,22 @@ export function LobbyView(props: LobbyViewProps) {
 
       <Show when={!inRoom()}>
         <div class={styles.joinSection}>
-          <div class={styles.inputGroup}>
-            <input
-              class={styles.input}
-              type="text"
-              placeholder="Nickname"
-              value={nickname()}
-              onInput={e => setNickname(e.currentTarget.value)}
-              onKeyDown={e => handleKeyDown(e, handleCreate)}
-              maxLength={20}
-            />
-            <button
-              class={styles.btnPrimary}
-              onClick={handleCreate}
-              disabled={!nickname().trim()}
-            >
-              Create Room
-            </button>
-          </div>
+          <input
+            class={styles.input}
+            type="text"
+            placeholder="Your nickname"
+            value={nickname()}
+            onInput={e => setNickname(e.currentTarget.value)}
+            maxLength={20}
+          />
+
+          <button
+            class={styles.btnPrimary}
+            onClick={handleCreate}
+            disabled={!nickname().trim()}
+          >
+            Create Room
+          </button>
 
           <div class={styles.divider}>or join an existing room</div>
 
