@@ -92,6 +92,8 @@ Recent decisions affecting current work:
 - [Phase 05-08]: handleRewardsComplete boss path returns gamePhase MAP for both boss and non-boss rooms — no special VICTORY state needed
 - [Phase 05-game-flow]: 05-09: Client-side createEffect watches connection.connected() signal to drive phase transitions — no server-side WELCOME message needed
 - [Phase 05-game-flow]: 05-09: Game phase protected from disconnect reversion — brief drops during active gameplay keep game view intact
+- [Quick-1]: getEnemyIntent is a pure function — SolidJS reactivity achieved via arrow functions wrapping prop access
+- [Quick-1]: cubePosition added to EnemyCombatInfo as required field (server always broadcasts it via EnemyCombatStateSchema)
 
 ### Pending Todos
 
@@ -105,6 +107,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-01
-Stopped at: Completed 05-09-PLAN.md (Gap closure: WebSocket connection deadlock fix — createEffect phase transition). Phase 5 fully COMPLETE with all gap closures.
+Last session: 2026-03-02
+Stopped at: Completed quick/1 (Display enemy intents during combat — intent badges on enemy cards with type icon and value summary).
 Resume file: None
