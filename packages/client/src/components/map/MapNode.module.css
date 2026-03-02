@@ -1,0 +1,89 @@
+.nodeWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.node {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--border-subtle, #444);
+  background: var(--bg-card, #2a2a3e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  transition: all var(--transition-fast, 150ms ease);
+  padding: 0;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.node:disabled {
+  cursor: default;
+}
+
+.icon {
+  font-size: 1.1rem;
+  line-height: 1;
+  user-select: none;
+}
+
+/* Current node: glowing gold border */
+.current {
+  border-color: var(--accent-gold, #ffd700);
+  border-width: 3px;
+  box-shadow: 0 0 8px var(--accent-gold, #ffd700), 0 0 16px rgba(255, 215, 0, 0.3);
+  background: var(--bg-light, #0f3460);
+}
+
+/* Available nodes: bright, clickable */
+.available {
+  border-color: var(--color-success, #4caf50);
+  border-width: 2px;
+  box-shadow: 0 0 6px var(--color-success, #4caf50);
+  background: var(--bg-medium, #16213e);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Clickable available (host) */
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px var(--color-success, #4caf50), 0 0 20px rgba(76, 175, 80, 0.4);
+}
+
+/* Visited nodes: dimmed */
+.visited {
+  border-color: var(--text-muted, #666);
+  opacity: 0.5;
+  background: var(--bg-dark, #1a1a2e);
+}
+
+/* Unavailable nodes: grayed out */
+.unavailable {
+  border-color: var(--text-muted, #444);
+  opacity: 0.35;
+  background: var(--bg-dark, #1a1a2e);
+}
+
+/* Boot meeple indicator */
+.bootMeeple {
+  font-size: 0.85rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 3px var(--accent-gold, #ffd700));
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 6px var(--color-success, #4caf50);
+  }
+  50% {
+    box-shadow: 0 0 12px var(--color-success, #4caf50), 0 0 20px rgba(76, 175, 80, 0.5);
+  }
+}

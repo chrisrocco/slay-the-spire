@@ -7,7 +7,7 @@ export interface ChatMessage {
   text: string;
 }
 
-export type AppPhase = 'connecting' | 'lobby' | 'combat';
+export type AppPhase = 'connecting' | 'lobby' | 'game';
 
 export interface AppState {
   playerId: string | null;
@@ -18,6 +18,7 @@ export interface AppState {
   chatMessages: ChatMessage[];
   error: string | null;
   phase: AppPhase;
+  mapVisible: boolean;
 }
 
 export interface AppStore {
@@ -31,6 +32,7 @@ export interface AppStore {
   setError: (err: string | null) => void;
   setPhase: (phase: AppPhase) => void;
   resetToLobby: () => void;
+  toggleMap: () => void;
 }
 
 /**
@@ -47,6 +49,7 @@ export function createAppStore(): AppStore {
     chatMessages: [],
     error: null,
     phase: 'connecting',
+    mapVisible: false,
   });
 
   return {
@@ -65,7 +68,9 @@ export function createAppStore(): AppStore {
       setState('chatMessages', []);
       setState('error', null);
       setState('phase', 'lobby');
+      setState('mapVisible', false);
     },
+    toggleMap: () => setState('mapVisible', (v) => !v),
   };
 }
 
@@ -115,7 +120,7 @@ export function handleServerMessage(store: AppStore, msg: ServerMessage): void {
 
     case 'STATE_UPDATE':
       store.updateGame(msg.state);
-      store.setPhase('combat');
+      store.setPhase('game');
       store.setError(null);
       break;
 

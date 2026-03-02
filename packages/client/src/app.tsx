@@ -51,7 +51,7 @@ export function App() {
         </div>
       </Show>
 
-      <Show when={store.state.phase === 'combat'}>
+      <Show when={store.state.phase === 'game'}>
         <CombatView
           state={store.state}
           send={connection.send}

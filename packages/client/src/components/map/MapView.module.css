@@ -1,0 +1,116 @@
+.mapView {
+  background: var(--bg-dark, #1a1a2e);
+  max-width: 420px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border-subtle, #333);
+}
+
+/* Overlay mode (during combat) */
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  max-width: 380px;
+  z-index: 200;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.6);
+  border-right: none;
+  border-left: 1px solid var(--border-subtle, #444);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md, 12px) var(--spacing-lg, 16px);
+  border-bottom: 1px solid var(--border-subtle, #333);
+  background: var(--bg-medium, #16213e);
+  flex-shrink: 0;
+}
+
+.title {
+  font-family: var(--font-heading, 'Georgia', serif);
+  font-size: 1.1rem;
+  color: var(--text-accent, #d4a574);
+  margin: 0;
+}
+
+.closeBtn {
+  background: transparent;
+  border: 1px solid var(--border-subtle, #444);
+  color: var(--text-secondary, #a0a0a0);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm, 4px);
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all var(--transition-fast, 150ms ease);
+}
+
+.closeBtn:hover {
+  background: var(--bg-card, #2a2a3e);
+  color: var(--text-primary, #e0e0e0);
+}
+
+.mapContainer {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-lg, 16px) var(--spacing-md, 12px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm, 8px);
+  scrollbar-width: thin;
+  scrollbar-color: var(--bg-light, #0f3460) var(--bg-dark, #1a1a2e);
+}
+
+.mapContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.mapContainer::-webkit-scrollbar-thumb {
+  background: var(--bg-light, #0f3460);
+  border-radius: 3px;
+}
+
+.floorRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md, 12px);
+  min-height: 60px;
+}
+
+.floorLabel {
+  font-size: 0.7rem;
+  color: var(--text-muted, #666);
+  width: 52px;
+  flex-shrink: 0;
+  text-align: right;
+  font-family: var(--font-body, sans-serif);
+}
+
+.floorNodes {
+  display: flex;
+  gap: var(--spacing-md, 12px);
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
+.nodeCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.connectionInfo {
+  padding: var(--spacing-sm, 8px) var(--spacing-lg, 16px);
+  border-top: 1px solid var(--border-subtle, #333);
+  flex-shrink: 0;
+}
+
+.connectionHint {
+  font-size: 0.75rem;
+  color: var(--text-secondary, #a0a0a0);
+}
