@@ -55,15 +55,15 @@ Plans:
 **Plans**: 9 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Combat state schemas, vitest config, test helpers
-- [ ] 02-02-PLAN.md — CardEffect type system and effect registry scaffold
-- [ ] 02-03-PLAN.md — Damage formula, status effects (Vulnerable, Weak, Strength, Block, multi-hit)
-- [ ] 02-04-PLAN.md — Deck management (draw, discard, shuffle, exhaust, ethereal, retain, scry)
-- [ ] 02-05-PLAN.md — Player turn lifecycle (start, play card, end turn, triggers, poison)
-- [ ] 02-06-PLAN.md — Enemy turn resolution (action ordering, single/die/cube patterns, death checking)
-- [ ] 02-07-PLAN.md — Effect handlers implementation and full Act 1 card effect registry
-- [ ] 02-08-PLAN.md — Character mechanics (Ironclad, Silent, Defect, Watcher)
-- [ ] 02-09-PLAN.md — Combat integration: processAction API and full turn simulation tests
+- [x] 02-01-PLAN.md — Combat state schemas, vitest config, test helpers
+- [x] 02-02-PLAN.md — CardEffect type system and effect registry scaffold
+- [x] 02-03-PLAN.md — Damage formula, status effects (Vulnerable, Weak, Strength, Block, multi-hit)
+- [x] 02-04-PLAN.md — Deck management (draw, discard, shuffle, exhaust, ethereal, retain, scry)
+- [x] 02-05-PLAN.md — Player turn lifecycle (start, play card, end turn, triggers, poison)
+- [x] 02-06-PLAN.md — Enemy turn resolution (action ordering, single/die/cube patterns, death checking)
+- [x] 02-07-PLAN.md — Effect handlers implementation and full Act 1 card effect registry
+- [x] 02-08-PLAN.md — Character mechanics (Ironclad, Silent, Defect, Watcher)
+- [x] 02-09-PLAN.md — Combat integration: processAction API and full turn simulation tests
 
 ### Phase 3: Session Management
 **Goal**: Players can create and join game rooms, and the server maintains authoritative game state across connections and reconnections
@@ -120,7 +120,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 7/7 | Complete | 2026-03-01 |
-| 2. Game Engine | 0/9 | Not started | - |
+| 2. Game Engine | 9/9 | Complete | 2026-03-01 |
 | 3. Session Management | 0/TBD | Not started | - |
 | 4. Core Client UI | 0/TBD | Not started | - |
 | 5. Game Flow | 0/TBD | Not started | - |
