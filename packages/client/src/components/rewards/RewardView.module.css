@@ -1,0 +1,218 @@
+.rewardView {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: var(--spacing-xl, 24px);
+  gap: var(--spacing-xl, 24px);
+  background: var(--bg-dark, #1a1a2e);
+  overflow-y: auto;
+}
+
+.title {
+  font-family: var(--font-heading, 'Georgia', serif);
+  font-size: 2rem;
+  color: var(--text-accent, #d4a574);
+  margin: 0;
+  text-align: center;
+}
+
+/* Gold Reward */
+.goldReward {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm, 8px);
+  background: var(--bg-medium, #16213e);
+  padding: var(--spacing-md, 12px) var(--spacing-xl, 24px);
+  border-radius: var(--radius-lg, 12px);
+  border: 1px solid var(--color-gold, #ffd700);
+}
+
+.coinIcon {
+  color: var(--color-gold, #ffd700);
+  font-size: 1.4rem;
+}
+
+.goldAmount {
+  color: var(--color-gold, #ffd700);
+  font-family: var(--font-heading, 'Georgia', serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.autoCollected {
+  color: var(--text-secondary, #a0a0a0);
+  font-size: 0.85rem;
+}
+
+/* Reward Section */
+.rewardSection {
+  width: 100%;
+  max-width: 700px;
+  background: var(--bg-medium, #16213e);
+  border-radius: var(--radius-lg, 12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: var(--spacing-lg, 16px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md, 12px);
+}
+
+.sectionLabel {
+  font-family: var(--font-heading, 'Georgia', serif);
+  font-size: 1.1rem;
+  color: var(--text-accent, #d4a574);
+  font-weight: 700;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: var(--spacing-sm, 8px);
+}
+
+/* Card Reward Row */
+.cardRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg, 16px);
+  justify-content: center;
+  padding: var(--spacing-md, 12px) 0;
+}
+
+.rewardCardWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs, 4px);
+  cursor: pointer;
+}
+
+.rewardCardWrapper:hover {
+  transform: translateY(-4px);
+  transition: transform var(--transition-normal, 200ms ease);
+}
+
+.cardName {
+  font-size: 0.7rem;
+  color: var(--text-secondary, #a0a0a0);
+  text-align: center;
+}
+
+/* Item Card (potion / relic) */
+.itemCard {
+  background: var(--bg-card, #2a2a3e);
+  border-radius: var(--radius-md, 8px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: var(--spacing-md, 12px) var(--spacing-lg, 16px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm, 8px);
+}
+
+.itemName {
+  font-family: var(--font-heading, 'Georgia', serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary, #e0e0e0);
+}
+
+.itemText {
+  font-size: 0.85rem;
+  color: var(--text-secondary, #a0a0a0);
+  line-height: 1.4;
+}
+
+.itemActions {
+  display: flex;
+  gap: var(--spacing-sm, 8px);
+  margin-top: var(--spacing-xs, 4px);
+}
+
+/* Buttons */
+.takeButton {
+  padding: var(--spacing-sm, 8px) var(--spacing-xl, 24px);
+  border: 2px solid #1565c0;
+  border-radius: var(--radius-md, 8px);
+  background: linear-gradient(135deg, #0d47a1, #1565c0);
+  color: white;
+  font-family: var(--font-heading, 'Georgia', serif);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-normal, 200ms ease);
+}
+
+.takeButton:hover:not(.disabled) {
+  background: linear-gradient(135deg, #1565c0, #1976d2);
+  transform: scale(1.05);
+}
+
+.takeButton.disabled,
+.takeButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.skipButton {
+  padding: var(--spacing-sm, 8px) var(--spacing-lg, 16px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-md, 8px);
+  background: transparent;
+  color: var(--text-secondary, #a0a0a0);
+  font-family: var(--font-heading, 'Georgia', serif);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--transition-normal, 200ms ease);
+}
+
+.skipButton:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: var(--text-primary, #e0e0e0);
+}
+
+/* Picked Message */
+.pickedMessage {
+  color: var(--color-success, #4caf50);
+  font-size: 0.9rem;
+  padding: var(--spacing-xs, 4px) 0;
+}
+
+/* Player Status */
+.playerStatusSection {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm, 8px);
+}
+
+.waitingText {
+  color: var(--text-secondary, #a0a0a0);
+  font-size: 0.9rem;
+  font-style: italic;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.playerStatusList {
+  display: flex;
+  gap: var(--spacing-lg, 16px);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.playerStatus {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs, 4px);
+  font-size: 0.85rem;
+  color: var(--text-secondary, #a0a0a0);
+}
+
+.playerStatusIcon {
+  font-size: 1rem;
+  color: var(--color-success, #4caf50);
+}

@@ -1,0 +1,166 @@
+.bossRelicView {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: var(--spacing-xl, 24px);
+  gap: var(--spacing-xl, 24px);
+  background: var(--bg-dark, #1a1a2e);
+  overflow-y: auto;
+}
+
+.title {
+  font-family: var(--font-heading, 'Georgia', serif);
+  font-size: 2rem;
+  color: var(--text-accent, #d4a574);
+  margin: 0;
+  text-align: center;
+}
+
+.subtitle {
+  color: var(--text-secondary, #a0a0a0);
+  font-size: 0.9rem;
+  margin: 0;
+  text-align: center;
+}
+
+/* Relic Cards Row */
+.relicRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xl, 24px);
+  justify-content: center;
+  padding: var(--spacing-md, 12px) 0;
+  max-width: 900px;
+  width: 100%;
+}
+
+.relicCard {
+  background: var(--bg-card, #2a2a3e);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-lg, 12px);
+  padding: var(--spacing-lg, 16px);
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm, 8px);
+  transition: all var(--transition-normal, 200ms ease);
+}
+
+.relicCard:hover:not(.taken) {
+  border-color: var(--text-accent, #d4a574);
+  box-shadow: 0 4px 16px rgba(212, 165, 116, 0.2);
+}
+
+.relicCard.taken {
+  opacity: 0.4;
+  filter: grayscale(60%);
+}
+
+.relicCard.myPick {
+  border-color: var(--color-success, #4caf50);
+  box-shadow: 0 0 16px rgba(76, 175, 80, 0.3);
+}
+
+.relicName {
+  font-family: var(--font-heading, 'Georgia', serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary, #e0e0e0);
+}
+
+.relicCategory {
+  font-size: 0.7rem;
+  text-transform: capitalize;
+  color: var(--color-gold, #ffd700);
+  font-style: italic;
+}
+
+.relicText {
+  font-size: 0.8rem;
+  color: var(--text-secondary, #a0a0a0);
+  line-height: 1.4;
+  flex: 1;
+}
+
+.replaces {
+  font-size: 0.75rem;
+  color: var(--color-warning, #ff9800);
+  font-style: italic;
+  padding-top: var(--spacing-xs, 4px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pickButton {
+  padding: var(--spacing-sm, 8px) var(--spacing-lg, 16px);
+  border: 2px solid var(--text-accent, #d4a574);
+  border-radius: var(--radius-md, 8px);
+  background: linear-gradient(135deg, #3a2a18, #5a3a20);
+  color: var(--text-accent, #d4a574);
+  font-family: var(--font-heading, 'Georgia', serif);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-normal, 200ms ease);
+}
+
+.pickButton:hover {
+  background: linear-gradient(135deg, #5a3a20, #8b5a2e);
+  transform: scale(1.05);
+}
+
+.selectedBadge {
+  color: var(--color-success, #4caf50);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.takenBadge {
+  color: var(--text-muted, #666);
+  font-size: 0.85rem;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Player Status */
+.playerStatusList {
+  display: flex;
+  gap: var(--spacing-lg, 16px);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.playerStatus {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs, 4px);
+  font-size: 0.85rem;
+  color: var(--text-secondary, #a0a0a0);
+}
+
+.playerStatusIcon {
+  font-size: 1rem;
+  color: var(--color-success, #4caf50);
+}
+
+.playerStatusName {
+  color: var(--text-primary, #e0e0e0);
+}
+
+.playerPickName {
+  color: var(--text-secondary, #a0a0a0);
+  font-style: italic;
+}
+
+.waitingText {
+  color: var(--text-secondary, #a0a0a0);
+  font-size: 0.9rem;
+  font-style: italic;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}

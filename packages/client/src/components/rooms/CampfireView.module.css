@@ -1,0 +1,206 @@
+.campfireView {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--spacing-xl, 24px);
+  background: var(--bg-card, #2a2a3e);
+  border-radius: var(--radius-lg, 12px);
+  border: 1px solid var(--border-subtle, #333);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+.campfireIcon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: var(--spacing-sm, 8px);
+  filter: drop-shadow(0 0 8px orange);
+}
+
+.title {
+  font-family: var(--font-heading, 'Georgia', serif);
+  font-size: 1.6rem;
+  color: var(--text-accent, #d4a574);
+  margin: 0 0 var(--spacing-xs, 4px) 0;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--text-secondary, #a0a0a0);
+  margin: 0 0 var(--spacing-lg, 16px) 0;
+}
+
+.playerStatus {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm, 8px);
+  justify-content: center;
+  margin-bottom: var(--spacing-lg, 16px);
+  padding: var(--spacing-sm, 8px);
+  background: var(--bg-medium, #16213e);
+  border-radius: var(--radius-md, 8px);
+}
+
+.playerIndicator {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs, 4px);
+  font-size: 0.8rem;
+  color: var(--text-secondary, #a0a0a0);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm, 4px);
+}
+
+.playerChose {
+  color: var(--color-success, #4caf50);
+}
+
+.playerCheckmark {
+  font-size: 0.9rem;
+}
+
+.choiceLabel {
+  color: var(--text-muted, #666);
+  font-style: italic;
+  font-size: 0.75rem;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md, 12px);
+}
+
+.optionButton {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md, 12px);
+  padding: var(--spacing-md, 12px) var(--spacing-lg, 16px);
+  background: var(--bg-medium, #16213e);
+  border: 1px solid var(--border-subtle, #444);
+  border-radius: var(--radius-md, 8px);
+  color: var(--text-primary, #e0e0e0);
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--transition-fast, 150ms ease);
+  width: 100%;
+}
+
+.optionButton:hover:not(:disabled) {
+  background: var(--bg-light, #0f3460);
+  border-color: var(--accent-gold, #ffd700);
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.2);
+}
+
+.optionButton:disabled,
+.blocked {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.optionIcon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  width: 32px;
+  text-align: center;
+}
+
+.optionName {
+  font-size: 1rem;
+  font-weight: 600;
+  flex-shrink: 0;
+  min-width: 60px;
+}
+
+.optionEffect {
+  font-size: 0.85rem;
+  color: var(--text-secondary, #a0a0a0);
+  flex: 1;
+}
+
+/* Card selection mode */
+.cardSelection {
+  text-align: left;
+}
+
+.cardSelectionTitle {
+  font-family: var(--font-heading, 'Georgia', serif);
+  font-size: 1rem;
+  color: var(--text-accent, #d4a574);
+  margin-bottom: var(--spacing-md, 12px);
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--spacing-sm, 8px);
+  max-height: 320px;
+  overflow-y: auto;
+  margin-bottom: var(--spacing-md, 12px);
+  scrollbar-width: thin;
+}
+
+.cardChoice {
+  padding: var(--spacing-sm, 8px) var(--spacing-md, 12px);
+  background: var(--bg-medium, #16213e);
+  border: 1px solid var(--border-subtle, #444);
+  border-radius: var(--radius-md, 8px);
+  color: var(--text-primary, #e0e0e0);
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--transition-fast, 150ms ease);
+}
+
+.cardChoice:hover {
+  background: var(--bg-light, #0f3460);
+  border-color: var(--accent-gold, #ffd700);
+}
+
+.cardChoiceName {
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 2px;
+}
+
+.cardChoiceType {
+  font-size: 0.7rem;
+  color: var(--text-secondary, #a0a0a0);
+  margin-bottom: 4px;
+}
+
+.cardChoiceText {
+  font-size: 0.75rem;
+  color: var(--text-muted, #888);
+  line-height: 1.4;
+}
+
+.cancelButton {
+  padding: var(--spacing-sm, 8px) var(--spacing-lg, 16px);
+  background: transparent;
+  border: 1px solid var(--border-subtle, #444);
+  border-radius: var(--radius-md, 8px);
+  color: var(--text-secondary, #a0a0a0);
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all var(--transition-fast, 150ms ease);
+}
+
+.cancelButton:hover {
+  background: var(--bg-card, #2a2a3e);
+  color: var(--text-primary, #e0e0e0);
+}
+
+.chosenMessage {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--text-primary, #e0e0e0);
+  padding: var(--spacing-lg, 16px);
+  background: var(--bg-medium, #16213e);
+  border-radius: var(--radius-md, 8px);
+}
+
+.waitingText {
+  display: block;
+  margin-top: var(--spacing-sm, 8px);
+  font-size: 0.875rem;
+  color: var(--text-secondary, #a0a0a0);
+}

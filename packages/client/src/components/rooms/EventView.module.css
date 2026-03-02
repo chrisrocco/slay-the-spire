@@ -1,0 +1,119 @@
+.eventView {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--spacing-xl, 24px);
+  background: var(--bg-card, #2a2a3e);
+  border-radius: var(--radius-lg, 12px);
+  border: 1px solid var(--border-subtle, #333);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+.eventName {
+  font-family: var(--font-heading, 'Georgia', serif);
+  font-size: 1.6rem;
+  color: var(--text-accent, #d4a574);
+  margin: 0 0 var(--spacing-md, 12px) 0;
+  text-align: center;
+}
+
+.eventText {
+  font-size: 1rem;
+  color: var(--text-primary, #e0e0e0);
+  line-height: 1.6;
+  text-align: center;
+  margin-bottom: var(--spacing-lg, 16px);
+  font-style: italic;
+}
+
+.playerStatus {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm, 8px);
+  justify-content: center;
+  margin-bottom: var(--spacing-lg, 16px);
+  padding: var(--spacing-sm, 8px);
+  background: var(--bg-medium, #16213e);
+  border-radius: var(--radius-md, 8px);
+}
+
+.playerIndicator {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs, 4px);
+  font-size: 0.8rem;
+  color: var(--text-secondary, #a0a0a0);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm, 4px);
+}
+
+.playerChose {
+  color: var(--color-success, #4caf50);
+}
+
+.playerCheckmark {
+  font-size: 0.9rem;
+}
+
+.playerName {
+  font-weight: 500;
+}
+
+.playerChoiceLabel {
+  color: var(--text-muted, #666);
+  font-style: italic;
+  font-size: 0.75rem;
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md, 12px);
+}
+
+.choiceButton {
+  width: 100%;
+  padding: var(--spacing-md, 12px) var(--spacing-lg, 16px);
+  background: var(--bg-medium, #16213e);
+  border: 1px solid var(--border-subtle, #444);
+  border-radius: var(--radius-md, 8px);
+  color: var(--text-primary, #e0e0e0);
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--transition-fast, 150ms ease);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.choiceButton:hover {
+  background: var(--bg-light, #0f3460);
+  border-color: var(--accent-gold, #ffd700);
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.2);
+}
+
+.choiceText {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary, #e0e0e0);
+}
+
+.choiceEffect {
+  font-size: 0.85rem;
+  color: var(--text-secondary, #a0a0a0);
+}
+
+.waitingMessage {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--text-primary, #e0e0e0);
+  padding: var(--spacing-lg, 16px);
+  background: var(--bg-medium, #16213e);
+  border-radius: var(--radius-md, 8px);
+}
+
+.waitingText {
+  display: block;
+  margin-top: var(--spacing-sm, 8px);
+  font-size: 0.875rem;
+  color: var(--text-secondary, #a0a0a0);
+}
