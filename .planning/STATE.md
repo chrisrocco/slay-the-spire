@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: complete
-last_updated: "2026-03-02T04:15:00Z"
+last_updated: "2026-03-01T20:36:00Z"
 progress:
   total_phases: 5
   completed_phases: 5
-  total_plans: 33
-  completed_plans: 33
+  total_plans: 34
+  completed_plans: 34
 ---
 
 # Project State
@@ -23,18 +23,18 @@ See: .planning/PROJECT.md (updated 2026-03-01)
 ## Current Position
 
 Phase: 5 of 5 (Game Flow) - COMPLETE
-Plan: 7 of 7 in current phase - COMPLETE
+Plan: 8 of 8 in current phase - COMPLETE
 Status: Complete
-Last activity: 2026-03-02 — Completed 05-07 (Reward UI, PotionSlots, app routing)
+Last activity: 2026-03-01 — Completed 05-08 (Gap closure: combat-end rewards, USE_POTION, boss reward path)
 
-Progress: [██████████] 100% (Phase 5: 7/7 plans done)
+Progress: [██████████] 100% (Phase 5: 8/8 plans done)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 32
+- Total plans completed: 34
 - Average duration: ~5min
-- Total execution time: ~163min
+- Total execution time: ~171min
 
 **By Phase:**
 
@@ -44,10 +44,10 @@ Progress: [██████████] 100% (Phase 5: 7/7 plans done)
 | 2 | 9 | ~45min | ~5min |
 | 3 | 5 | ~25min | ~5min |
 | 4 | 5 | ~34min | ~7min |
-| 5 | 5 so far | ~30min | ~6min |
+| 5 | 8 | ~38min | ~5min |
 
 **Recent Trend:**
-- Last plan: 05-07 (~8min, Reward UI + PotionSlots + app routing, clean execution)
+- Last plan: 05-08 (~8min, Gap closure: combat-end rewards, USE_POTION routing, boss reward path)
 - Trend: consistent
 
 *Updated after each plan completion*
@@ -86,6 +86,9 @@ Recent decisions affecting current work:
 - [Phase 05-game-flow]: AppPhase 'combat' renamed to 'game' since game encompasses MAP/EVENT/CAMPFIRE/TREASURE/MERCHANT/COMBAT/REWARDS phases
 - [Phase 05-07]: BossRelicView uses REWARD_PICK_CARD with boss relic ID to communicate selection (REWARD_PICK_RELIC has no payload)
 - [Phase 05-07]: PotionSlots show Use only during COMBAT, Pass only during MAP — matching server-side validation rules
+- [Phase 05-08]: checkCombatEnd exported from gameHandlers.ts to enable direct testing without mocking processAction
+- [Phase 05-08]: Gold from rewardState added to player totals immediately in checkCombatEnd (not deferred to reward pick)
+- [Phase 05-08]: handleRewardsComplete boss path returns gamePhase MAP for both boss and non-boss rooms — no special VICTORY state needed
 
 ### Pending Todos
 
@@ -99,6 +102,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-02
-Stopped at: Completed 05-07-PLAN.md (Reward UI, PotionSlots, and App Routing). Phase 5 COMPLETE.
+Last session: 2026-03-01
+Stopped at: Completed 05-08-PLAN.md (Gap closure: combat-end rewards, USE_POTION routing, boss reward path). Phase 5 COMPLETE.
 Resume file: None
