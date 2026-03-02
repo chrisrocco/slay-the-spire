@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Foundation** - Monorepo scaffold, shared types, and all Act 1 game data extracted into structured form
 - [ ] **Phase 2: Game Engine** - Pure TypeScript combat logic, enemy AI, status effects, character mechanics — fully tested without networking
 - [x] **Phase 3: Session Management** - Lobby, WebSocket server, reconnection, serialized action queue — all multiplayer infrastructure (completed 2026-03-02)
-- [ ] **Phase 4: Core Client UI** - SolidJS store, WebSocket client, and the combat-facing UI components needed to play a fight
+- [x] **Phase 4: Core Client UI** - SolidJS store, WebSocket client, and the combat-facing UI components needed to play a fight (completed 2026-03-02)
 - [ ] **Phase 5: Game Flow** - Map, all room types, reward phase, merchant, and the full Act 1 loop from Neow's Blessing to boss
 - [ ] **Phase 6: Polish** - Character-specific UI, animations, board game aesthetic, and remaining differentiating features
 
@@ -87,7 +87,14 @@ Plans:
   3. Players can read full card text on hover/tap for any card in hand, discard, or on the field
   4. Each player can click End Turn; all players can see who has and hasn't ended their turn
   5. A win or loss screen appears when the combat resolves, with a return-to-lobby option
-**Plans**: TBD
+**Plans**: 5 plans
+
+Plans:
+- [x] 04-01-PLAN.md — App shell, WebSocket service, game store, CSS theme variables
+- [x] 04-02-PLAN.md — Card lookup utility, Card component, CardTooltip
+- [x] 04-03-PLAN.md — HandZone, PlayerStats, EndTurnButton, PlayerBoard
+- [x] 04-04-PLAN.md — EnemyCard, EnemyZone, SharedInfo, CombatEnd
+- [x] 04-05-PLAN.md — CombatLog, ChatPanel, TeamSidebar, CombatView, App integration
 
 ### Phase 5: Game Flow
 **Goal**: Players can play a complete Act 1 session — navigating the map, handling all room types, collecting rewards, and reaching the boss
@@ -122,6 +129,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 1. Foundation | 7/7 | Complete | 2026-03-01 |
 | 2. Game Engine | 9/9 | Complete | 2026-03-01 |
 | 3. Session Management | 0/TBD | Complete    | 2026-03-02 |
-| 4. Core Client UI | 0/TBD | Not started | - |
+| 4. Core Client UI | 5/5 | Complete | 2026-03-02 |
 | 5. Game Flow | 0/TBD | Not started | - |
 | 6. Polish | 0/TBD | Not started | - |

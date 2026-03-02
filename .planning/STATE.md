@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-03-02T02:13:52.091Z"
+last_updated: "2026-03-02T03:00:00.000Z"
 progress:
-  total_phases: 3
-  completed_phases: 3
-  total_plans: 21
-  completed_plans: 21
+  total_phases: 4
+  completed_phases: 4
+  total_plans: 26
+  completed_plans: 26
 ---
 
 # Project State
@@ -18,23 +18,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-01)
 
 **Core value:** Faithful implementation of the board game rules — players can play a complete Act 1 session online with the same experience as sitting at a table together.
-**Current focus:** Phase 2 - Game Engine (COMPLETE)
+**Current focus:** Phase 4 - Core Client UI (COMPLETE)
 
 ## Current Position
 
-Phase: 2 of 6 (Game Engine) - COMPLETE
-Plan: 9 of 9 in current phase
+Phase: 4 of 6 (Core Client UI) - COMPLETE
+Plan: 5 of 5 in current phase
 Status: Complete
-Last activity: 2026-03-01 — Completed all Phase 2 plans (02-01 through 02-09)
+Last activity: 2026-03-02 — Completed all Phase 4 plans (04-01 through 04-05)
 
-Progress: [██████████] 100% (Phase 2)
+Progress: [██████████] 100% (Phase 4)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 16
+- Total plans completed: 26
 - Average duration: ~5min
-- Total execution time: ~80min
+- Total execution time: ~130min
 
 **By Phase:**
 
@@ -42,9 +42,11 @@ Progress: [██████████] 100% (Phase 2)
 |-------|-------|-------|----------|
 | 1 | 7 | ~35min | ~5min |
 | 2 | 9 | ~45min | ~5min |
+| 3 | 5 | ~25min | ~5min |
+| 4 | 5 | ~34min | ~7min |
 
 **Recent Trend:**
-- Last 9 plans: 02-01 through 02-09 (all ~5min)
+- Last 5 plans: 04-01 through 04-05 (6-8min each, slightly longer due to UI component complexity)
 - Trend: consistent
 
 *Updated after each plan completion*
@@ -63,6 +65,11 @@ Recent decisions affecting current work:
 - [Phase 1]: Card counts are unique designs, not physical duplicates (74 Ironclad, 68 Silent, 73 Defect, 67 Watcher)
 - [Phase 1]: Board game card text sourced exclusively from reference sheet images, not video game wikis
 - [Phase 1]: Relics/potions store raw text in Phase 1 — typed effects deferred to Phase 5
+- [Phase 4]: SolidJS reconcile for full-state updates from server broadcasts
+- [Phase 4]: CSS Modules with co-located .module.css files per component
+- [Phase 4]: enemyCombatStates accessed via type assertion (server CombatGameState extends base GameState)
+- [Phase 4]: Non-targeted cards auto-play on selection; Attack cards wait for enemy click target
+- [Phase 4]: CSS Grid named areas for combat layout composition
 
 ### Pending Todos
 
@@ -76,6 +83,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-01
-Stopped at: Phase 2 complete (all 9 plans). Ready for Phase 3.
+Last session: 2026-03-02
+Stopped at: Phase 4 complete (all 5 plans). Ready for Phase 5.
 Resume file: None
