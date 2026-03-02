@@ -86,3 +86,47 @@ export function removeStatusToken(
 
   return { ...state, enemyCombatStates };
 }
+
+/**
+ * Apply poison damage to all poisoned targets at end of turn.
+ * Each poison token deals 1 HP, bypassing block. Tokens persist (not reduced per turn).
+ */
+export function applyPoisonTick(state: CombatGameState): CombatGameState {
+  let currentState = state;
+
+  // Poison tick on enemies
+  const enemyCombatStates = { ...currentState.enemyCombatStates };
+  for (const [id, enemy] of Object.entries(enemyCombatStates)) {
+    if (enemy.poisonTokens > 0 && !enemy.isDead) {
+      enemyCombatStates[id] = {
+        ...enemy,
+        hp: Math.max(0, enemy.hp - enemy.poisonTokens),
+      };
+    }
+  }
+  currentState = { ...currentState, enemyCombatStates };
+
+  return currentState;
+}
+
+/**
+ * Apply poison to a target, enforcing 30 max combined across all enemies.
+ */
+export function applyPoison(
+  state: CombatGameState,
+  targetType: 'player' | 'enemy',
+  targetId: string,
+  amount: number,
+): CombatGameState {
+  if (targetType === 'enemy') {
+    let totalPoison = 0;
+    for (const enemy of Object.values(state.enemyCombatStates)) {
+      totalPoison += enemy.poisonTokens;
+    }
+    const maxAdd = Math.max(0, 30 - totalPoison);
+    const actualAmount = Math.min(amount, maxAdd);
+    return applyStatusToken(state, targetType, targetId, 'poison', actualAmount);
+  }
+
+  return applyStatusToken(state, targetType, targetId, 'poison', amount);
+}
